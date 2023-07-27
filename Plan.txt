@@ -1,0 +1,2 @@
+1. Choisir le drive
+2. Recup tout l'arboressence avec le nom sous txt
