@@ -8,7 +8,7 @@ void fileparser() {}
 void createBackupFile() {}
 
 
-void getDriveNames() {
+void getDriveNames(WCHAR* drivePaths[], int maxDrives) {
     DWORD cchBuffer;
     WCHAR* driveStrings;
     WCHAR volumeName[MAX_PATH];
@@ -24,12 +24,19 @@ void getDriveNames() {
     // Fetch all drive strings    
     GetLogicalDriveStrings(cchBuffer, driveStrings);
 
+    int count = 0; // To keep track of the number of drives found
+
     // Loop until we find the final '\0'
     // driveStrings is a double null terminated list of null terminated strings)
     WCHAR* currentDrive = driveStrings;
-    while (*currentDrive) {
+    while (*currentDrive && count < maxDrives) {
         // Get the volume name associated with the drive
         WCHAR volumeName[MAX_PATH] = { 0 };
+        drivePaths[count] = _wcsdup(currentDrive);
+        if (drivePaths[count] == NULL) {
+            // Memory allocation failed
+            break;
+        }
         if (GetVolumeInformation(currentDrive, volumeName, MAX_PATH, NULL, NULL, NULL, NULL, 0)) {
             printf("Drive: %S - Volume Name: %S\n", currentDrive, volumeName);
         }
@@ -39,12 +46,26 @@ void getDriveNames() {
 
         // Move to next drive string
         currentDrive += lstrlen(currentDrive) + 1;
+        count++;
     }
 
     free(driveStrings);
 }
 
+void printDrives(WCHAR* drivePathsP[], int maxDrivesP)
+{
+    for (int i = 0; i < maxDrivesP; i++) {
+        if (drivePathsP[i] != NULL) {
+            wprintf(L"Drive %d: %s\n", i + 1, drivePathsP[i]);
+            free(drivePathsP[i]); // Don't forget to free the memory
+        }
+    }
+}
+
 int main() {
-    getDriveNames();
+    const int maxDrives = 20;
+    WCHAR* drivePaths[20] = { NULL }; // maxDrives which is 20
+    getDriveNames(drivePaths, maxDrives);
+    printDrives(drivePaths, maxDrives);
     return 0;
 }
