@@ -63,7 +63,7 @@ void printDrives(WCHAR* drivePathsP[], int maxDrivesP)
     }
 }
 
-void driveSelect(WCHAR* drivePathsP[], int maxDrivesP,WCHAR* userPathChoice) 
+void driveSelect(WCHAR* drivePathsP[], int maxDrivesP,WCHAR** userPathChoice) 
 {
     WCHAR userChoice;
     wprintf(L"Which drive do you want to choose, just Type its letter: ");
@@ -100,13 +100,15 @@ void driveSelect(WCHAR* drivePathsP[], int maxDrivesP,WCHAR* userPathChoice)
 
 }
 
+
+
 int main() {
     const int maxDrives = 20;
-    WCHAR* userChoice;
+    WCHAR* userChoice = NULL;
     WCHAR* drivePaths[20] = { NULL }; // maxDrives which is 20
     getDriveNames(drivePaths, maxDrives);
     printDrives(drivePaths, maxDrives);
-    driveSelect(drivePaths, maxDrives, userChoice); // Cette fonction fait le malloc de userChoice donc attention
+    driveSelect(drivePaths, maxDrives, &userChoice); // Cette fonction fait le malloc de userChoice donc attention
     for (int i = 0; i < maxDrives; i++) 
     {
         free(drivePaths[i]);
