@@ -3,7 +3,7 @@
 #include <string.h>
 #include <windows.h>
 
-void driveSelect() {}
+
 void fileparser() {}
 void createBackupFile() {}
 
@@ -54,18 +54,63 @@ void getDriveNames(WCHAR* drivePaths[], int maxDrives) {
 
 void printDrives(WCHAR* drivePathsP[], int maxDrivesP)
 {
-    for (int i = 0; i < maxDrivesP; i++) {
-        if (drivePathsP[i] != NULL) {
-            wprintf(L"Drive %d: %s\n", i + 1, drivePathsP[i]);
-            free(drivePathsP[i]); // Don't forget to free the memory
+    for (int i = 0; i < maxDrivesP; i++) 
+    {
+        if (drivePathsP[i] != NULL) 
+        {
+            wprintf(L"Drive %d: %s\n", i + 1, drivePathsP[i]);        
         }
     }
 }
 
+void driveSelect(WCHAR* drivePathsP[], int maxDrivesP,WCHAR* userPathChoice) 
+{
+    WCHAR userChoice;
+    wprintf(L"Which drive do you want to choose, just Type its letter: ");
+    while(1)
+    {
+        wscanf_s(L" %c", &userChoice, 1);
+        userChoice = toupper(userChoice);
+        for (int i = 0; i < maxDrivesP; i++) 
+        {
+            if (drivePathsP[i] != NULL && (char)(drivePathsP[i][0]) == userChoice)
+            {
+                WCHAR volumeName[MAX_PATH] = { 0 };
+                if (GetVolumeInformation(drivePathsP[i], volumeName, MAX_PATH, NULL, NULL, NULL, NULL, 0))
+                {
+                    wprintf(L"Drive letter '%c' corresponds to path: %s - %s\n", userChoice, drivePathsP[i], volumeName);
+                    *userPathChoice = (WCHAR*)malloc((wcslen(drivePathsP[i]) + 1) * sizeof(WCHAR));
+                    if (*userPathChoice != NULL)
+                    {
+                        wcscpy_s(*userPathChoice, wcslen(drivePathsP[i]) + 1, drivePathsP[i]);
+                    }
+                    else
+                    {
+                        wprintf(L"Memory allocation failed.\n");
+                    }
+                }
+                return;
+            }
+        }
+
+        // Si la lettre saisie n'est pas valide, demander à l'utilisateur de réessayer
+        wprintf(L"Invalid drive letter. Please try again: ");
+        userChoice = NULL;
+    }
+
+}
+
 int main() {
     const int maxDrives = 20;
+    WCHAR* userChoice;
     WCHAR* drivePaths[20] = { NULL }; // maxDrives which is 20
     getDriveNames(drivePaths, maxDrives);
     printDrives(drivePaths, maxDrives);
+    driveSelect(drivePaths, maxDrives, userChoice); // Cette fonction fait le malloc de userChoice donc attention
+    for (int i = 0; i < maxDrives; i++) 
+    {
+        free(drivePaths[i]);
+    }
     return 0;
+    free(userChoice);
 }
