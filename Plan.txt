@@ -9,3 +9,11 @@
 * le faire se lancer pour chaque disque sur le pc
 * pouvoir l'installer pour qu'il se lance par defaut quand on demarre le PC
 * 
+
+
+
+
+
+
+TODO:
+-ajouter les options a createBackupFile

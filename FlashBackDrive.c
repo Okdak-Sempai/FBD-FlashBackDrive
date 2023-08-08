@@ -7,10 +7,139 @@
 #include <tchar.h>
 
 void fileparser() {}
-void createBackupFile() {}
+
+DWORD getFileSize(const wchar_t* filePath) {
+    HANDLE hFile = CreateFile(filePath, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    if (hFile == INVALID_HANDLE_VALUE) {
+        return -1;
+    }
+
+    DWORD fileSize = GetFileSize(hFile, NULL);
+    CloseHandle(hFile);
+    return fileSize;
+}
+
+const WCHAR* GetFileExtension(const WCHAR* filePath) {
+    const WCHAR* lastDot = wcsrchr(filePath, L'.');
+    if (lastDot != NULL) {
+        return lastDot + 1;
+    }
+    else {
+        return NULL; // Aucune extension trouvée
+    }
+}
+
+WCHAR* GetLastModifiedDate(const WCHAR* filePath) {
+    WIN32_FILE_ATTRIBUTE_DATA fileInfo;
+
+    if (GetFileAttributesEx(filePath, GetFileExInfoStandard, &fileInfo)) {
+        FILETIME lastModifiedTime = fileInfo.ftLastWriteTime;
+
+        SYSTEMTIME sysTime;
+        FileTimeToSystemTime(&lastModifiedTime, &sysTime);
+
+        // Créer une chaîne au format souhaité
+        WCHAR* result = (WCHAR*)malloc(20 * sizeof(WCHAR)); // As per "YYYY-MM-DD HH:MM:SS" format
+        if (result != NULL) {
+            swprintf(result, 20, L"%04d-%02d-%02d %02d:%02d:%02d",
+                sysTime.wYear, sysTime.wMonth, sysTime.wDay,
+                sysTime.wHour, sysTime.wMinute, sysTime.wSecond);
+        }
+
+        return result;
+    }
+    else {
+        wprintf(L"Impossible d'obtenir les informations du fichier.\n");
+        return NULL;
+    }
+}
+
+void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutput)
+{
+    //params 0 ou default only create the file
+    //params 1 add file extension and size of the file
+    // Extract the filename from the filePath
+    const WCHAR* filename = wcsrchr(filePath, L'\\');
+    if (filename != NULL) {
+        filename++;  // Move past the '\\' character
+    }
+    else {
+        filename = filePath;  // Use the whole path if '\\' not found
+    }
+
+    size_t len1=wcslen(folderOutput);
+    size_t len2=wcslen(filename);
+
+    WCHAR* result = (WCHAR*)malloc((len1 + len2 + 7) * sizeof(WCHAR));
+    if (result == NULL) {
+        return NULL;  // Memory allocation failed
+    }
+
+    wcscpy_s(result, len1 + len2 + 7, folderOutput);
+
+    if (len1 > 0 && result[len1 - 1] != L'\\')
+    {
+        wcscat_s(result, len1 + len2 + 7, L"\\");
+    }
+
+    wcscat_s(result, len1 + len2 + 7, filename);
+
+    wcscat_s(result, len1 + len2 + 7, L".txt");
+
+    FILE* fp;
+    switch (params)
+    {
+    case 0:
+        if (_wfopen_s(&fp, result, L"w") == 0) {
+            fclose(fp);
+        }
+        else {
+            wprintf(L"Failed to open output file: %ls\n", result);
+        }
+        free(result);
+        break;
+    case 1:
+    {
+        WCHAR* filextension = GetFileExtension(filePath); //extension
+        DWORD filesize = getFileSize(filePath); //size in lu
+        WCHAR* filelastmodif = GetLastModifiedDate(filePath);//last modification in ls
+
+        size_t bufferSize = wcslen(L"Extension: ") + wcslen(filextension) + wcslen(L"\nSize: ") + 20 /* Maximum characters for DWORD value */ + wcslen(L" bytes\nLast modification: ") + wcslen(filelastmodif) + wcslen(L"\n") + 1; // +1 for null-terminator
+
+        WCHAR* fileINFOS = (WCHAR*)malloc(bufferSize * sizeof(WCHAR));
+        if (fileINFOS != NULL)
+        {
+            swprintf(fileINFOS, bufferSize, L"Extension: .%ls\nSize: %lu bytes\nLast modification: %ls\n", filextension, filesize, filelastmodif);
+        }
+
+        if (_wfopen_s(&fp, result, L"w") == 0) {
+            if (fileINFOS != NULL) {
+                fputws(fileINFOS, fp);
+                free(fileINFOS);
+            }
+            fclose(fp);
+        }
+        else {
+            wprintf(L"Failed to open output file: %ls\n", result);
+
+            free(filextension);
+            free(filelastmodif);
+            free(fileINFOS);
+            free(result);
+            break;
+        }
+    default:
+        free(result);
+        break;
+    }
+    }
+}
 
 
-void getDriveNames(WCHAR* drivePaths[], int maxDrives) {
+
+
+void getDriveNames(WCHAR* drivePaths[], int maxDrives) 
+{
     DWORD cchBuffer;
     WCHAR* driveStrings;
     WCHAR volumeName[MAX_PATH];
@@ -154,7 +283,7 @@ int main()
     WCHAR* targetPath = selectPathFolder(L"Target");
 
     //The work
-    backupCreator(rootPath, targetPath);
+    createBackupFile(L"S:\\DocumentsX\\42\\Dummy1\\BN3 Lotto.jpg", 1, targetPath);
     //Work done and show results
     wprintf(L"Work done.");
     openFolderInExplorer(targetPath);
