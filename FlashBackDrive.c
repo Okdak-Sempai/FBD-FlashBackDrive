@@ -263,12 +263,6 @@ wchar_t* selectPathFolder(WCHAR* strPath)
     return NULL;
 }
 
-
-void backupCreator(WCHAR* root, WCHAR* target)
-{
-
-}
-
 int main()
 {
     const int maxDrives = 20;
