@@ -1,2 +1,11 @@
 1. Choisir le drive
 2. Recup tout l'arboressence avec le nom sous txt
+
+* Barre de progression
+
+* ajouter des options pour ecrire dans les txt dans backupCreator() a voir genre taille date peut etre
+
+* Le faire se lancer a chaque branchement de drive 
+* le faire se lancer pour chaque disque sur le pc
+* pouvoir l'installer pour qu'il se lance par defaut quand on demarre le PC
+* 

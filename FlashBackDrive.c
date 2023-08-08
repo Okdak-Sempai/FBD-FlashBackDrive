@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
-
+#include <shlobj.h>
+#include <Shellapi.h>
+#include <tchar.h>
 
 void fileparser() {}
 void createBackupFile() {}
@@ -38,10 +40,10 @@ void getDriveNames(WCHAR* drivePaths[], int maxDrives) {
             break;
         }
         if (GetVolumeInformation(currentDrive, volumeName, MAX_PATH, NULL, NULL, NULL, NULL, 0)) {
-            printf("Drive: %S - Volume Name: %S\n", currentDrive, volumeName);
+            printf("Drive [%S] - Volume Name: %S\n", currentDrive, volumeName);
         }
         else {
-            printf("Drive: %S - Volume Name: Not available\n", currentDrive);
+            printf("Drive [%S] - Volume Name: Not available\n", currentDrive);
         }
 
         // Move to next drive string
@@ -58,7 +60,7 @@ void printDrives(WCHAR* drivePathsP[], int maxDrivesP)
     {
         if (drivePathsP[i] != NULL) 
         {
-            wprintf(L"Drive %d: %s\n", i + 1, drivePathsP[i]);        
+            wprintf(L"Drive %d: [%s]\n", i + 1, drivePathsP[i]);        
         }
     }
 }
@@ -100,19 +102,70 @@ void driveSelect(WCHAR* drivePathsP[], int maxDrivesP,WCHAR** userPathChoice)
 
 }
 
+void openFolderInExplorer(const WCHAR* rootPath)
+{
+    ShellExecute(NULL, L"open", rootPath, NULL, NULL, SW_SHOWNORMAL);
+}
+
+wchar_t* selectPathFolder(WCHAR* strPath)
+{
+    BROWSEINFO browseInfo = { 0 };
+    browseInfo.hwndOwner = NULL;
+    browseInfo.pidlRoot = NULL;
+    browseInfo.pszDisplayName = NULL;
+    browseInfo.ulFlags = BIF_USENEWUI;
+    browseInfo.lpfn = NULL;
+    WCHAR title[MAX_PATH + 50];
+    swprintf(title, sizeof(title) / sizeof(title[0]), L"Select the folder path for %s", strPath);
+    browseInfo.lpszTitle = title;
+    LPITEMIDLIST pidlSelectedFolder = SHBrowseForFolder(&browseInfo);
+
+    if (pidlSelectedFolder != NULL) {
+        wchar_t* selectedFolderPath = (wchar_t*)CoTaskMemAlloc(MAX_PATH * sizeof(wchar_t));
+        if (SHGetPathFromIDList(pidlSelectedFolder, selectedFolderPath)) {
+            wprintf(L"The selected folder is: %s\n", selectedFolderPath);
+            CoTaskMemFree(pidlSelectedFolder);
+            return selectedFolderPath;
+        }
+        CoTaskMemFree(selectedFolderPath); // En cas d'échec de SHGetPathFromIDList
+        CoTaskMemFree(pidlSelectedFolder);
+    }
+
+    return NULL;
+}
 
 
-int main() {
+void backupCreator(WCHAR* root, WCHAR* target)
+{
+
+}
+
+int main()
+{
     const int maxDrives = 20;
     WCHAR* userChoice = NULL;
     WCHAR* drivePaths[20] = { NULL }; // maxDrives which is 20
+
     getDriveNames(drivePaths, maxDrives);
-    printDrives(drivePaths, maxDrives);
+    //printDrives(drivePaths, maxDrives);
     driveSelect(drivePaths, maxDrives, &userChoice); // Cette fonction fait le malloc de userChoice donc attention
-    for (int i = 0; i < maxDrives; i++) 
+
+    WCHAR* rootPath = selectPathFolder(L"Backup path");
+    WCHAR* targetPath = selectPathFolder(L"Target");
+
+    //The work
+    backupCreator(rootPath, targetPath);
+    //Work done and show results
+    wprintf(L"Work done.");
+    openFolderInExplorer(targetPath);
+
+    //All the free
+    for (int i = 0; i < maxDrives; i++)
     {
         free(drivePaths[i]);
     }
     return 0;
     free(userChoice);
+    free(rootPath);
+    free(targetPath);
 }
