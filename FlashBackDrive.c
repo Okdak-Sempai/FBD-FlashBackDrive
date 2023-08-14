@@ -5,8 +5,7 @@
 #include <shlobj.h>
 #include <Shellapi.h>
 #include <tchar.h>
-
-void fileparser() {}
+#include <fileapi.h>
 
 DWORD getFileSize(const wchar_t* filePath) {
     HANDLE hFile = CreateFile(filePath, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
@@ -72,7 +71,8 @@ void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutp
 
     WCHAR* result = (WCHAR*)malloc((len1 + len2 + 7) * sizeof(WCHAR));
     if (result == NULL) {
-        return NULL;  // Memory allocation failed
+        wprintf(L"Memory allocation failed for 'result'\n");
+        return;  // Memory allocation failed
     }
 
     wcscpy_s(result, len1 + len2 + 7, folderOutput);
@@ -104,9 +104,31 @@ void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutp
         DWORD filesize = getFileSize(filePath); //size in lu
         WCHAR* filelastmodif = GetLastModifiedDate(filePath);//last modification in ls
 
+        if (filextension == NULL) 
+        {
+            filextension = (WCHAR*)malloc((wcslen(L"No Extension") + 1) * sizeof(WCHAR));
+            if (filextension != NULL) {
+                wcscpy_s(filextension, wcslen(L"No Extension") + 1, L"No Extension");
+            }
+            else {
+                wprintf(L"Memory allocation failed for 'filextension'\n");
+                free(filextension);
+                return;
+            }
+        }
         size_t bufferSize = wcslen(L"Extension: ") + wcslen(filextension) + wcslen(L"\nSize: ") + 20 /* Maximum characters for DWORD value */ + wcslen(L" bytes\nLast modification: ") + wcslen(filelastmodif) + wcslen(L"\n") + 1; // +1 for null-terminator
 
+
+
+
+
         WCHAR* fileINFOS = (WCHAR*)malloc(bufferSize * sizeof(WCHAR));
+        if (fileINFOS == NULL) 
+        {
+            wprintf(L"Memory allocation failed for 'fileINFOS'\n");
+            free(result); // Don't forget to free previously allocated memory
+            return;  // Memory allocation failed
+        }
         if (fileINFOS != NULL)
         {
             swprintf(fileINFOS, bufferSize, L"Extension: .%ls\nSize: %lu bytes\nLast modification: %ls\n", filextension, filesize, filelastmodif);
@@ -263,6 +285,72 @@ wchar_t* selectPathFolder(WCHAR* strPath)
     return NULL;
 }
 
+wchar_t* finalPath(const wchar_t* strPath) 
+{
+    const wchar_t* addition = L"\\*";
+    size_t originalLength = wcslen(strPath);
+    size_t additionLength = wcslen(addition);
+
+    // Calculer la longueur totale du nouveau chemin
+    size_t newPathLength = originalLength + additionLength + 1; // +1 pour le caractère nul
+
+    // Allouer de la mémoire pour le nouveau chemin
+    wchar_t* newPath = (wchar_t*)malloc(newPathLength * sizeof(wchar_t));
+
+    // Copier le chemin original dans le nouveau chemin
+    wcscpy_s(newPath, newPathLength, strPath);
+
+    // Ajouter l'addition à la fin du nouveau chemin
+    wcscat_s(newPath, newPathLength, addition);
+
+    return newPath; // Retourner le nouveau chemin
+}
+
+void fileExplorer_list(WCHAR* filepathInit)
+{
+    WIN32_FIND_DATA FileData;
+    HANDLE hFind = FindFirstFile(filepathInit, &FileData);
+    if (hFind != INVALID_HANDLE_VALUE)
+    {
+        do
+        {
+            wchar_t fullPath[MAX_PATH];
+            swprintf(fullPath, MAX_PATH, L"%s\\%s", filepathInit, FileData.cFileName);
+            // Afficher le chemin complet du fichier
+            wprintf(L"File: %ls\n", fullPath);
+        } while (FindNextFile(hFind, &FileData));
+        FindClose(hFind);
+    }
+    return;
+}
+
+void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_filepathDEST, WCHAR* filepathDEST)
+{
+    WIN32_FIND_DATA FileData;
+    HANDLE hFind = FindFirstFile(filepathInit, &FileData);
+    if (hFind != INVALID_HANDLE_VALUE)
+    {
+        do
+        {
+            if (!(FileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+                wchar_t fullPath[MAX_PATH];
+                swprintf(fullPath, MAX_PATH, L"%s\\%s", Real_filepathInit, FileData.cFileName);
+
+                // Afficher le chemin complet du fichier
+                wprintf(L"File: %ls\n", fullPath);
+
+                // Appeler createBackupFile seulement pour les fichiers, pas pour les dossiers
+                createBackupFile(fullPath, 1, Real_filepathDEST);
+            }
+
+        } while (FindNextFile(hFind, &FileData));
+        FindClose(hFind);
+    }
+    return;
+}
+
+
+
 int main()
 {
     const int maxDrives = 20;
@@ -271,14 +359,26 @@ int main()
 
     getDriveNames(drivePaths, maxDrives);
     //printDrives(drivePaths, maxDrives);
-    driveSelect(drivePaths, maxDrives, &userChoice); // Cette fonction fait le malloc de userChoice donc attention
+
+    //driveSelect(drivePaths, maxDrives, &userChoice); // Cette fonction fait le malloc de userChoice donc attention TOUNLOCK
 
     WCHAR* rootPath = selectPathFolder(L"Backup path");
-    WCHAR* targetPath = selectPathFolder(L"Target");
+    wchar_t* star_rootPath = finalPath(rootPath);
 
+
+    WCHAR* targetPath = selectPathFolder(L"Target");
+    wchar_t* star_targetPath = finalPath(targetPath);
+    fileExplorer(rootPath, star_rootPath, targetPath, star_targetPath);
     //The work
-    createBackupFile(L"S:\\DocumentsX\\42\\Dummy1\\BN3 Lotto.jpg", 1, targetPath);
+    //createBackupFile(L"S:\\DocumentsX\\42\\Dummy1\\BN3 Lotto.jpg", 1, targetPath); TOUNLOCK
     //Work done and show results
+
+    //    
+    
+    
+    
+    //
+
     wprintf(L"Work done.");
     openFolderInExplorer(targetPath);
 
@@ -288,7 +388,8 @@ int main()
         free(drivePaths[i]);
     }
     return 0;
-    free(userChoice);
+    //free(userChoice); TOUNLOCK
     free(rootPath);
     free(targetPath);
+    free(star_targetPath);
 }
