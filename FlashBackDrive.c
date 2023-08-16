@@ -6,6 +6,8 @@
 #include <Shellapi.h>
 #include <tchar.h>
 #include <fileapi.h>
+#include <time.h>
+#include <wchar.h>
 
 DWORD getFileSize(const wchar_t* filePath) {
     HANDLE hFile = CreateFile(filePath, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
@@ -48,8 +50,19 @@ WCHAR* GetLastModifiedDate(const WCHAR* filePath) {
         return result;
     }
     else {
-        wprintf(L"Impossible d'obtenir les informations du fichier.\n");
-        return NULL;
+        wprintf(L"\nImpossible d'obtenir les informations du fichier.\n");
+        return L"NOT ACCESSIBLE";
+    }
+}
+
+WCHAR* createFilename(const WCHAR* filepath)
+{
+    const WCHAR* filename = wcsrchr(filepath, L'\\');
+    if (filename != NULL) {
+        filename++;  // Move past the '\\' character
+    }
+    else {
+        return filepath;  // Use the whole path if '\\' not found
     }
 }
 
@@ -58,13 +71,7 @@ void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutp
     //params 0 ou default only create the file
     //params 1 add file extension and size of the file
     // Extract the filename from the filePath
-    const WCHAR* filename = wcsrchr(filePath, L'\\');
-    if (filename != NULL) {
-        filename++;  // Move past the '\\' character
-    }
-    else {
-        filename = filePath;  // Use the whole path if '\\' not found
-    }
+    const WCHAR* filename = createFilename(filePath);
 
     size_t len1=wcslen(folderOutput);
     size_t len2=wcslen(filename);
@@ -119,9 +126,6 @@ void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutp
         size_t bufferSize = wcslen(L"Extension: ") + wcslen(filextension) + wcslen(L"\nSize: ") + 20 /* Maximum characters for DWORD value */ + wcslen(L" bytes\nLast modification: ") + wcslen(filelastmodif) + wcslen(L"\n") + 1; // +1 for null-terminator
 
 
-
-
-
         WCHAR* fileINFOS = (WCHAR*)malloc(bufferSize * sizeof(WCHAR));
         if (fileINFOS == NULL) 
         {
@@ -157,8 +161,21 @@ void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutp
     }
 }
 
+void createDirectory(const wchar_t* foldername, const wchar_t* path)
+{
+    // Construire le chemin complet du nouveau dossier
+    wchar_t newFolderPath[MAX_PATH];
+    swprintf(newFolderPath, MAX_PATH, L"%s\\%s", path, foldername);
 
-
+    if (CreateDirectory(newFolderPath, NULL))
+    {
+        //wprintf(L"Folder created: %ls\n", newFolderPath);
+    }
+    else
+    {
+        wprintf(L"Failed to create folder: %ls\n", newFolderPath);
+    }
+}
 
 void getDriveNames(WCHAR* drivePaths[], int maxDrives) 
 {
@@ -258,17 +275,43 @@ void openFolderInExplorer(const WCHAR* rootPath)
     ShellExecute(NULL, L"open", rootPath, NULL, NULL, SW_SHOWNORMAL);
 }
 
+int CALLBACK BrowseCallbackProc(HWND hwnd, UINT uMsg, LPARAM lParam, LPARAM lpData)
+{
+    if (uMsg == BFFM_INITIALIZED) {
+        // Obtenir la liste des lecteurs disponibles
+        int drives = GetLogicalDrives();
+        wchar_t currentDrive = L'A'; // Début des lettres de lecteur
+
+        while (drives) {
+            if (drives & 1) {
+                // Configurer le répertoire racine pour chaque lecteur
+                WCHAR rootPath[4];
+                swprintf(rootPath, sizeof(rootPath) / sizeof(rootPath[0]), L"%c:\\", currentDrive);
+                SendMessage(hwnd, BFFM_SETSELECTION, TRUE, (LPARAM)rootPath);
+                break; // Afficher uniquement le premier lecteur
+            }
+
+            drives >>= 1;
+            ++currentDrive;
+        }
+    }
+
+    return 0;
+}
+
 wchar_t* selectPathFolder(WCHAR* strPath)
 {
     BROWSEINFO browseInfo = { 0 };
     browseInfo.hwndOwner = NULL;
     browseInfo.pidlRoot = NULL;
     browseInfo.pszDisplayName = NULL;
-    browseInfo.ulFlags = BIF_USENEWUI;
-    browseInfo.lpfn = NULL;
+    browseInfo.ulFlags = BIF_USENEWUI | BIF_RETURNONLYFSDIRS;
+    browseInfo.lpfn = BrowseCallbackProc; // Utilisation de la fonction de rappel
     WCHAR title[MAX_PATH + 50];
     swprintf(title, sizeof(title) / sizeof(title[0]), L"Select the folder path for %s", strPath);
     browseInfo.lpszTitle = title;
+
+    // Afficher la boîte de dialogue de sélection de dossier
     LPITEMIDLIST pidlSelectedFolder = SHBrowseForFolder(&browseInfo);
 
     if (pidlSelectedFolder != NULL) {
@@ -278,7 +321,7 @@ wchar_t* selectPathFolder(WCHAR* strPath)
             CoTaskMemFree(pidlSelectedFolder);
             return selectedFolderPath;
         }
-        CoTaskMemFree(selectedFolderPath); // En cas d'échec de SHGetPathFromIDList
+        CoTaskMemFree(selectedFolderPath);
         CoTaskMemFree(pidlSelectedFolder);
     }
 
@@ -324,7 +367,7 @@ void fileExplorer_list(WCHAR* filepathInit)
     return;
 }
 
-void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_filepathDEST, WCHAR* filepathDEST)
+void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_filepathDEST, WCHAR* filepathDEST, DWORD rootsize,DWORD pathsize,WCHAR* usedPATH)
 {
     WIN32_FIND_DATA FileData;
     HANDLE hFind = FindFirstFile(filepathInit, &FileData);
@@ -332,15 +375,51 @@ void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_fil
     {
         do
         {
-            if (!(FileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+            if (!(FileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) // For files
+            {
                 wchar_t fullPath[MAX_PATH];
                 swprintf(fullPath, MAX_PATH, L"%s\\%s", Real_filepathInit, FileData.cFileName);
 
                 // Afficher le chemin complet du fichier
-                wprintf(L"File: %ls\n", fullPath);
+                //wprintf(L"File: %ls\n", fullPath);
+                pathsize = countFilesInFolder(usedPATH);
+                wprintf(L"\rProgression: %d%%", (int)(((float)pathsize / rootsize) * 100));
+
 
                 // Appeler createBackupFile seulement pour les fichiers, pas pour les dossiers
                 createBackupFile(fullPath, 1, Real_filepathDEST);
+            }
+            else// For folders
+            {
+                if (wcscmp(FileData.cFileName, L".") != 0 && wcscmp(FileData.cFileName, L"..") != 0)
+                {
+                    wchar_t fullPath[MAX_PATH];
+                    swprintf(fullPath, MAX_PATH, L"%s\\%s", Real_filepathInit, FileData.cFileName);
+
+                    // Afficher le chemin complet du fichier
+                    //wprintf(L"File: %ls\n", fullPath);
+                    WCHAR* newfileNAME = createFilename(fullPath);
+                    createDirectory(newfileNAME, Real_filepathDEST);
+
+                    // Construire le chemin complet du nouveau dossier dans newDEST
+                    size_t newDESTLength = wcslen(Real_filepathDEST) + wcslen(newfileNAME) + 2; // +2 pour le backslash et le caractère nul
+                    wchar_t* newDEST = (wchar_t*)malloc(newDESTLength * sizeof(wchar_t));
+                    swprintf(newDEST, newDESTLength, L"%s\\%s", Real_filepathDEST, newfileNAME);
+                    // Construire le chemin complet du nouveau dossier dans initDEST
+                    size_t initDESTLength = wcslen(Real_filepathInit) + wcslen(newfileNAME) + 2; // +2 pour le backslash et le caractère nul
+                    wchar_t* initDEST = (wchar_t*)malloc(initDESTLength * sizeof(wchar_t));
+                    swprintf(initDEST, initDESTLength, L"%s\\%s", Real_filepathInit, newfileNAME);
+
+                    wchar_t* star_initDEST = finalPath(initDEST);
+                    wchar_t* star_newDEST = finalPath(newDEST);
+
+                    fileExplorer(initDEST, star_initDEST, newDEST, star_newDEST, rootsize, pathsize, usedPATH);
+                    free(initDEST);
+                    free(star_initDEST);
+                    free(newDEST);
+                    free(star_newDEST);
+
+                }
             }
 
         } while (FindNextFile(hFind, &FileData));
@@ -349,47 +428,226 @@ void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_fil
     return;
 }
 
+int countFilesInFolder(const wchar_t* folderPath)
+{
+    wchar_t searchPath[MAX_PATH];
+    wcscpy_s(searchPath, MAX_PATH, folderPath);
+    wcscat_s(searchPath, MAX_PATH, L"\\*.*");
+
+    int itemCount = 0;
+    WIN32_FIND_DATA findData;
+    HANDLE hFind = FindFirstFile(searchPath, &findData);
+
+    if (hFind != INVALID_HANDLE_VALUE) {
+        do {
+            if (!(findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+                itemCount++;
+            }
+            else if (wcscmp(findData.cFileName, L".") != 0 && wcscmp(findData.cFileName, L"..") != 0) {
+                // Exclude "." and ".." entries
+                itemCount++;
+            }
+        } while (FindNextFile(hFind, &findData));
+
+        FindClose(hFind);
+    }
+
+    return itemCount;
+}
+
+int settingsSetter(char* settingsfilename) //Create a file setting or not if it already exists
+{
+    FILE* file = NULL;
+
+    // Existing check
+    int err = fopen_s(&file, settingsfilename, "r");
+
+    if (err == 0 && file != NULL)
+    {
+        fclose(file);
+        return 1; // File already exists
+    }
+    else
+    {
+        // Create file if non existant
+        err = fopen_s(&file, settingsfilename, "w");
+        if (err == 0 && file != NULL)
+        {
+            fclose(file);
+            return 0; // Create the file sucessfully
+        }
+        else
+        {
+            fprintf(stderr, "Impossible de créer le fichier FBDsettings.\n");
+            return -1; // Creation error
+        }
+    }
+}
+
+int settingsSetterDefaultFinal(const wchar_t* defaultPath) {
+    // Afficher la premiere ligne
+    // Remplacer la ligne si l'user le veut
+    // et afficher la ligne
+    //
+
+
+    return NULL;
+}
+
+
+
+
+
+WCHAR* newBackupFolderName(const WCHAR* fullPath) 
+{
+    // Drive letter+Drive Name+YYYYMMDD+HHMN
+    return NULL;
+
+}
+
+void moveToFolder(WCHAR* folderAdress, WCHAR* folderPointor) // Move the argument to the folderPointer folder
+{
+    // Move to the folder 
+}
+
+
+
+
 
 
 int main()
 {
-    const int maxDrives = 20;
-    WCHAR* userChoice = NULL;
-    WCHAR* drivePaths[20] = { NULL }; // maxDrives which is 20
-
-    getDriveNames(drivePaths, maxDrives);
-    //printDrives(drivePaths, maxDrives);
-
-    //driveSelect(drivePaths, maxDrives, &userChoice); // Cette fonction fait le malloc de userChoice donc attention TOUNLOCK
-
-    WCHAR* rootPath = selectPathFolder(L"Backup path");
-    wchar_t* star_rootPath = finalPath(rootPath);
-
-
-    WCHAR* targetPath = selectPathFolder(L"Target");
-    wchar_t* star_targetPath = finalPath(targetPath);
-    fileExplorer(rootPath, star_rootPath, targetPath, star_targetPath);
-    //The work
-    //createBackupFile(L"S:\\DocumentsX\\42\\Dummy1\\BN3 Lotto.jpg", 1, targetPath); TOUNLOCK
-    //Work done and show results
-
-    //    
-    
-    
-    
-    //
-
-    wprintf(L"Work done.");
-    openFolderInExplorer(targetPath);
-
-    //All the free
-    for (int i = 0; i < maxDrives; i++)
+    unsigned int methodChoice=2;
+    while (methodChoice > 0 && methodChoice < 4)
     {
-        free(drivePaths[i]);
+        methodChoice = 4;
+        //Settings Setup
+        int settingStatus = settingsSetter("FBDsettings");
+
+        //Initialisations
+        const int maxDrives = 20;
+        WCHAR* userChoice = NULL;
+        WCHAR* drivePaths[20] = { NULL }; // maxDrives which is 20
+
+        wprintf(L"------------------------------------------\n");
+        getDriveNames(drivePaths, maxDrives);
+        //printDrives(drivePaths, maxDrives);
+
+        //Choice of method
+        int scanfResult;
+        methodChoice = 0;
+        wprintf(L"\nPress 1 for Drive select\nPress 2 for folder selection\nPress 3 for the Settings\nPress 4 to end the Software\nChoice: ");
+        do
+        {
+            scanfResult = scanf_s("%d%*c", &methodChoice);
+            if (scanfResult != 1 || (methodChoice < 1 || methodChoice > 4))
+            {
+                wprintf(L"Only 1 or 2 or 3.\tChoice: ");
+                while (getchar() != '\n');
+            }
+        } while (methodChoice < 1 || methodChoice > 4);
+
+        wprintf(L"\n");
+
+        WCHAR* rootPath = NULL;
+        wchar_t* star_rootPath = NULL;
+        //Via les Drives
+        // 
+        switch (methodChoice)
+        {
+        case 1:
+        {
+            driveSelect(drivePaths, maxDrives, &userChoice); // Cette fonction fait le malloc de userChoice donc attention TOUNLOCK
+            rootPath = userChoice;
+            star_rootPath = finalPath(rootPath);
+            break;
+        }
+
+        //Via la selection
+        // 
+        case 2:
+        {
+            rootPath = selectPathFolder(L"Backup path");
+            star_rootPath = finalPath(rootPath);
+            break;
+        }
+        //Settings
+        //
+        case 3:
+        {
+ 
+            //All the free
+            for (int i = 0; i < maxDrives; i++)
+            {
+                free(drivePaths[i]);
+            }
+            free(userChoice);
+            free(rootPath);
+            free(star_rootPath);
+            break;
+        }
+        //Stops the code
+        //
+        case 4:
+            //All the free
+            for (int i = 0; i < maxDrives; i++)
+            {
+                free(drivePaths[i]);
+            }
+            free(userChoice);
+            free(rootPath);
+            free(star_rootPath);
+            break;
+        }
+
+        if (methodChoice == 1 || methodChoice == 2)
+        {
+            // Execution time starts
+            LARGE_INTEGER startTime, endTime, frequency;
+            QueryPerformanceFrequency(&frequency);
+            QueryPerformanceCounter(&startTime); 
+            //
+
+            WCHAR* targetPath = selectPathFolder(L"Target");
+            wchar_t* star_targetPath = finalPath(targetPath);
+
+            int rootsize = countFilesInFolder(rootPath);
+            int pathsize = countFilesInFolder(targetPath);
+
+            //Code usage
+            fileExplorer(rootPath, star_rootPath, targetPath, star_targetPath, rootsize, pathsize, targetPath);
+
+            pathsize = countFilesInFolder(targetPath);
+            wprintf(L"\rProgression: %d%%", (int)(((float)pathsize / rootsize) * 100));
+            wprintf(L"\n");
+
+            //Result
+            wprintf(L"Work done.");
+            // Execution time ends
+            QueryPerformanceCounter(&endTime);
+            double elapsedTime = (endTime.QuadPart - startTime.QuadPart) * 1000.0 / frequency.QuadPart;
+            int totalSeconds = (int)(elapsedTime / 1000);
+            int hours = totalSeconds / 3600;
+            int minutes = (totalSeconds % 3600) / 60; 
+            int seconds = totalSeconds % 60; 
+
+            wprintf(L"Execution time: %.2f millisecondes\t%02dH %02dM %02dS\n",elapsedTime, hours, minutes, seconds);
+
+            //
+
+            openFolderInExplorer(targetPath);
+
+            //All the free
+            for (int i = 0; i < maxDrives; i++)
+            {
+                free(drivePaths[i]);
+            }
+            free(userChoice);
+            //free(rootPath);
+            //free(targetPath);
+            //free(star_rootPath);
+            //free(star_targetPath);
+        }
     }
     return 0;
-    //free(userChoice); TOUNLOCK
-    free(rootPath);
-    free(targetPath);
-    free(star_targetPath);
 }

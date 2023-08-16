@@ -1,22 +1,20 @@
-1. Choisir le drive
-2. Recup tout l'arboressence avec le nom sous txt
-
-* Barre de progression
-
-* ajouter des options pour ecrire dans les txt dans backupCreator() a voir genre taille date peut etre
 
 * Le faire se lancer a chaque branchement de drive 
 * le faire se lancer pour chaque disque sur le pc
 * pouvoir l'installer pour qu'il se lance par defaut quand on demarre le PC
-* 
-
-
+* faire des performances test (en terme de taille vu que le poids n'importe pas)(tester peut etre sur les types de lecteurs differents)
 
 
 
 
 TODO:
 
--uncomment les TOUNLOCK
--tester rien
--ajouter les options a createBackupFile
+- ajouter des parametres(save les path des disques a toujours backup/le path destination)
+- dossier LOGS(donc times d'exec nom du drive et nombre fchiers)
+- ajouter le sous dossier mere et le systeme de nomage
+- ajouter un catcheyr d'event
+
+
+
+Results
+- environs 200 fichiers par seconde
