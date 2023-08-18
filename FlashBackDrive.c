@@ -484,23 +484,190 @@ int settingsSetter(char* settingsfilename) //Create a file setting or not if it 
     }
 }
 
-int settingsSetterDefaultFinal(const wchar_t* defaultPath) {
-    // Afficher la premiere ligne
-    // Remplacer la ligne si l'user le veut
-    // et afficher la ligne
-    //
+int choice(WCHAR* sentence1, int x, WCHAR* sentence2, int y)
+{
+    int scanfResult;
+    int methodChoice = 0;
+    wprintf(L"\n%s: %d\n%s: %d\nChoice: ",sentence1,x,sentence2,y);
+    do
+    {
+        scanfResult = scanf_s("%d%*c", &methodChoice);
+        if (methodChoice != x && methodChoice != y)
+        {
+            wprintf(L"Only %d or %d.\tChoice: ",x,y);
+            while (getchar() != '\n');
+        }
+    } while (methodChoice != x && methodChoice != y);
 
-
-    return NULL;
+    wprintf(L"\n");
+    return methodChoice;
 }
 
+wchar_t* readLineNumber(FILE* file, int lineNumber) //First line is 1 and not 0
+{
+    wchar_t buffer[4096]; // Supposons que la ligne ne dépasse pas 255 caractères
+    int currentLine = 0;
 
+    while (currentLine < lineNumber && fgetws(buffer, sizeof(buffer) / sizeof(buffer[0]), file) != NULL) {
+        currentLine++;
+    }
 
+    if (currentLine == lineNumber) {
+        // Retourner une copie allouée dynamiquement de la ligne lue
+        return _wcsdup(buffer);
+    }
+    else {
+        return NULL; // La ligne demandée n'a pas pu être lue
+    }
+}
 
+int writeLineNumber(FILE* file, int lineNumber, const wchar_t* content)
+{
+    // Replacer le curseur de fichier au début
+    if (fseek(file, 0, SEEK_SET) != 0)
+    {
+        return -1; // Erreur lors du déplacement du curseur
+    }
+
+    // Écrire le contenu sur les lignes précédentes
+    wchar_t buffer[4096]; // Supposons que la ligne ne dépasse pas 255 caractères
+    int currentLine = 0;
+    while (currentLine < lineNumber - 1 && fgetws(buffer, sizeof(buffer) / sizeof(buffer[0]), file) != NULL)
+    {
+        currentLine++;
+    }
+
+    if (currentLine != lineNumber - 1)
+    {
+        return -2; // La ligne demandée n'a pas pu être atteinte
+    }
+
+    // Réécrire le contenu sur la ligne spécifique
+    fputws(content, file);
+
+    // Copier le reste du contenu du fichier
+    while (fgetws(buffer, sizeof(buffer) / sizeof(buffer[0]), file) != NULL)
+    {
+        fputws(buffer, file);
+    }
+
+    return 0; // Écriture réussie
+}
+
+int settingsSetterDefaultFinal(char* settingsfilename)
+{
+    // Afficher la premiere ligne
+    //
+    FILE* file = NULL;
+    int err = fopen_s(&file, settingsfilename, "r");
+    // Existing check
+    if (err != 0 || file == NULL) 
+    {
+        // Gestion d'erreur si le fichier ne peut pas être ouvert
+        wprintf(L"Failed to open the file: %s\n", settingsfilename);
+        return -1;
+    }
+    WCHAR* firstLine = readLineNumber(file, 1);
+    wprintf(L"\nThe current path is :\n[%ls]\n",firstLine);
+    fclose(file);
+    // Remplacer la ligne si l'user le veut
+    //
+    if(choice(L"To keep the path do",1, L"To change the path do",2) == 2)
+    {
+        err = fopen_s(&file, settingsfilename, "w");
+        if (err != 0 || file == NULL)
+        {
+            wprintf(L"Failed to open the file for writing: %s\n", settingsfilename);
+            return -1;
+        }
+        wchar_t* newPath = selectPathFolder(L"Backup folder");
+        writeLineNumber(file, 1, newPath);
+        fclose(file);
+
+        firstLine = newPath;
+        wprintf(L"\nThe current path is :\n[%ls]\n", firstLine);
+        return 1;
+    }
+
+    wprintf(L"\nThe current path is now:\n[%ls]\n", firstLine);
+
+    free(firstLine);
+    return 0;
+}
+
+wchar_t* getCurrentDateWCHAR() // Ex: 2023-08-19
+{
+    time_t currentTime;
+    struct tm timeInfo;
+    wchar_t formattedDate[11];
+
+    // Obtenir le temps actuel
+    time(&currentTime);
+
+    // Convertir le temps en une structure tm de manière sécurisée
+    if (localtime_s(&timeInfo, &currentTime) != 0) {
+        return NULL; // Erreur lors de la conversion de la date
+    }
+
+    // Format de date : "YYYY-MM-DD"
+    if (wcsftime(formattedDate, sizeof(formattedDate), L"%Y-%m-%d", &timeInfo) == 0) {
+        return NULL; // Erreur lors du formatage de la date
+    }
+
+    // Allouer de la mémoire pour la chaîne formatée
+    wchar_t* result = (wchar_t*)malloc(sizeof(formattedDate));
+    if (result == NULL) {
+        return NULL; // Erreur lors de l'allocation mémoire
+    }
+
+    // Utiliser wcscpy_s pour copier la date formatée dans le résultat
+    if (wcscpy_s(result, sizeof(formattedDate) / sizeof(formattedDate[0]), formattedDate) != 0) {
+        free(result); // Libérer la mémoire en cas d'erreur
+        return NULL;
+    }
+
+    return result;
+}
+
+wchar_t* getCurrentTimeWCHAR()
+{
+    time_t currentTime;
+    struct tm timeInfo;
+    wchar_t formattedTime[6]; // HHHMM\0
+
+    // Obtenir le temps actuel
+    time(&currentTime);
+
+    // Convertir le temps en une structure tm de manière sécurisée
+    if (localtime_s(&timeInfo, &currentTime) != 0) {
+        return NULL; // Erreur lors de la conversion de l'heure
+    }
+
+    // Format de l'heure : "HH-MM"
+    if (wcsftime(formattedTime, sizeof(formattedTime), L"%HH%M", &timeInfo) == 0) {
+        return NULL; // Erreur lors du formatage de l'heure
+    }
+
+    // Allouer de la mémoire pour la chaîne formatée
+    size_t resultSize = wcslen(formattedTime) + 1; // Taille + 1 pour le caractère nul
+    wchar_t* result = (wchar_t*)malloc(resultSize * sizeof(wchar_t));
+    if (result == NULL) {
+        return NULL; // Erreur lors de l'allocation mémoire
+    }
+
+    // Copier la date formatée dans le résultat
+    if (wcscpy_s(result, resultSize, formattedTime) != 0) {
+        free(result); // Libérer la mémoire en cas d'erreur
+        return NULL;
+    }
+
+    return result;
+}
 
 WCHAR* newBackupFolderName(const WCHAR* fullPath) 
 {
     // Drive letter+Drive Name+YYYYMMDD+HHMN
+
     return NULL;
 
 }
@@ -510,13 +677,9 @@ void moveToFolder(WCHAR* folderAdress, WCHAR* folderPointor) // Move the argumen
     // Move to the folder 
 }
 
-
-
-
-
-
 int main()
 {
+
     unsigned int methodChoice=2;
     while (methodChoice > 0 && methodChoice < 4)
     {
@@ -555,49 +718,51 @@ int main()
         // 
         switch (methodChoice)
         {
-        case 1:
-        {
-            driveSelect(drivePaths, maxDrives, &userChoice); // Cette fonction fait le malloc de userChoice donc attention TOUNLOCK
-            rootPath = userChoice;
-            star_rootPath = finalPath(rootPath);
-            break;
-        }
+            case 1:
+            {
+                driveSelect(drivePaths, maxDrives, &userChoice); // Cette fonction fait le malloc de userChoice donc attention TOUNLOCK
+                rootPath = userChoice;
+                star_rootPath = finalPath(rootPath);
+                break;
+            }
 
-        //Via la selection
-        // 
-        case 2:
-        {
-            rootPath = selectPathFolder(L"Backup path");
-            star_rootPath = finalPath(rootPath);
-            break;
-        }
-        //Settings
-        //
-        case 3:
-        {
- 
-            //All the free
-            for (int i = 0; i < maxDrives; i++)
+            //Via la selection
+            // 
+            case 2:
             {
-                free(drivePaths[i]);
+                rootPath = selectPathFolder(L"Backup path");
+                star_rootPath = finalPath(rootPath);
+                break;
             }
-            free(userChoice);
-            free(rootPath);
-            free(star_rootPath);
-            break;
-        }
-        //Stops the code
-        //
-        case 4:
-            //All the free
-            for (int i = 0; i < maxDrives; i++)
+            //Settings
+            //
+            case 3:
             {
-                free(drivePaths[i]);
+                settingsSetterDefaultFinal(L"FBDsettings");
+                //All the free
+                for (int i = 0; i < maxDrives; i++)
+                {
+                    free(drivePaths[i]);
+                }
+                free(userChoice);
+                free(rootPath);
+                free(star_rootPath);
+                break;
             }
-            free(userChoice);
-            free(rootPath);
-            free(star_rootPath);
-            break;
+            //Stops the code
+            //
+            case 4:
+            {
+                //All the free
+                for (int i = 0; i < maxDrives; i++)
+                {
+                    free(drivePaths[i]);
+                }
+                free(userChoice);
+                free(rootPath);
+                free(star_rootPath);
+                break;
+            }
         }
 
         if (methodChoice == 1 || methodChoice == 2)
