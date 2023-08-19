@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
+#include <Windows.h>
 #include <shlobj.h>
 #include <Shellapi.h>
 #include <tchar.h>
@@ -233,7 +234,7 @@ void printDrives(WCHAR* drivePathsP[], int maxDrivesP)
     }
 }
 
-void driveSelect(WCHAR* drivePathsP[], int maxDrivesP,WCHAR** userPathChoice) 
+driveSelect(WCHAR* drivePathsP[], int maxDrivesP,WCHAR** userPathChoice) 
 {
     WCHAR userChoice;
     wprintf(L"Which drive do you want to choose, just Type its letter: ");
@@ -255,6 +256,37 @@ void driveSelect(WCHAR* drivePathsP[], int maxDrivesP,WCHAR** userPathChoice)
                         wcscpy_s(*userPathChoice, wcslen(drivePathsP[i]) + 1, drivePathsP[i]);
                     }
                     else
+                    {
+                        wprintf(L"Memory allocation failed.\n");
+                    }
+                }
+                return;
+            }
+        }
+
+        // Si la lettre saisie n'est pas valide, demander à l'utilisateur de réessayer
+        wprintf(L"Invalid drive letter. Please try again: ");
+        userChoice = NULL;
+    }
+
+}
+
+void driveNameGetter(WCHAR* drivePathsP[], int maxDrivesP, WCHAR** userPathChoice,WCHAR** driveName) // you have to free driveName
+{
+    WCHAR userChoice;
+    while (1)
+    {
+        userChoice = toupper((*userPathChoice)[0]);
+        for (int i = 0; i < maxDrivesP; i++)
+        {
+            if (drivePathsP[i] != NULL && (char)(drivePathsP[i][0]) == userChoice)
+            {
+                WCHAR volumeName[MAX_PATH] = { 0 };
+                if (GetVolumeInformation(drivePathsP[i], volumeName, MAX_PATH, NULL, NULL, NULL, NULL, 0))
+                {
+                    wprintf(L"Drive letter '%c' corresponds to path: %s - %s\n", userChoice, drivePathsP[i], volumeName);
+                    *driveName = _wcsdup(volumeName);
+                    if (*driveName == NULL)
                     {
                         wprintf(L"Memory allocation failed.\n");
                     }
@@ -585,7 +617,7 @@ int settingsSetterDefaultFinal(char* settingsfilename)
         fclose(file);
 
         firstLine = newPath;
-        wprintf(L"\nThe current path is :\n[%ls]\n", firstLine);
+        wprintf(L"\nThe current path is now:\n[%ls]\n", firstLine);
         return 1;
     }
 
@@ -593,6 +625,23 @@ int settingsSetterDefaultFinal(char* settingsfilename)
 
     free(firstLine);
     return 0;
+}
+
+WCHAR* settingsPath(char* settingsfilename)
+{
+    FILE* file = NULL;
+    int err = fopen_s(&file, settingsfilename, "r");
+    // Existing check
+    if (err != 0 || file == NULL)
+    {
+        // Gestion d'erreur si le fichier ne peut pas être ouvert
+        wprintf(L"Failed to open the file: %s\n", settingsfilename);
+        return NULL;
+    }
+    WCHAR* firstLine = readLineNumber(file, 1);
+    wprintf(L"\nThe current path is :\n[%ls]\n", firstLine);
+    fclose(file);
+    return firstLine;
 }
 
 wchar_t* getCurrentDateWCHAR() // Ex: 2023-08-19
@@ -664,17 +713,56 @@ wchar_t* getCurrentTimeWCHAR()
     return result;
 }
 
-WCHAR* newBackupFolderName(const WCHAR* fullPath) 
+WCHAR* newBackupFolderName(WCHAR* drivePathsP[], int maxDrivesPconst, WCHAR* fullPath)
 {
-    // Drive letter+Drive Name+YYYYMMDD+HHMN
+    // Drive_letter+Drive_Name+YYYYMMDD+HHMN
+    WCHAR driveLetter = fullPath[0];
+    WCHAR* driveBackup = NULL;
+    driveNameGetter(drivePathsP, maxDrivesPconst, &fullPath, &driveBackup);
+    WCHAR* dateBackup = getCurrentDateWCHAR();
+    WCHAR* timeBackup = getCurrentTimeWCHAR();    
+    
 
-    return NULL;
+    // Allouer de la mémoire pour BackupFolderName
+    size_t bufferSize = wcslen(driveBackup) + wcslen(dateBackup) + wcslen(timeBackup) + 20; // Taille estimée
+    WCHAR* BackupFolderName = (WCHAR*)malloc(bufferSize * sizeof(WCHAR));
+
+    if (BackupFolderName != NULL)
+    {
+        swprintf(BackupFolderName, bufferSize, L"[%c_%s] %s_%s", driveLetter, driveBackup, dateBackup, timeBackup);
+        free(driveBackup);
+        free(dateBackup);
+        free(timeBackup);
+        return BackupFolderName;
+    }
+    else
+    {
+        wprintf(L"Memory allocation failed.\n");
+        free(driveBackup);
+        free(dateBackup);
+        free(timeBackup);
+        return NULL;
+    }
 
 }
 
-void moveToFolder(WCHAR* folderAdress, WCHAR* folderPointor) // Move the argument to the folderPointer folder
+void moveToFolder(WCHAR* folderAddress, WCHAR* movetoFolder)
 {
-    // Move to the folder 
+    createDirectory(movetoFolder, folderAddress);
+    // Ajouter "\\" à la fin de folderAddress
+    wcscat_s(folderAddress, MAX_PATH, L"\\");
+
+    // Ajouter movetoFolder à la suite
+    wcscat_s(folderAddress, MAX_PATH, movetoFolder);
+
+    //wprintf(L"Le chemin final est : %s\n", folderAddress);
+}
+
+void proceed()
+{
+    wprintf(L"\nPress any button to continue.");
+    getchar();
+    system("cls");
 }
 
 int main()
@@ -686,13 +774,15 @@ int main()
         methodChoice = 4;
         //Settings Setup
         int settingStatus = settingsSetter("FBDsettings");
+        //Setting DefaultBackups file
+        //
 
         //Initialisations
         const int maxDrives = 20;
         WCHAR* userChoice = NULL;
         WCHAR* drivePaths[20] = { NULL }; // maxDrives which is 20
 
-        wprintf(L"------------------------------------------\n");
+        wprintf(L"==========================================\n");
         getDriveNames(drivePaths, maxDrives);
         //printDrives(drivePaths, maxDrives);
 
@@ -738,6 +828,9 @@ int main()
             //
             case 3:
             {
+                system("cls");
+                wprintf(L"\033[1mFlashBackDrive Settings\033[0m\n");
+                wprintf(L"==========================================");
                 settingsSetterDefaultFinal(L"FBDsettings");
                 //All the free
                 for (int i = 0; i < maxDrives; i++)
@@ -747,12 +840,15 @@ int main()
                 free(userChoice);
                 free(rootPath);
                 free(star_rootPath);
+
+                proceed();
                 break;
             }
             //Stops the code
             //
             case 4:
             {
+
                 //All the free
                 for (int i = 0; i < maxDrives; i++)
                 {
@@ -775,6 +871,8 @@ int main()
 
             WCHAR* targetPath = selectPathFolder(L"Target");
             wchar_t* star_targetPath = finalPath(targetPath);
+            //Move to custom folder
+            moveToFolder(targetPath, newBackupFolderName(drivePaths, maxDrives, targetPath));
 
             int rootsize = countFilesInFolder(rootPath);
             int pathsize = countFilesInFolder(targetPath);
@@ -788,6 +886,7 @@ int main()
 
             //Result
             wprintf(L"Work done.");
+            proceed();
             // Execution time ends
             QueryPerformanceCounter(&endTime);
             double elapsedTime = (endTime.QuadPart - startTime.QuadPart) * 1000.0 / frequency.QuadPart;
@@ -796,7 +895,7 @@ int main()
             int minutes = (totalSeconds % 3600) / 60; 
             int seconds = totalSeconds % 60; 
 
-            wprintf(L"Execution time: %.2f millisecondes\t%02dH %02dM %02dS\n",elapsedTime, hours, minutes, seconds);
+            wprintf(L"\nExecution time: %.2f millisecondes\t%02dH %02dM %02dS\n",elapsedTime, hours, minutes, seconds);
 
             //
 

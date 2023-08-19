@@ -1,3 +1,7 @@
+faire des tests avec le case 1
+dans case 4 regler le cas ou bah les settings ont pas de path
+
+
 
 * Le faire se lancer a chaque branchement de drive 
 * le faire se lancer pour chaque disque sur le pc
