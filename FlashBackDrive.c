@@ -487,21 +487,89 @@ int countFilesInFolder(const wchar_t* folderPath)
     return itemCount;
 }
 
+int folderExists(const WCHAR* folderPath, const WCHAR* folderName)
+{
+    WCHAR fullPath[MAX_PATH];
+    swprintf(fullPath, MAX_PATH, L"%s\\%s", folderPath, folderName);
+
+    DWORD attributes = GetFileAttributes(fullPath);
+
+    if (attributes != INVALID_FILE_ATTRIBUTES && (attributes & FILE_ATTRIBUTE_DIRECTORY))
+    {
+        return 1; // Le dossier existe
+    }
+    else
+    {
+        return 0; // Le dossier n'existe pas
+    }
+}
+
+WCHAR* currentDirectory() // To free
+{
+    CHAR buffer[MAX_PATH];
+    DWORD size = GetCurrentDirectoryA(MAX_PATH, buffer); // Utilisation de GetCurrentDirectoryA pour obtenir une chaîne de caractères multi-octets
+    if (size == 0)
+    {
+        wprintf(L"Erreur lors de l'obtention du répertoire de travail.\n");
+        return NULL;
+    }
+
+    // Conversion de la chaîne de caractères multi-octets en wchar_t
+    int wideCharLength = MultiByteToWideChar(CP_UTF8, 0, buffer, -1, NULL, 0);
+    if (wideCharLength == 0)
+    {
+        wprintf(L"Erreur lors de la conversion de la chaîne de caractères.\n");
+        return NULL;
+    }
+
+    WCHAR* wideBuffer = (WCHAR*)malloc((wideCharLength + 1) * sizeof(WCHAR));
+    if (wideBuffer == NULL)
+    {
+        wprintf(L"Erreur lors de l'allocation de mémoire.\n");
+        return NULL;
+    }
+
+    if (MultiByteToWideChar(CP_UTF8, 0, buffer, -1, wideBuffer, wideCharLength + 1) == 0)
+    {
+        wprintf(L"Erreur lors de la conversion de la chaîne de caractères.\n");
+        free(wideBuffer);
+        return NULL;
+    }
+
+    wprintf(L"%s", wideBuffer);
+    return wideBuffer;
+}
+
+int defaultBackupSetter()
+{
+
+    if (!(folderExists(currentDirectory(), L"FBD Default Backups")));
+    {
+        createDirectory(L"FBD Default Backups", currentDirectory());
+        return 0;
+    }
+
+    return -1;
+}
+
+
 int settingsSetter(char* settingsfilename) //Create a file setting or not if it already exists
 {
+
     FILE* file = NULL;
 
     // Existing check
     int err = fopen_s(&file, settingsfilename, "r");
 
+    // File already exists
     if (err == 0 && file != NULL)
     {
         fclose(file);
-        return 1; // File already exists
+        return 1; 
     }
+    // Create file if non existant
     else
     {
-        // Create file if non existant
         err = fopen_s(&file, settingsfilename, "w");
         if (err == 0 && file != NULL)
         {
@@ -515,6 +583,7 @@ int settingsSetter(char* settingsfilename) //Create a file setting or not if it 
         }
     }
 }
+
 
 int choice(WCHAR* sentence1, int x, WCHAR* sentence2, int y)
 {
@@ -772,10 +841,11 @@ int main()
     while (methodChoice > 0 && methodChoice < 4)
     {
         methodChoice = 4;
+        //Setting DefaultBackups file
+        int defaultbackupStatus = defaultBackupSetter();
         //Settings Setup
         int settingStatus = settingsSetter("FBDsettings");
-        //Setting DefaultBackups file
-        //
+
 
         //Initialisations
         const int maxDrives = 20;
@@ -886,7 +956,6 @@ int main()
 
             //Result
             wprintf(L"Work done.");
-            proceed();
             // Execution time ends
             QueryPerformanceCounter(&endTime);
             double elapsedTime = (endTime.QuadPart - startTime.QuadPart) * 1000.0 / frequency.QuadPart;
@@ -896,11 +965,10 @@ int main()
             int seconds = totalSeconds % 60; 
 
             wprintf(L"\nExecution time: %.2f millisecondes\t%02dH %02dM %02dS\n",elapsedTime, hours, minutes, seconds);
-
             //
 
             openFolderInExplorer(targetPath);
-
+            proceed();
             //All the free
             for (int i = 0; i < maxDrives; i++)
             {

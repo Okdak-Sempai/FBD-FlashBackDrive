@@ -15,8 +15,7 @@ TODO:
 
 - ajouter des parametres(save les path des disques a toujours backup/le path destination)
 - dossier LOGS(donc times d'exec nom du drive et nombre fchiers)
-- ajouter le sous dossier mere et le systeme de nomage
-- ajouter un catcheyr d'event
+- ajouter un catcheur d'event
 
 
 
