@@ -10,6 +10,7 @@
 #include <time.h>
 #include <wchar.h>
 
+
 DWORD getFileSize(const wchar_t* filePath) {
     HANDLE hFile = CreateFile(filePath, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
     if (hFile == INVALID_HANDLE_VALUE) {
@@ -67,18 +68,20 @@ WCHAR* createFilename(const WCHAR* filepath)
     }
 }
 
-void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutput)
+void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutput, const WCHAR* registerAdress, int* registerLine)
 {
     //params 0 ou default only create the file
     //params 1 add file extension and size of the file
     // Extract the filename from the filePath
+    (*registerLine)++;
     const WCHAR* filename = createFilename(filePath);
 
-    size_t len1=wcslen(folderOutput);
-    size_t len2=wcslen(filename);
+    size_t len1 = wcslen(folderOutput);
+    size_t len2 = wcslen(filename);
 
     WCHAR* result = (WCHAR*)malloc((len1 + len2 + 7) * sizeof(WCHAR));
-    if (result == NULL) {
+    if (result == NULL)
+    {
         wprintf(L"Memory allocation failed for 'result'\n");
         return;  // Memory allocation failed
     }
@@ -95,30 +98,40 @@ void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutp
     wcscat_s(result, len1 + len2 + 7, L".txt");
 
     FILE* fp;
+    FILE* fpRegister = NULL;
+    _wfopen_s(&fpRegister, registerAdress, L"a");
+    writeLineRegister(fpRegister, result);
+    fclose(fpRegister);
     switch (params)
     {
     case 0:
-        if (_wfopen_s(&fp, result, L"w") == 0) {
+    {
+        if (_wfopen_s(&fp, result, L"w") == 0)
+        {
             fclose(fp);
         }
-        else {
+        else
+        {
             wprintf(L"Failed to open output file: %ls\n", result);
         }
         free(result);
         break;
+    }
     case 1:
     {
         WCHAR* filextension = GetFileExtension(filePath); //extension
         DWORD filesize = getFileSize(filePath); //size in lu
         WCHAR* filelastmodif = GetLastModifiedDate(filePath);//last modification in ls
 
-        if (filextension == NULL) 
+        if (filextension == NULL)
         {
             filextension = (WCHAR*)malloc((wcslen(L"No Extension") + 1) * sizeof(WCHAR));
-            if (filextension != NULL) {
+            if (filextension != NULL)
+            {
                 wcscpy_s(filextension, wcslen(L"No Extension") + 1, L"No Extension");
             }
-            else {
+            else
+            {
                 wprintf(L"Memory allocation failed for 'filextension'\n");
                 free(filextension);
                 return;
@@ -128,7 +141,7 @@ void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutp
 
 
         WCHAR* fileINFOS = (WCHAR*)malloc(bufferSize * sizeof(WCHAR));
-        if (fileINFOS == NULL) 
+        if (fileINFOS == NULL)
         {
             wprintf(L"Memory allocation failed for 'fileINFOS'\n");
             free(result); // Don't forget to free previously allocated memory
@@ -139,14 +152,19 @@ void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutp
             swprintf(fileINFOS, bufferSize, L"Extension: .%ls\nSize: %lu bytes\nLast modification: %ls\n", filextension, filesize, filelastmodif);
         }
 
-        if (_wfopen_s(&fp, result, L"w") == 0) {
-            if (fileINFOS != NULL) {
+        if (_wfopen_s(&fp, result, L"w") == 0)
+        {
+            if (fileINFOS != NULL)
+            {
                 fputws(fileINFOS, fp);
                 free(fileINFOS);
             }
             fclose(fp);
+            free(result);
+            break;
         }
-        else {
+        else
+        {
             wprintf(L"Failed to open output file: %ls\n", result);
 
             free(filextension);
@@ -162,7 +180,7 @@ void createBackupFile(const WCHAR* filePath, int params, const WCHAR* folderOutp
     }
 }
 
-void createDirectory(const wchar_t* foldername, const wchar_t* path)
+int createDirectory(const wchar_t* foldername, const wchar_t* path)
 {
     // Construire le chemin complet du nouveau dossier
     wchar_t newFolderPath[MAX_PATH];
@@ -170,15 +188,17 @@ void createDirectory(const wchar_t* foldername, const wchar_t* path)
 
     if (CreateDirectory(newFolderPath, NULL))
     {
+        return 0; //Sucess
         //wprintf(L"Folder created: %ls\n", newFolderPath);
     }
     else
     {
-        wprintf(L"Failed to create folder: %ls\n", newFolderPath);
+        return -1; //Failure
+        //wprintf(L"Failed to create folder: %ls\n", newFolderPath); // Files already exists then
     }
 }
 
-void getDriveNames(WCHAR* drivePaths[], int maxDrives) 
+void getDriveNames(WCHAR* drivePaths[], int maxDrives)
 {
     DWORD cchBuffer;
     WCHAR* driveStrings;
@@ -225,24 +245,24 @@ void getDriveNames(WCHAR* drivePaths[], int maxDrives)
 
 void printDrives(WCHAR* drivePathsP[], int maxDrivesP)
 {
-    for (int i = 0; i < maxDrivesP; i++) 
+    for (int i = 0; i < maxDrivesP; i++)
     {
-        if (drivePathsP[i] != NULL) 
+        if (drivePathsP[i] != NULL)
         {
-            wprintf(L"Drive %d: [%s]\n", i + 1, drivePathsP[i]);        
+            wprintf(L"Drive %d: [%s]\n", i + 1, drivePathsP[i]);
         }
     }
 }
 
-driveSelect(WCHAR* drivePathsP[], int maxDrivesP,WCHAR** userPathChoice) 
+driveSelect(WCHAR* drivePathsP[], int maxDrivesP, WCHAR** userPathChoice)
 {
     WCHAR userChoice;
     wprintf(L"Which drive do you want to choose, just Type its letter: ");
-    while(1)
+    while (1)
     {
         wscanf_s(L" %c", &userChoice, 1);
         userChoice = toupper(userChoice);
-        for (int i = 0; i < maxDrivesP; i++) 
+        for (int i = 0; i < maxDrivesP; i++)
         {
             if (drivePathsP[i] != NULL && (char)(drivePathsP[i][0]) == userChoice)
             {
@@ -271,7 +291,7 @@ driveSelect(WCHAR* drivePathsP[], int maxDrivesP,WCHAR** userPathChoice)
 
 }
 
-void driveNameGetter(WCHAR* drivePathsP[], int maxDrivesP, WCHAR** userPathChoice,WCHAR** driveName) // you have to free driveName
+void driveNameGetter(WCHAR* drivePathsP[], int maxDrivesP, WCHAR** userPathChoice, WCHAR** driveName) // you have to free driveName
 {
     WCHAR userChoice;
     while (1)
@@ -360,7 +380,7 @@ wchar_t* selectPathFolder(WCHAR* strPath)
     return NULL;
 }
 
-wchar_t* finalPath(const wchar_t* strPath) 
+wchar_t* finalPath(const wchar_t* strPath)
 {
     const wchar_t* addition = L"\\*";
     size_t originalLength = wcslen(strPath);
@@ -399,10 +419,11 @@ void fileExplorer_list(WCHAR* filepathInit)
     return;
 }
 
-void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_filepathDEST, WCHAR* filepathDEST, DWORD rootsize,DWORD pathsize,WCHAR* usedPATH)
+void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_filepathDEST, WCHAR* filepathDEST, DWORD rootsize, DWORD pathsize, WCHAR* usedPATH, const WCHAR* registerAdress)
 {
     WIN32_FIND_DATA FileData;
     HANDLE hFind = FindFirstFile(filepathInit, &FileData);
+    int line = 0;
     if (hFind != INVALID_HANDLE_VALUE)
     {
         do
@@ -419,7 +440,7 @@ void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_fil
 
 
                 // Appeler createBackupFile seulement pour les fichiers, pas pour les dossiers
-                createBackupFile(fullPath, 1, Real_filepathDEST);
+                createBackupFile(fullPath, 0, Real_filepathDEST, registerAdress, &line);
             }
             else// For folders
             {
@@ -445,7 +466,7 @@ void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_fil
                     wchar_t* star_initDEST = finalPath(initDEST);
                     wchar_t* star_newDEST = finalPath(newDEST);
 
-                    fileExplorer(initDEST, star_initDEST, newDEST, star_newDEST, rootsize, pathsize, usedPATH);
+                    fileExplorer(initDEST, star_initDEST, newDEST, star_newDEST, rootsize, pathsize, usedPATH, registerAdress);
                     free(initDEST);
                     free(star_initDEST);
                     free(newDEST);
@@ -536,7 +557,7 @@ WCHAR* currentDirectory() // To free
         return NULL;
     }
 
-    wprintf(L"%s", wideBuffer);
+    //wprintf(L"%s", wideBuffer);
     return wideBuffer;
 }
 
@@ -552,6 +573,17 @@ int defaultBackupSetter()
     return -1;
 }
 
+void moveToFolder(WCHAR* folderAddress, WCHAR* FolderToMove)
+{
+    createDirectory(FolderToMove, folderAddress);
+    // Ajouter "\\" à la fin de folderAddress
+    wcscat_s(folderAddress, MAX_PATH, L"\\");
+
+    // Ajouter movetoFolder à la suite
+    wcscat_s(folderAddress, MAX_PATH, FolderToMove);
+
+    //wprintf(L"Le chemin final est : %s\n", folderAddress);
+}
 
 int settingsSetter(char* settingsfilename) //Create a file setting or not if it already exists
 {
@@ -565,7 +597,7 @@ int settingsSetter(char* settingsfilename) //Create a file setting or not if it 
     if (err == 0 && file != NULL)
     {
         fclose(file);
-        return 1; 
+        return 1;
     }
     // Create file if non existant
     else
@@ -573,6 +605,26 @@ int settingsSetter(char* settingsfilename) //Create a file setting or not if it 
         err = fopen_s(&file, settingsfilename, "w");
         if (err == 0 && file != NULL)
         {
+            WCHAR* defaultBackupFolder = currentDirectory();
+            size_t requiredSize = wcslen(defaultBackupFolder) + wcslen(L"\\FBD Default Backups") + 1; // +1 pour le caractère nul
+            // Allouez de la mémoire pour le chemin complet
+            WCHAR* fullPath = (WCHAR*)malloc(requiredSize * sizeof(WCHAR));
+            if (fullPath != NULL)
+            {
+                // Copiez le chemin existant dans le nouveau chemin
+                wcscpy_s(fullPath, requiredSize, defaultBackupFolder);
+
+                // Ajoutez "\\FBD Default Backups" à la fin du chemin
+                wcscat_s(fullPath, requiredSize, L"\\FBD Default Backups");
+            }
+            else
+            {
+                wprintf(L"Erreur lors de l'allocation de mémoire.\n");
+            }
+            //moveToFolder(defaultBackupFolder,L"FBD Default Backups");
+            writeLineNumber(file, 1, fullPath);
+            free(defaultBackupFolder);
+            free(fullPath);
             fclose(file);
             return 0; // Create the file sucessfully
         }
@@ -584,21 +636,39 @@ int settingsSetter(char* settingsfilename) //Create a file setting or not if it 
     }
 }
 
-
 int choice(WCHAR* sentence1, int x, WCHAR* sentence2, int y)
 {
     int scanfResult;
     int methodChoice = 0;
-    wprintf(L"\n%s: %d\n%s: %d\nChoice: ",sentence1,x,sentence2,y);
+    wprintf(L"\n%s: %d\n%s: %d\nChoice: ", sentence1, x, sentence2, y);
     do
     {
         scanfResult = scanf_s("%d%*c", &methodChoice);
         if (methodChoice != x && methodChoice != y)
         {
-            wprintf(L"Only %d or %d.\tChoice: ",x,y);
+            wprintf(L"Only %d or %d.\tChoice: ", x, y);
             while (getchar() != '\n');
         }
     } while (methodChoice != x && methodChoice != y);
+
+    wprintf(L"\n");
+    return methodChoice;
+}
+
+int choiceBTW(WCHAR* sentence1, int x, WCHAR* sentence2, int y)
+{
+    int scanfResult;
+    int methodChoice = 0;
+    wprintf(L"\n%s: %d\n%s: %d\nChoice: ", sentence1, x, sentence2, y);
+    do
+    {
+        scanfResult = scanf_s("%d%*c", &methodChoice);
+        if (methodChoice < x || methodChoice > y)
+        {
+            wprintf(L"Only values between %d and %d are allowed.\tChoice: ", x, y);
+            while (getchar() != '\n');
+        }
+    } while (methodChoice < x || methodChoice > y);
 
     wprintf(L"\n");
     return methodChoice;
@@ -655,25 +725,48 @@ int writeLineNumber(FILE* file, int lineNumber, const wchar_t* content)
     return 0; // Écriture réussie
 }
 
+int writeLineRegister(FILE* file, const wchar_t* content)
+{
+    // Replacer le curseur de fichier à la fin
+    if (fseek(file, 0, SEEK_END) != 0)
+    {
+        return -1; // Erreur lors du déplacement du curseur
+    }
+
+    // Ajouter un caractère de nouvelle ligne s'il n'est pas déjà présent
+    int contentLength = wcslen(content);
+    if (contentLength > 0 && content[contentLength - 1] != L'\n')
+    {
+        fputwc(L'\n', file);
+    }
+
+    // Écrire le contenu
+    fputws(content, file);
+
+    return 0; // Écriture réussie
+}
+
 int settingsSetterDefaultFinal(char* settingsfilename)
 {
+    WCHAR* fullPath = NULL;
     // Afficher la premiere ligne
     //
     FILE* file = NULL;
     int err = fopen_s(&file, settingsfilename, "r");
     // Existing check
-    if (err != 0 || file == NULL) 
+    if (err != 0 || file == NULL)
     {
         // Gestion d'erreur si le fichier ne peut pas être ouvert
         wprintf(L"Failed to open the file: %s\n", settingsfilename);
         return -1;
     }
     WCHAR* firstLine = readLineNumber(file, 1);
-    wprintf(L"\nThe current path is :\n[%ls]\n",firstLine);
+    wprintf(L"\nThe current path is :\n[%ls]\n", firstLine);
     fclose(file);
     // Remplacer la ligne si l'user le veut
     //
-    if(choice(L"To keep the path do",1, L"To change the path do",2) == 2)
+    int choice = choiceBTW(L"To set back the defaultPath do", 0, L"To keep the path do: 1\nTo change the path do", 2);
+    if (choice == 2)
     {
         err = fopen_s(&file, settingsfilename, "w");
         if (err != 0 || file == NULL)
@@ -682,18 +775,90 @@ int settingsSetterDefaultFinal(char* settingsfilename)
             return -1;
         }
         wchar_t* newPath = selectPathFolder(L"Backup folder");
-        writeLineNumber(file, 1, newPath);
+        if (newPath != NULL)
+        {
+            writeLineNumber(file, 1, newPath);
+            firstLine = newPath;
+
+        }
+        else
+        {
+            //RESTORE THE DEFAULT PATH
+            WCHAR* defaultBackupFolder = currentDirectory();
+            size_t requiredSize = wcslen(defaultBackupFolder) + wcslen(L"\\FBD Default Backups") + 1; // +1 pour le caractère nul
+            // Allouez de la mémoire pour le chemin complet
+            fullPath = (WCHAR*)malloc(requiredSize * sizeof(WCHAR));
+            if (fullPath != NULL)
+            {
+                // Copiez le chemin existant dans le nouveau chemin
+                wcscpy_s(fullPath, requiredSize, defaultBackupFolder);
+
+                // Ajoutez "\\FBD Default Backups" à la fin du chemin
+                wcscat_s(fullPath, requiredSize, L"\\FBD Default Backups");
+            }
+            else
+            {
+                wprintf(L"Erreur lors de l'allocation de mémoire.\n");
+            }
+            //moveToFolder(defaultBackupFolder,L"FBD Default Backups");
+            writeLineNumber(file, 1, fullPath);
+            firstLine = fullPath;
+            free(defaultBackupFolder);
+            wprintf(L"Restored to default path\n");
+        }
         fclose(file);
 
-        firstLine = newPath;
+
         wprintf(L"\nThe current path is now:\n[%ls]\n", firstLine);
-        return 1;
+        free(fullPath);
+        //free(firstLine);
+        return 2;
     }
+    if (choice == 0)
+    {
+        err = fopen_s(&file, settingsfilename, "w");
+        if (err != 0 || file == NULL)
+        {
+            wprintf(L"Failed to open the file for writing: %s\n", settingsfilename);
+            return -1;
+        }
+        //RESTORE THE DEFAULT PATH
+        WCHAR* defaultBackupFolder = currentDirectory();
+        size_t requiredSize = wcslen(defaultBackupFolder) + wcslen(L"\\FBD Default Backups") + 1; // +1 pour le caractère nul
+        // Allouez de la mémoire pour le chemin complet
+        fullPath = (WCHAR*)malloc(requiredSize * sizeof(WCHAR));
+        if (fullPath != NULL)
+        {
+            // Copiez le chemin existant dans le nouveau chemin
+            wcscpy_s(fullPath, requiredSize, defaultBackupFolder);
+
+            // Ajoutez "\\FBD Default Backups" à la fin du chemin
+            wcscat_s(fullPath, requiredSize, L"\\FBD Default Backups");
+        }
+        else
+        {
+            wprintf(L"Erreur lors de l'allocation de mémoire.\n");
+        }
+        //moveToFolder(defaultBackupFolder,L"FBD Default Backups");
+        writeLineNumber(file, 1, fullPath);
+        firstLine = fullPath;
+        free(defaultBackupFolder);
+        wprintf(L"Restored to default path\n");
+
+        fclose(file);
+
+
+        wprintf(L"\nThe current path is now:\n[%ls]\n", firstLine);
+        free(fullPath);
+        //free(firstLine);
+        return 0;
+    }
+
 
     wprintf(L"\nThe current path is now:\n[%ls]\n", firstLine);
 
     free(firstLine);
-    return 0;
+    return 1;
 }
 
 WCHAR* settingsPath(char* settingsfilename)
@@ -708,7 +873,7 @@ WCHAR* settingsPath(char* settingsfilename)
         return NULL;
     }
     WCHAR* firstLine = readLineNumber(file, 1);
-    wprintf(L"\nThe current path is :\n[%ls]\n", firstLine);
+    wprintf(L"\nThe current default Path is :\n[%ls]\n", firstLine);
     fclose(file);
     return firstLine;
 }
@@ -789,8 +954,8 @@ WCHAR* newBackupFolderName(WCHAR* drivePathsP[], int maxDrivesPconst, WCHAR* ful
     WCHAR* driveBackup = NULL;
     driveNameGetter(drivePathsP, maxDrivesPconst, &fullPath, &driveBackup);
     WCHAR* dateBackup = getCurrentDateWCHAR();
-    WCHAR* timeBackup = getCurrentTimeWCHAR();    
-    
+    WCHAR* timeBackup = getCurrentTimeWCHAR();
+
 
     // Allouer de la mémoire pour BackupFolderName
     size_t bufferSize = wcslen(driveBackup) + wcslen(dateBackup) + wcslen(timeBackup) + 20; // Taille estimée
@@ -815,16 +980,30 @@ WCHAR* newBackupFolderName(WCHAR* drivePathsP[], int maxDrivesPconst, WCHAR* ful
 
 }
 
-void moveToFolder(WCHAR* folderAddress, WCHAR* movetoFolder)
+WCHAR* createFileInDirectory(const WCHAR* directoryPath, const WCHAR* fileName)
 {
-    createDirectory(movetoFolder, folderAddress);
-    // Ajouter "\\" à la fin de folderAddress
-    wcscat_s(folderAddress, MAX_PATH, L"\\");
+    WCHAR filePath[MAX_PATH];
+    wcscpy_s(filePath, MAX_PATH, directoryPath);
 
-    // Ajouter movetoFolder à la suite
-    wcscat_s(folderAddress, MAX_PATH, movetoFolder);
+    if (wcslen(directoryPath) > 0 && directoryPath[wcslen(directoryPath) - 1] != L'\\')
+    {
+        wcscat_s(filePath, MAX_PATH, L"\\");
+    }
 
-    //wprintf(L"Le chemin final est : %s\n", folderAddress);
+    wcscat_s(filePath, MAX_PATH, fileName);
+    wcscat_s(filePath, MAX_PATH, L".txt");
+
+    FILE* file;
+    if (_wfopen_s(&file, filePath, L"w") == 0)
+    {
+        fclose(file);
+        return _wcsdup(filePath);
+    }
+    else
+    {
+        wprintf(L"Failed to create the file: %ls\n", filePath);
+        return NULL;
+    }
 }
 
 void proceed()
@@ -834,10 +1013,40 @@ void proceed()
     system("cls");
 }
 
+/*
+int executeDisableLongPathCode()
+{
+    const char* batchCode =
+        "@echo off\n"
+        "reg add \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\FileSystem\" /v LongPathsEnabled /t REG_DWORD /d 0 /f\n"
+        "echo Long paths have been disabled. You may need to restart your computer for the changes to take effect.\n"
+        "pause";
+
+    // Exécute le code du fichier batch
+    int status = system(batchCode);
+
+    return status;
+}
+
+int executeEnableLongPathCode()
+{
+    const char* batchCode =
+        "@echo off\n"
+        "reg add \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\FileSystem\" /v LongPathsEnabled /t REG_DWORD /d 1 /f\n"
+        "echo Long paths have been enabled. You may need to restart your computer for the changes to take effect.\n"
+        "pause";
+
+    // Exécute le code du fichier batch
+    int status = system(batchCode);
+
+    return status;
+}
+*/
+
 int main()
 {
-
-    unsigned int methodChoice=2;
+    /*int exitStatus = executeDisableLongPathCode();*/
+    unsigned int methodChoice = 2;
     while (methodChoice > 0 && methodChoice < 4)
     {
         methodChoice = 4;
@@ -855,6 +1064,10 @@ int main()
         wprintf(L"==========================================\n");
         getDriveNames(drivePaths, maxDrives);
         //printDrives(drivePaths, maxDrives);
+
+        wprintf(L"\n");
+        settingsPath("FBDsettings");
+        wprintf(L"\n");
 
         //Choice of method
         int scanfResult;
@@ -878,77 +1091,100 @@ int main()
         // 
         switch (methodChoice)
         {
-            case 1:
-            {
-                driveSelect(drivePaths, maxDrives, &userChoice); // Cette fonction fait le malloc de userChoice donc attention TOUNLOCK
-                rootPath = userChoice;
-                star_rootPath = finalPath(rootPath);
-                break;
-            }
+        case 1:
+        {
+            driveSelect(drivePaths, maxDrives, &userChoice); // Cette fonction fait le malloc de userChoice donc attention TOUNLOCK
+            rootPath = userChoice;
+            star_rootPath = finalPath(rootPath);
+            break;
+        }
 
-            //Via la selection
-            // 
-            case 2:
+        //Via la selection
+        // 
+        case 2:
+        {
+            rootPath = selectPathFolder(L"Backup path");
+            star_rootPath = finalPath(rootPath);
+            break;
+        }
+        //Settings
+        //
+        case 3:
+        {
+            system("cls");
+            wprintf(L"\033[1mFlashBackDrive Settings\033[0m\n");
+            wprintf(L"==========================================");
+            settingsSetterDefaultFinal("FBDsettings");
+            //All the free
+            for (int i = 0; i < maxDrives; i++)
             {
-                rootPath = selectPathFolder(L"Backup path");
-                star_rootPath = finalPath(rootPath);
-                break;
+                free(drivePaths[i]);
             }
-            //Settings
-            //
-            case 3:
-            {
-                system("cls");
-                wprintf(L"\033[1mFlashBackDrive Settings\033[0m\n");
-                wprintf(L"==========================================");
-                settingsSetterDefaultFinal(L"FBDsettings");
-                //All the free
-                for (int i = 0; i < maxDrives; i++)
-                {
-                    free(drivePaths[i]);
-                }
-                free(userChoice);
-                free(rootPath);
-                free(star_rootPath);
+            free(userChoice);
+            free(rootPath);
+            free(star_rootPath);
 
-                proceed();
-                break;
-            }
-            //Stops the code
-            //
-            case 4:
-            {
+            proceed();
+            break;
+        }
+        //Stops the code
+        //
+        case 4:
+        {
 
-                //All the free
-                for (int i = 0; i < maxDrives; i++)
-                {
-                    free(drivePaths[i]);
-                }
-                free(userChoice);
-                free(rootPath);
-                free(star_rootPath);
-                break;
+            //All the free
+            for (int i = 0; i < maxDrives; i++)
+            {
+                free(drivePaths[i]);
             }
+            free(userChoice);
+            free(rootPath);
+            free(star_rootPath);
+            break;
+        }
         }
 
         if (methodChoice == 1 || methodChoice == 2)
         {
+            //
+            WCHAR* targetPath = NULL;
+            settingsPath("FBDsettings");// Print the default
+            if ((choice(L"Default Path", 0, L"Custom Path", 1)) == 1)
+            {
+                targetPath = selectPathFolder(L"Target");
+            }
+            else
+            {
+                targetPath = settingsPath("FBDsettings");
+            }
+            wchar_t* star_targetPath = finalPath(targetPath);
+
             // Execution time starts
             LARGE_INTEGER startTime, endTime, frequency;
             QueryPerformanceFrequency(&frequency);
-            QueryPerformanceCounter(&startTime); 
-            //
+            QueryPerformanceCounter(&startTime);
 
-            WCHAR* targetPath = selectPathFolder(L"Target");
-            wchar_t* star_targetPath = finalPath(targetPath);
             //Move to custom folder
-            moveToFolder(targetPath, newBackupFolderName(drivePaths, maxDrives, targetPath));
+            moveToFolder(targetPath, newBackupFolderName(drivePaths, maxDrives, rootPath));
+            // Register creation
 
+            FILE* fp;
+            WCHAR* registerAdress = createFileInDirectory(targetPath, L"Register");
+            if (_wfopen_s(&fp, registerAdress, L"w") == 0)
+            {
+                fclose(fp);
+            }
+            else
+            {
+                wprintf(L"Failed to create the register: %ls\n", registerAdress);
+            }
+
+            //
             int rootsize = countFilesInFolder(rootPath);
             int pathsize = countFilesInFolder(targetPath);
 
             //Code usage
-            fileExplorer(rootPath, star_rootPath, targetPath, star_targetPath, rootsize, pathsize, targetPath);
+            fileExplorer(rootPath, star_rootPath, targetPath, star_targetPath, rootsize, pathsize, targetPath, registerAdress);
 
             pathsize = countFilesInFolder(targetPath);
             wprintf(L"\rProgression: %d%%", (int)(((float)pathsize / rootsize) * 100));
@@ -961,10 +1197,10 @@ int main()
             double elapsedTime = (endTime.QuadPart - startTime.QuadPart) * 1000.0 / frequency.QuadPart;
             int totalSeconds = (int)(elapsedTime / 1000);
             int hours = totalSeconds / 3600;
-            int minutes = (totalSeconds % 3600) / 60; 
-            int seconds = totalSeconds % 60; 
+            int minutes = (totalSeconds % 3600) / 60;
+            int seconds = totalSeconds % 60;
 
-            wprintf(L"\nExecution time: %.2f millisecondes\t%02dH %02dM %02dS\n",elapsedTime, hours, minutes, seconds);
+            wprintf(L"\nExecution time: %.2f millisecondes\t%02dH %02dM %02dS\n", elapsedTime, hours, minutes, seconds);
             //
 
             openFolderInExplorer(targetPath);
@@ -975,9 +1211,10 @@ int main()
                 free(drivePaths[i]);
             }
             free(userChoice);
+            free(registerAdress);
             //free(rootPath);
-            //free(targetPath);
             //free(star_rootPath);
+            //free(targetPath);
             //free(star_targetPath);
         }
     }

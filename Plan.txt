@@ -1,3 +1,15 @@
+LISTE PROBLEMES:
+(Probleme aussi sur le parcours de SAVES)
+avec aussi le M2D2 genre MHA
+-
+Ca fait un assert error quand on parcours bah les fichiers pas ouvrables et qu'on veut recup leurs infos par exemple
+-
+CASE 1
+crash recurent a l'affichage on sait pas pk sur des fichiers randoms
+
+
+
+
 faire des tests avec le case 1
 dans case 4 regler le cas ou bah les settings ont pas de path
 
@@ -13,11 +25,27 @@ dans case 4 regler le cas ou bah les settings ont pas de path
 
 TODO:
 
-- ajouter des parametres(save les path des disques a toujours backup/le path destination)
 - dossier LOGS(donc times d'exec nom du drive et nombre fchiers)
 - ajouter un catcheur d'event
 
 
+-Gerer les fermetures de la selection de fichiers
+
 
 Results
 - environs 200 fichiers par seconde
+
+
+Notes:
+
+Include path
+C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\um\x64
+
+Breakpoints:
+
+115
+151
+167
+440
+695
+703

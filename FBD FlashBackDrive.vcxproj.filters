@@ -18,11 +18,16 @@
     <ClCompile Include="FlashBackDrive.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sample.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Plan.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Enable_long_path.bat">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Disable_long_path.bat">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
