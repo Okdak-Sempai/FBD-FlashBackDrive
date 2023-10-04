@@ -1,0 +1,4 @@
+Filename: .metadata
+Extension: .metadata
+Size: 1714 bytes
+Last modification: 2023-06-02 16:53:38

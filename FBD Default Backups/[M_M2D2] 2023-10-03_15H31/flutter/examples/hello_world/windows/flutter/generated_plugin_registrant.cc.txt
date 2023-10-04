@@ -1,0 +1,4 @@
+Filename: generated_plugin_registrant.cc
+Extension: .cc
+Size: 175 bytes
+Last modification: 2023-06-02 16:53:39

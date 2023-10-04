@@ -1,0 +1,4 @@
+Filename: gesture_detector.2.dart
+Extension: .dart
+Size: 4231 bytes
+Last modification: 2023-06-02 16:53:39

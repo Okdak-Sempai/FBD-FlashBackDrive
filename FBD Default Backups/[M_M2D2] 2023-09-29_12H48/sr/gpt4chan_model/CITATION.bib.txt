@@ -1,0 +1,3 @@
+Extension: .bib
+Size: 1004 bytes
+Last modification: 2023-05-15 12:01:04

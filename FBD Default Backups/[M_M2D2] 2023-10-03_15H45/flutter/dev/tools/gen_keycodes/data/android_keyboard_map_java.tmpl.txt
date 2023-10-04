@@ -1,0 +1,4 @@
+Filename: android_keyboard_map_java.tmpl
+Extension: .tmpl
+Size: 3579 bytes
+Last modification: 2023-06-02 16:53:38

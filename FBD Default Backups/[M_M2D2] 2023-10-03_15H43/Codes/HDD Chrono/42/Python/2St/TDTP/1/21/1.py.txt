@@ -1,0 +1,4 @@
+Filename: 1.py
+Extension: .py
+Size: 142 bytes
+Last modification: 2021-03-09 13:59:25

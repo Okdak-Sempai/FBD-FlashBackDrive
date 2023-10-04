@@ -1,0 +1,3 @@
+Extension: .odt
+Size: 142 bytes
+Last modification: 2022-03-25 21:46:09

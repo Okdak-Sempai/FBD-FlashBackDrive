@@ -1,0 +1,4 @@
+Filename: test repete CM$.py
+Extension: .py
+Size: 2506 bytes
+Last modification: 2021-02-03 19:51:54

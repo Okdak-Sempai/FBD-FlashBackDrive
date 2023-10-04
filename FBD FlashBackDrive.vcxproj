@@ -132,7 +132,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DrivesFuncs_W.c" />
+    <ClCompile Include="FBDFuncs_W.c" />
+    <ClCompile Include="FilesFuncs_W.c" />
     <ClCompile Include="FlashBackDrive.c" />
+    <ClCompile Include="FoldersFuncs_W.c" />
+    <ClCompile Include="Tools_W.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Plan.txt" />
@@ -140,6 +145,13 @@
   <ItemGroup>
     <None Include="Disable_long_path.bat" />
     <None Include="Enable_long_path.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DrivesFuncs_W.h" />
+    <ClInclude Include="FBDFuncs_W.h" />
+    <ClInclude Include="FilesFuncs_W.h" />
+    <ClInclude Include="FoldersFuncs_W.h" />
+    <ClInclude Include="Tools_W.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,4 @@
+Filename: VideoCapture_20220221-205841.jpg
+Extension: .jpg
+Size: 19304 bytes
+Last modification: 2022-02-21 20:00:14

@@ -1,0 +1,4 @@
+Filename: org.eclipse.cdt.core.prj-TD4.prefs
+Extension: .prefs
+Size: 56 bytes
+Last modification: 2021-10-05 06:31:16

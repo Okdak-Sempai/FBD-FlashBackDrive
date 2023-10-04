@@ -1,0 +1,4 @@
+Filename: local.properties
+Extension: .properties
+Size: 367 bytes
+Last modification: 2023-06-02 16:53:37

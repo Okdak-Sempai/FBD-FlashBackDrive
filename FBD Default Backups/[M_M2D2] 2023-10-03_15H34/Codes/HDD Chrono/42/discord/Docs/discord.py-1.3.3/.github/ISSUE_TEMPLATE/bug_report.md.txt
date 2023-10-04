@@ -1,0 +1,4 @@
+Filename: bug_report.md
+Extension: .md
+Size: 952 bytes
+Last modification: 2020-04-04 05:50:13

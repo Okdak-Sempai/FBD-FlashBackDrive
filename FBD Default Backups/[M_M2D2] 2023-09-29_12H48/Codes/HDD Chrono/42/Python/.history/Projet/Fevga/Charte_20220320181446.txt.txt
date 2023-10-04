@@ -1,0 +1,3 @@
+Extension: .txt
+Size: 682 bytes
+Last modification: 2022-03-20 17:14:46

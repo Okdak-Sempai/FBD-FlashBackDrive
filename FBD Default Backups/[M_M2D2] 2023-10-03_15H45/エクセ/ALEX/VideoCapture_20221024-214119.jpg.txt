@@ -1,0 +1,4 @@
+Filename: VideoCapture_20221024-214119.jpg
+Extension: .jpg
+Size: 454845 bytes
+Last modification: 2022-10-24 19:42:28

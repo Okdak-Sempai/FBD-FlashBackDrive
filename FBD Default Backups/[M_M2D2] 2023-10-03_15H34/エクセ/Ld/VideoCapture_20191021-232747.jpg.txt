@@ -1,0 +1,4 @@
+Filename: VideoCapture_20191021-232747.jpg
+Extension: .jpg
+Size: 337278 bytes
+Last modification: 2019-10-21 21:40:48

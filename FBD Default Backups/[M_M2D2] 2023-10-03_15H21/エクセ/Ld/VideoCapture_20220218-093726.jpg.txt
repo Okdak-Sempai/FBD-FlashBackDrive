@@ -1,0 +1,4 @@
+Filename: VideoCapture_20220218-093726.jpg
+Extension: .jpg
+Size: 115886 bytes
+Last modification: 2022-02-18 08:49:32

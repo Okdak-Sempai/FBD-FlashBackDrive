@@ -1,0 +1,4 @@
+Filename: FileComparisonF.sln
+Extension: .sln
+Size: 1450 bytes
+Last modification: 2023-10-02 15:29:02

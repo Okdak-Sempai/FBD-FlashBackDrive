@@ -1,0 +1,4 @@
+Filename: Exo6.py
+Extension: .py
+Size: 240 bytes
+Last modification: 2020-04-03 21:15:04

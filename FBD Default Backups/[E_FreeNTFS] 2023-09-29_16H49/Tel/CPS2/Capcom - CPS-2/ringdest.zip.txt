@@ -1,0 +1,4 @@
+Filename: ringdest.zip
+Extension: .zip
+Size: 13316304 bytes
+Last modification: 2014-06-21 21:18:26

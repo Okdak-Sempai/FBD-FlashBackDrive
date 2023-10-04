@@ -1,0 +1,4 @@
+Filename: test6decoup_20211222115219.c
+Extension: .c
+Size: 0 bytes
+Last modification: 2021-12-22 15:07:27

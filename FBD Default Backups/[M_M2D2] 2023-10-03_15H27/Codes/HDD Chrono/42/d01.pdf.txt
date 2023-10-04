@@ -1,0 +1,4 @@
+Filename: d01.pdf
+Extension: .pdf
+Size: 1375793 bytes
+Last modification: 2020-03-27 12:40:07

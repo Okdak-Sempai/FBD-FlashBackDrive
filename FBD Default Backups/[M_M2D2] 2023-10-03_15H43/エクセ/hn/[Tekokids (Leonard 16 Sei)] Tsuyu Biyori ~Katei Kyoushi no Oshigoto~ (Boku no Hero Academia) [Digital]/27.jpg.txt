@@ -1,0 +1,4 @@
+Filename: 27.jpg
+Extension: .jpg
+Size: 270504 bytes
+Last modification: 2021-01-30 17:05:12

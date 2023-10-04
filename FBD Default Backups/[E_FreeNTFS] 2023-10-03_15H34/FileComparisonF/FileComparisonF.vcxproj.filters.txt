@@ -1,0 +1,4 @@
+Filename: FileComparisonF.vcxproj.filters
+Extension: .filters
+Size: 1592 bytes
+Last modification: 2023-10-02 11:53:25

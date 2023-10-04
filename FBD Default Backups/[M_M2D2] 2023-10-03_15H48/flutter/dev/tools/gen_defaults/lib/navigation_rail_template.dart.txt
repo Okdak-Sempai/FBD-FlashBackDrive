@@ -1,0 +1,4 @@
+Filename: navigation_rail_template.dart
+Extension: .dart
+Size: 2256 bytes
+Last modification: 2023-06-02 16:53:38

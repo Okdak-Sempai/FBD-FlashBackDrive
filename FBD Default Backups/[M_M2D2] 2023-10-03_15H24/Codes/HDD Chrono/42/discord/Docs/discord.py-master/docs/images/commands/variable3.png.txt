@@ -1,0 +1,4 @@
+Filename: variable3.png
+Extension: .png
+Size: 12347 bytes
+Last modification: 2020-04-17 03:30:59

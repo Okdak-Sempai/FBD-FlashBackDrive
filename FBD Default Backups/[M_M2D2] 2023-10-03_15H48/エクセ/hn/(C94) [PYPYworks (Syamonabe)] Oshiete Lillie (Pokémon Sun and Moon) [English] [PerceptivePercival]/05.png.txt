@@ -1,0 +1,4 @@
+Filename: 05.png
+Extension: .png
+Size: 648524 bytes
+Last modification: 2020-10-01 10:26:30

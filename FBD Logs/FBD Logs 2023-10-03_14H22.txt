@@ -1,0 +1,15 @@
+
+settingsResult: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+rootPath: S:\DocumentsX\42\Dummy1\Lot 1
+star_rootPath: S:\DocumentsX\42\Dummy1\Lot 1\*
+targetPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[S_Super crucial SSD fast] 2023-10-03_14H23
+star_targetPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\*
+registerAdress: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[S_Super crucial SSD fast] 2023-10-03_14H23\FBDRegister.txt
+rootsize: 3
+pathsize: 1
+pathsize: 4
+elapsedTime: 6
+totalSeconds: 0
+hours: 0
+minutes: 0
+seconds: 0

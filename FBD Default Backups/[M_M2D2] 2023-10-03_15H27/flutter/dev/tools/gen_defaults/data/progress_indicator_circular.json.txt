@@ -1,0 +1,4 @@
+Filename: progress_indicator_circular.json
+Extension: .json
+Size: 710 bytes
+Last modification: 2023-06-02 16:53:38

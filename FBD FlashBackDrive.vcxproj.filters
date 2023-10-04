@@ -18,6 +18,21 @@
     <ClCompile Include="FlashBackDrive.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FoldersFuncs_W.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools_W.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilesFuncs_W.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FBDFuncs_W.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DrivesFuncs_W.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Plan.txt" />
@@ -29,5 +44,22 @@
     <None Include="Disable_long_path.bat">
       <Filter>Source Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FoldersFuncs_W.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools_W.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FilesFuncs_W.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBDFuncs_W.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DrivesFuncs_W.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

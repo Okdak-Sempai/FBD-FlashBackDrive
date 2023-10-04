@@ -1,0 +1,4 @@
+Filename: dialog_fullscreen.json
+Extension: .json
+Size: 1914 bytes
+Last modification: 2023-06-02 16:53:38

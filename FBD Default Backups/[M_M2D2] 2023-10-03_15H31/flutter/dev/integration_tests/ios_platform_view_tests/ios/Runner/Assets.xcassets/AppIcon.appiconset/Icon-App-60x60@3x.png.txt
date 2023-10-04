@@ -1,0 +1,4 @@
+Filename: Icon-App-60x60@3x.png
+Extension: .png
+Size: 3831 bytes
+Last modification: 2023-06-02 16:53:37

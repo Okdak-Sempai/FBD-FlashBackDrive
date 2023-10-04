@@ -1,0 +1,4 @@
+Filename: 22.png
+Extension: .png
+Size: 1013920 bytes
+Last modification: 2018-05-20 17:40:14

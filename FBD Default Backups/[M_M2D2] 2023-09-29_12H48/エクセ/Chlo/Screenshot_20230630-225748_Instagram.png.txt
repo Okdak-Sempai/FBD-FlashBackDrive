@@ -1,0 +1,3 @@
+Extension: .png
+Size: 1664745 bytes
+Last modification: 2023-06-30 22:27:22

@@ -1,0 +1,4 @@
+Filename: 09.png
+Extension: .png
+Size: 616386 bytes
+Last modification: 2020-10-01 10:26:30

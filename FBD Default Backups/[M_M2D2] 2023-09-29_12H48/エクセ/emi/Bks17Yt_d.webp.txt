@@ -1,0 +1,3 @@
+Extension: .webp
+Size: 19588 bytes
+Last modification: 2023-06-24 06:38:52

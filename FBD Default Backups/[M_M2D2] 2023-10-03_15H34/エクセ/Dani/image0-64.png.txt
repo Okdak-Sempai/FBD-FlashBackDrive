@@ -1,0 +1,4 @@
+Filename: image0-64.png
+Extension: .png
+Size: 3719034 bytes
+Last modification: 2020-06-29 22:09:12

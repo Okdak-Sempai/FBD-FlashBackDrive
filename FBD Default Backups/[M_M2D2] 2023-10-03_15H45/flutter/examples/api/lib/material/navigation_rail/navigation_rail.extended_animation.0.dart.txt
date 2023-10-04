@@ -1,0 +1,4 @@
+Filename: navigation_rail.extended_animation.0.dart
+Extension: .dart
+Size: 4055 bytes
+Last modification: 2023-06-02 16:53:39

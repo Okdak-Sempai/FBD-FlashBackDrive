@@ -1,0 +1,4 @@
+Filename: ygto01.avi
+Extension: .avi
+Size: 65660740 bytes
+Last modification: 2022-05-25 23:16:44

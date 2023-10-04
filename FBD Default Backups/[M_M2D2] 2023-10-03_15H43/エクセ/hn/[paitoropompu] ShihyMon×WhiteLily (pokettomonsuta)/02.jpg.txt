@@ -1,0 +1,4 @@
+Filename: 02.jpg
+Extension: .jpg
+Size: 238966 bytes
+Last modification: 2020-10-01 10:31:30

@@ -1,0 +1,4 @@
+Filename: android_full_screen_layout.xml
+Extension: .xml
+Size: 3363 bytes
+Last modification: 2023-06-02 16:53:39

@@ -1,0 +1,4 @@
+Filename: OkFevga Clean.py
+Extension: .py
+Size: 30848 bytes
+Last modification: 2022-03-28 09:54:58

@@ -1,0 +1,4 @@
+Filename: pubspec.lock
+Extension: .lock
+Size: 10601 bytes
+Last modification: 2023-06-02 16:56:09

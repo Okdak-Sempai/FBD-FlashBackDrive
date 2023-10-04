@@ -1,0 +1,4 @@
+Filename: image0-180.jpg
+Extension: .jpg
+Size: 101912 bytes
+Last modification: 2020-06-29 22:26:26

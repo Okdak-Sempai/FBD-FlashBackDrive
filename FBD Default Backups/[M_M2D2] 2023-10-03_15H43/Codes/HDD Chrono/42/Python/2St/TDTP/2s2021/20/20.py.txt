@@ -1,0 +1,4 @@
+Filename: 20.py
+Extension: .py
+Size: 186 bytes
+Last modification: 2021-03-09 14:00:10

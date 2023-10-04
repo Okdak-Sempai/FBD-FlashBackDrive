@@ -1,0 +1,4 @@
+Filename: LICENSE.txt
+Extension: .txt
+Size: 11358 bytes
+Last modification: 2023-05-15 10:45:56

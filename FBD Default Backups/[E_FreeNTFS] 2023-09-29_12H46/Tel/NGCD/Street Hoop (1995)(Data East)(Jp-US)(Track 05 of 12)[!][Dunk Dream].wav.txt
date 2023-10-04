@@ -1,0 +1,3 @@
+Extension: .wav
+Size: 57487628 bytes
+Last modification: 1996-12-24 22:32:00

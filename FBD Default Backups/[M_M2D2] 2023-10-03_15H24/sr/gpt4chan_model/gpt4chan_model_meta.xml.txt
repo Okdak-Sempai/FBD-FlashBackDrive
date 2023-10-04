@@ -1,0 +1,4 @@
+Filename: gpt4chan_model_meta.xml
+Extension: .xml
+Size: 1342 bytes
+Last modification: 2023-05-15 11:34:13

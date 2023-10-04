@@ -1,0 +1,4 @@
+Filename: .marco.jpg
+Extension: .jpg
+Size: 0 bytes
+Last modification: 2023-08-15 13:18:44

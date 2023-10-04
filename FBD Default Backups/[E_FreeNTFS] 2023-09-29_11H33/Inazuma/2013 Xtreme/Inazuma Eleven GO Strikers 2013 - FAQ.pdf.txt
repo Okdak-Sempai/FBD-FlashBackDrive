@@ -1,0 +1,3 @@
+Extension: .pdf
+Size: 728101 bytes
+Last modification: 2023-04-04 11:44:27

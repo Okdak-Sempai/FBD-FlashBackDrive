@@ -1,0 +1,4 @@
+Filename: TP5.language.settings.xml
+Extension: .xml
+Size: 386499 bytes
+Last modification: 2021-10-12 07:58:22

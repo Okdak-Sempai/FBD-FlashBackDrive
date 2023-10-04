@@ -1,0 +1,4 @@
+Filename: VideoCapture_20221108-224634.jpg
+Extension: .jpg
+Size: 360023 bytes
+Last modification: 2022-11-09 09:14:22

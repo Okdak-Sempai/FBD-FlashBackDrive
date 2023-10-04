@@ -1,0 +1,4 @@
+Filename: 06.png
+Extension: .png
+Size: 591827 bytes
+Last modification: 2020-10-01 10:26:30

@@ -1,0 +1,3 @@
+Extension: .gif
+Size: 1103442 bytes
+Last modification: 2020-09-15 21:01:48

@@ -1,0 +1,3 @@
+Extension: .gif
+Size: 12884 bytes
+Last modification: 2022-03-25 21:59:08

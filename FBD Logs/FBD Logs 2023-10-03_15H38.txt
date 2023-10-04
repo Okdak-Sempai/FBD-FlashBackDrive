@@ -1,0 +1,61 @@
+
+currentPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive
+defaultLogStatus: -1
+logsAdress: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Logs
+LogsAdressStatus: 0
+LogsName: FBD Logs 2023-10-03_15H38
+currentDate: 2023-10-03
+defaultbackupStatus: -1
+settingStatus: 1
+maxDrives: 26
+userChoice: 0
+drivePaths: C:\
+drivePaths: D:\
+drivePaths: E:\
+drivePaths: M:\
+drivePaths: S:\
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+settingsPath('FBDsettings:'): C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+methodChoice: 0
+methodChoice: 1
+rootPath: NULL
+userChoice: M:\
+rootPath: M:\
+star_rootPath: M:\\*
+targetPath: NULL
+settingsPath('FBDsettings:'): C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+targetPath: S:\DocumentsX\42\Dummy2
+star_targetPath: S:\DocumentsX\42\Dummy2\*
+rootPath: M:\
+star_rootPath: M:\\*
+targetPath: S:\DocumentsX\42\Dummy2\[M_M2D2] 2023-10-03_15H39
+star_targetPath: S:\DocumentsX\42\Dummy2\*
+registerAdress: S:\DocumentsX\42\Dummy2\[M_M2D2] 2023-10-03_15H39\FBDRegister.txt
+rootsize: 9
+pathsize: 1
+pathsize: 10
+elapsedTime: 19949
+totalSeconds: 19
+hours: 0
+minutes: 0
+seconds: 19

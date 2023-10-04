@@ -1,0 +1,4 @@
+Filename: ic_launcher_background.xml
+Extension: .xml
+Size: 5905 bytes
+Last modification: 2023-06-02 16:53:37

@@ -1,0 +1,4 @@
+Filename: bar_group_rotate_scale.svg
+Extension: .svg
+Size: 261 bytes
+Last modification: 2023-06-02 16:53:38

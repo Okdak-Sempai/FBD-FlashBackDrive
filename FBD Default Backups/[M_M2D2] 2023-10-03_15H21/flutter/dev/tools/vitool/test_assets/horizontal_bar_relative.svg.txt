@@ -1,0 +1,4 @@
+Filename: horizontal_bar_relative.svg
+Extension: .svg
+Size: 186 bytes
+Last modification: 2023-06-02 16:53:38

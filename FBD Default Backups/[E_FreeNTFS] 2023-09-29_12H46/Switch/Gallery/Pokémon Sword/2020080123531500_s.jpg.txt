@@ -1,0 +1,3 @@
+Extension: .jpg
+Size: 79664 bytes
+Last modification: 2020-08-01 21:53:15

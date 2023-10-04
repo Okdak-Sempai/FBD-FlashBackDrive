@@ -1,0 +1,4 @@
+Filename: standard_method_codec_bench.dart
+Extension: .dart
+Size: 2862 bytes
+Last modification: 2023-06-02 16:53:37

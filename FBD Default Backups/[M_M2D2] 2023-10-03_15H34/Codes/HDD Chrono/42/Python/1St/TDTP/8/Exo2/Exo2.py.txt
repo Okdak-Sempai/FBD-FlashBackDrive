@@ -1,0 +1,4 @@
+Filename: Exo2.py
+Extension: .py
+Size: 1160 bytes
+Last modification: 2020-04-14 14:22:25

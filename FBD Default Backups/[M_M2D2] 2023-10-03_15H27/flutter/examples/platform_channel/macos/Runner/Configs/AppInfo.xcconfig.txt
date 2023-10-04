@@ -1,0 +1,4 @@
+Filename: AppInfo.xcconfig
+Extension: .xcconfig
+Size: 640 bytes
+Last modification: 2023-06-02 16:53:39

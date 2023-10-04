@@ -1,0 +1,4 @@
+Filename: 39.py
+Extension: .py
+Size: 676 bytes
+Last modification: 2021-04-06 13:28:56

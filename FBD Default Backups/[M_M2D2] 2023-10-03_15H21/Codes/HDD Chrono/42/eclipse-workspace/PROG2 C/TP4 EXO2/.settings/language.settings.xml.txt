@@ -1,0 +1,4 @@
+Filename: language.settings.xml
+Extension: .xml
+Size: 2603 bytes
+Last modification: 2021-10-05 08:02:26

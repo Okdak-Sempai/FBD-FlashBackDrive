@@ -1,0 +1,4 @@
+Filename: platform_channel_swift.iml
+Extension: .iml
+Size: 646 bytes
+Last modification: 2023-06-02 16:53:40

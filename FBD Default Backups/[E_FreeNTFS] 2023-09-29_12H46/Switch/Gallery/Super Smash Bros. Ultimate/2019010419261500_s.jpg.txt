@@ -1,0 +1,3 @@
+Extension: .jpg
+Size: 174247 bytes
+Last modification: 2019-01-04 18:26:15

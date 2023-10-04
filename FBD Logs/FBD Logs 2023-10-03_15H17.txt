@@ -1,0 +1,62 @@
+
+currentPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive
+defaultLogStatus: -1
+logsAdress: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Logs
+LogsAdressStatus: 0
+LogsName: FBD Logs 2023-10-03_15H17
+currentDate: 2023-10-03
+defaultbackupStatus: -1
+settingStatus: 1
+maxDrives: 26
+userChoice: 0
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+settingsPath('FBDsettings:'): C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+methodChoice: 0
+methodChoice: 1
+rootPath: NULL
+userChoice: M:\
+rootPath: M:\
+star_rootPath: M:\\*
+targetPath: NULL
+settingsPath('FBDsettings:'): C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+settingsResult: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+targetPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+star_targetPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\*
+rootPath: M:\
+star_rootPath: M:\\*
+targetPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[M_M2D2] 2023-10-03_15H17
+star_targetPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\*
+registerAdress: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[M_M2D2] 2023-10-03_15H17\FBDRegister.txt
+rootsize: 9
+pathsize: 1
+pathsize: 10
+elapsedTime: 115648
+totalSeconds: 115
+hours: 0
+minutes: 1
+seconds: 55

@@ -1,0 +1,4 @@
+Filename: 02.gif
+Extension: .gif
+Size: 362024 bytes
+Last modification: 2019-10-27 08:01:04

@@ -1,0 +1,4 @@
+Filename: flutter_console.bat
+Extension: .bat
+Size: 1731 bytes
+Last modification: 2023-06-02 16:53:39

@@ -1,0 +1,4 @@
+Filename: 16.jpg
+Extension: .jpg
+Size: 158960 bytes
+Last modification: 2010-06-03 08:08:40

@@ -1,0 +1,4 @@
+Filename: CMakeOutput.log
+Extension: .log
+Size: 45269 bytes
+Last modification: 2021-03-21 17:00:48

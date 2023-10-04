@@ -1,0 +1,4 @@
+Filename: illegal_svg_multiple_roots.svg
+Extension: .svg
+Size: 104 bytes
+Last modification: 2023-06-02 16:53:38

@@ -1,0 +1,4 @@
+Filename: 20.png
+Extension: .png
+Size: 982917 bytes
+Last modification: 2018-05-20 17:41:54

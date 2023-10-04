@@ -1,0 +1,4 @@
+Filename: ios_add2app.xcscheme
+Extension: .xcscheme
+Size: 4010 bytes
+Last modification: 2023-06-02 16:53:37

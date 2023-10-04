@@ -1,0 +1,4 @@
+Filename: flutter_gallery.readme
+Extension: .readme
+Size: 162 bytes
+Last modification: 2023-06-02 16:53:39

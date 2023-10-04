@@ -1,0 +1,41 @@
+
+currentPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive
+defaultLogStatus: -1
+logsAdress: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Logs
+LogsAdressStatus: 0
+LogsName: FBD Logs 2023-10-03_15H41
+currentDate: 2023-10-03
+defaultbackupStatus: -1
+settingStatus: 1
+maxDrives: 26
+userChoice: 0
+drivePaths: C:\
+drivePaths: D:\
+drivePaths: E:\
+drivePaths: M:\
+drivePaths: S:\
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+settingsPath('FBDsettings:'): C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+methodChoice: 0
+methodChoice: 4
+rootPath: NULL

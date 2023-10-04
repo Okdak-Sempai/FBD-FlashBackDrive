@@ -1,0 +1,4 @@
+Filename: qad.zip
+Extension: .zip
+Size: 1095853 bytes
+Last modification: 2012-07-29 10:34:32

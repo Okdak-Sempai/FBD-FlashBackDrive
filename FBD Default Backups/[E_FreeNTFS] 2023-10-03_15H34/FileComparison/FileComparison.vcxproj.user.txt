@@ -1,0 +1,4 @@
+Filename: FileComparison.vcxproj.user
+Extension: .user
+Size: 168 bytes
+Last modification: 2023-07-30 18:39:33

@@ -1,0 +1,4 @@
+Filename: decimaltobinaire.py
+Extension: .py
+Size: 121 bytes
+Last modification: 2020-05-25 18:15:46
