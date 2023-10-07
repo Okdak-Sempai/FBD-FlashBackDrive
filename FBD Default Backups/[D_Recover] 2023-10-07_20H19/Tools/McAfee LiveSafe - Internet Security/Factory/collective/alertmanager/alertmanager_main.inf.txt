@@ -1,0 +1,4 @@
+Filename: alertmanager_main.inf
+Extension: .inf
+Size: 499 bytes
+Last modification: 2021-04-19 14:03:16

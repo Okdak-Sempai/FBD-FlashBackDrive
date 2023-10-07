@@ -1,4 +1,0 @@
-Filename: 3_20210927081337.c
-Extension: .c
-Size: 0 bytes
-Last modification: 2021-09-27 10:02:00

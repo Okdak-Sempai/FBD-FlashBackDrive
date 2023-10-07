@@ -1,0 +1,4 @@
+Filename: msgconfig.cab
+Extension: .cab
+Size: 25416 bytes
+Last modification: 2021-04-28 11:55:48

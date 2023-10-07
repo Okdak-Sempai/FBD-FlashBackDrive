@@ -1,4 +1,0 @@
-Filename: 12.png
-Extension: .png
-Size: 934994 bytes
-Last modification: 2021-02-22 01:24:36

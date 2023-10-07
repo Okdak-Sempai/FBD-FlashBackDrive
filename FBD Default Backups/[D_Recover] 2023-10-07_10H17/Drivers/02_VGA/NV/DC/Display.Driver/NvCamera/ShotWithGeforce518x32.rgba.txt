@@ -1,0 +1,4 @@
+Filename: ShotWithGeforce518x32.rgba
+Extension: .rgba
+Size: 66304 bytes
+Last modification: 2021-04-06 00:57:35

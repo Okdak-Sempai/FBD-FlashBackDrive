@@ -1,0 +1,4 @@
+Filename: fr-FR.json
+Extension: .json
+Size: 8960 bytes
+Last modification: 2021-01-27 17:56:13

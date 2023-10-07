@@ -1,4 +1,0 @@
-Filename: version
-Extension: .No Extension
-Size: 6 bytes
-Last modification: 2023-09-21 15:20:14

@@ -1,0 +1,4 @@
+Filename: qicns.dll
+Extension: .dll
+Size: 52376 bytes
+Last modification: 2022-07-11 17:03:52

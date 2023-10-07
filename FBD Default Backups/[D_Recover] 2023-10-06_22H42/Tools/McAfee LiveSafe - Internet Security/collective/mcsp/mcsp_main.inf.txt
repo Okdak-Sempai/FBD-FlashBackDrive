@@ -1,0 +1,4 @@
+Filename: mcsp_main.inf
+Extension: .inf
+Size: 830 bytes
+Last modification: 2021-04-19 13:22:08

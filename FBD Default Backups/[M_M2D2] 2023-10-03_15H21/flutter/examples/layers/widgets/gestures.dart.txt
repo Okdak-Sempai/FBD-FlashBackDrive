@@ -1,4 +1,0 @@
-Filename: gestures.dart
-Extension: .dart
-Size: 6850 bytes
-Last modification: 2023-06-02 16:53:39

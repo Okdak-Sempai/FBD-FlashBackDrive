@@ -1,0 +1,4 @@
+Filename: default-cover.jpg
+Extension: .jpg
+Size: 2436934 bytes
+Last modification: 2021-01-27 17:56:13

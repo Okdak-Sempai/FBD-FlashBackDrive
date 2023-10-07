@@ -1,4 +1,0 @@
-Filename: uikit_view_scroll_perf.dart
-Extension: .dart
-Size: 420 bytes
-Last modification: 2023-06-02 16:53:37

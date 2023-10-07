@@ -1,0 +1,4 @@
+Filename: PowerRecover.ico
+Extension: .ico
+Size: 297086 bytes
+Last modification: 2010-12-31 06:13:54

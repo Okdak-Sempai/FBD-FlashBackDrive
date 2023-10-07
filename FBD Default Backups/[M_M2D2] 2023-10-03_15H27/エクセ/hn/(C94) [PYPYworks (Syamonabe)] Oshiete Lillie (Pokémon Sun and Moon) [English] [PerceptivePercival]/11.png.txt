@@ -1,4 +1,0 @@
-Filename: 11.png
-Extension: .png
-Size: 532068 bytes
-Last modification: 2020-10-01 10:26:30

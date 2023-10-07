@@ -1,0 +1,4 @@
+Filename: gfe-badge-alpha.png
+Extension: .png
+Size: 11072 bytes
+Last modification: 2021-01-27 17:56:13

@@ -1,0 +1,4 @@
+Filename: 1.txt.txt
+Extension: .txt
+Size: 89 bytes
+Last modification: 2023-10-05 15:28:05

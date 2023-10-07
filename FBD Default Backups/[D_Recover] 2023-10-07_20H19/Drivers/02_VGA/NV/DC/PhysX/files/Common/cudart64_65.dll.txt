@@ -1,0 +1,4 @@
+Filename: cudart64_65.dll
+Extension: .dll
+Size: 312816 bytes
+Last modification: 2020-02-21 12:25:37

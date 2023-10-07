@@ -1,4 +1,0 @@
-Filename: OkFevga_20220311204004.py
-Extension: .py
-Size: 548 bytes
-Last modification: 2022-03-11 19:40:04

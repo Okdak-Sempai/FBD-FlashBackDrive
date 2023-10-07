@@ -1,4 +1,0 @@
-Filename: test_20211220184635.c
-Extension: .c
-Size: 511 bytes
-Last modification: 2021-12-20 17:46:35

@@ -1,0 +1,4 @@
+Filename: nvidia-smi.ex_
+Extension: .ex_
+Size: 383433 bytes
+Last modification: 2021-04-27 05:04:06

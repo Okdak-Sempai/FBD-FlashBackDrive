@@ -1,4 +1,0 @@
-Filename: org.eclipse.launchbar.ui.controls.prefs
-Extension: .prefs
-Size: 133 bytes
-Last modification: 2021-10-05 09:03:08

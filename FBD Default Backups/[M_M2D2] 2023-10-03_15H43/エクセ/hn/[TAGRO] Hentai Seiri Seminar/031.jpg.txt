@@ -1,4 +1,0 @@
-Filename: 031.jpg
-Extension: .jpg
-Size: 186080 bytes
-Last modification: 2017-12-03 09:10:58

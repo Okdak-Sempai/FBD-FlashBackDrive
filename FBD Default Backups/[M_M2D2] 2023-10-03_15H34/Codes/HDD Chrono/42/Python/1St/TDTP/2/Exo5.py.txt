@@ -1,4 +1,0 @@
-Filename: Exo5.py
-Extension: .py
-Size: 599 bytes
-Last modification: 2020-04-06 20:32:54

@@ -1,4 +1,0 @@
-Filename: ic_foreground.png
-Extension: .png
-Size: 2721 bytes
-Last modification: 2023-06-02 16:53:37

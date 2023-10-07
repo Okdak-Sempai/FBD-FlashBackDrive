@@ -1,0 +1,4 @@
+Filename: fb_reaction_angry.svg
+Extension: .svg
+Size: 89995 bytes
+Last modification: 2021-01-27 17:54:06

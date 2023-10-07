@@ -1,4 +1,0 @@
-Filename: MessageHistorique.txt
-Extension: .txt
-Size: 10849 bytes
-Last modification: 2022-02-11 17:27:01

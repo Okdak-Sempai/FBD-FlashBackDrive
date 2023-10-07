@@ -1,0 +1,4 @@
+Filename: synaumdf.cat
+Extension: .cat
+Size: 14562 bytes
+Last modification: 2020-08-24 19:33:32

@@ -1,4 +1,0 @@
-Filename: capabilities_integration_canvaskit.dart
-Extension: .dart
-Size: 568 bytes
-Last modification: 2023-06-02 16:53:38

@@ -1,0 +1,4 @@
+Filename: qgif.dll
+Extension: .dll
+Size: 39576 bytes
+Last modification: 2022-07-11 17:03:52

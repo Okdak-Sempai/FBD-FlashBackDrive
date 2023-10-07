@@ -1,4 +1,0 @@
-Filename: video (1).mp4
-Extension: .mp4
-Size: 185682089 bytes
-Last modification: 2022-10-18 22:44:12

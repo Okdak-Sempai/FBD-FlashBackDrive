@@ -1,4 +1,0 @@
-Filename: td1exo5.py
-Extension: .py
-Size: 165 bytes
-Last modification: 2020-03-27 12:40:07

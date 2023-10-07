@@ -1,4 +1,0 @@
-Filename: 26.jpg
-Extension: .jpg
-Size: 6283 bytes
-Last modification: 2018-05-20 17:42:12

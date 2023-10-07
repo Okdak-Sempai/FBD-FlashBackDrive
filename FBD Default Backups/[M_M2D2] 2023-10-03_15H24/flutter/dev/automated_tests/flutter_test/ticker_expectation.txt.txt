@@ -1,4 +1,0 @@
-Filename: ticker_expectation.txt
-Extension: .txt
-Size: 1283 bytes
-Last modification: 2023-06-02 16:53:37

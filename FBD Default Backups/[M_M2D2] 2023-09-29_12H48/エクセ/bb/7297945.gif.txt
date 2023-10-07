@@ -1,3 +1,0 @@
-Extension: .gif
-Size: 4793512 bytes
-Last modification: 2023-01-18 05:52:26

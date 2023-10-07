@@ -1,4 +1,0 @@
-Filename: 24.jpg
-Extension: .jpg
-Size: 460914 bytes
-Last modification: 2021-02-11 02:13:58

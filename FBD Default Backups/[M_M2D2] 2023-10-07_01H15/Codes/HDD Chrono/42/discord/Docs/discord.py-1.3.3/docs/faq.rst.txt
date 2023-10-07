@@ -1,0 +1,4 @@
+Filename: faq.rst
+Extension: .rst
+Size: 14073 bytes
+Last modification: 2020-04-04 05:50:13

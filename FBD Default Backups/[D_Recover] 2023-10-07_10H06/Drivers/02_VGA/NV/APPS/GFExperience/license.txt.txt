@@ -1,0 +1,4 @@
+Filename: license.txt
+Extension: .txt
+Size: 95837 bytes
+Last modification: 2021-01-03 14:54:20

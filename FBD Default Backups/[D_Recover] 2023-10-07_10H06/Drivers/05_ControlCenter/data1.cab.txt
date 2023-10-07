@@ -1,0 +1,4 @@
+Filename: data1.cab
+Extension: .cab
+Size: 10258142 bytes
+Last modification: 2021-03-19 14:36:30

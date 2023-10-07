@@ -1,4 +1,0 @@
-Filename: gc.properties
-Extension: .properties
-Size: 0 bytes
-Last modification: 2023-06-02 16:53:37

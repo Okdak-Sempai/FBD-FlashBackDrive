@@ -134,6 +134,7 @@
   <ItemGroup>
     <ClCompile Include="DrivesFuncs_W.c" />
     <ClCompile Include="FBDFuncs_W.c" />
+    <ClCompile Include="FBD_AllDrivesFuncs_W.c" />
     <ClCompile Include="FilesFuncs_W.c" />
     <ClCompile Include="FlashBackDrive.c" />
     <ClCompile Include="FoldersFuncs_W.c" />
@@ -149,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="DrivesFuncs_W.h" />
     <ClInclude Include="FBDFuncs_W.h" />
+    <ClInclude Include="FBD_AllDrivesFuncs_W.h" />
     <ClInclude Include="FilesFuncs_W.h" />
     <ClInclude Include="FoldersFuncs_W.h" />
     <ClInclude Include="Tools_W.h" />

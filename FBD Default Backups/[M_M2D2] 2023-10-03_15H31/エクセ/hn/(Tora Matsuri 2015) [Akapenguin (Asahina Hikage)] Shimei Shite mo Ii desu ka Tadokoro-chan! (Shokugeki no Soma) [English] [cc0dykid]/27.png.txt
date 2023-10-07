@@ -1,4 +1,0 @@
-Filename: 27.png
-Extension: .png
-Size: 1036641 bytes
-Last modification: 2018-05-20 17:42:02

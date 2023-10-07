@@ -1,4 +1,0 @@
-Filename: AppDelegate.h
-Extension: .h
-Size: 278 bytes
-Last modification: 2023-06-02 16:53:39

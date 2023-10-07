@@ -1,4 +1,0 @@
-Filename: 23.png
-Extension: .png
-Size: 138930 bytes
-Last modification: 2021-02-22 01:24:38

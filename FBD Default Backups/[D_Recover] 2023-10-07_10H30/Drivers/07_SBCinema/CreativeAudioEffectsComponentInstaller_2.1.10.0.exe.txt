@@ -1,0 +1,4 @@
+Filename: CreativeAudioEffectsComponentInstaller_2.1.10.0.exe
+Extension: .exe
+Size: 2121232 bytes
+Last modification: 2021-05-10 08:40:28

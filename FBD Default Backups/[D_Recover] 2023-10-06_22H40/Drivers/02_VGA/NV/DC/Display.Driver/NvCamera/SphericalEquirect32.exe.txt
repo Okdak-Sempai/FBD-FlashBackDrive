@@ -1,0 +1,4 @@
+Filename: SphericalEquirect32.exe
+Extension: .exe
+Size: 3802400 bytes
+Last modification: 2021-04-27 05:08:54

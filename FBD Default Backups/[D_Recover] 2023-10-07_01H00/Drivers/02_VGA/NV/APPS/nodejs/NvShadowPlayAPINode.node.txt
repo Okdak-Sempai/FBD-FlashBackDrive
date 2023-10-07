@@ -1,0 +1,4 @@
+Filename: NvShadowPlayAPINode.node
+Extension: .node
+Size: 706800 bytes
+Last modification: 2021-01-27 17:31:49

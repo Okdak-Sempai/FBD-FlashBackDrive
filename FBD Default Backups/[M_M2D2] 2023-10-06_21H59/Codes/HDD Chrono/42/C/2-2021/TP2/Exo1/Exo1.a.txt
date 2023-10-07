@@ -1,0 +1,4 @@
+Filename: Exo1.a
+Extension: .a
+Size: 8456 bytes
+Last modification: 2021-09-21 08:09:52

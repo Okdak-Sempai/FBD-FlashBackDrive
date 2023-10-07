@@ -1,4 +1,0 @@
-Filename: 189.jpg
-Extension: .jpg
-Size: 202476 bytes
-Last modification: 2017-11-03 09:11:12

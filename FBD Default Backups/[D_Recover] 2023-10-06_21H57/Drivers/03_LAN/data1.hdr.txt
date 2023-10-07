@@ -1,0 +1,4 @@
+Filename: data1.hdr
+Extension: .hdr
+Size: 48420 bytes
+Last modification: 2018-06-15 07:33:08

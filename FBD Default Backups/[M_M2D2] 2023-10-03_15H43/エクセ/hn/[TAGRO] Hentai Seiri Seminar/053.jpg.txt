@@ -1,4 +1,0 @@
-Filename: 053.jpg
-Extension: .jpg
-Size: 213832 bytes
-Last modification: 2017-11-03 09:10:52

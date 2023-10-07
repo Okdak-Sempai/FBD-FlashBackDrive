@@ -1,4 +1,0 @@
-Filename: 37.jpg
-Extension: .jpg
-Size: 372178 bytes
-Last modification: 2021-03-01 00:24:38

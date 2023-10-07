@@ -1,0 +1,4 @@
+Filename: PinPairPlugin.dll
+Extension: .dll
+Size: 2754536 bytes
+Last modification: 2020-12-29 22:57:48

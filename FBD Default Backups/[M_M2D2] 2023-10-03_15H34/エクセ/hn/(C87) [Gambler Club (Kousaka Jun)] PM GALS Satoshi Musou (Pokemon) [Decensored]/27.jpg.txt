@@ -1,4 +1,0 @@
-Filename: 27.jpg
-Extension: .jpg
-Size: 2570163 bytes
-Last modification: 2017-11-03 09:12:08

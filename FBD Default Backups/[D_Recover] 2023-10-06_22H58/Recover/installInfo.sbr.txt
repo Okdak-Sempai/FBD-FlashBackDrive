@@ -1,0 +1,4 @@
+Filename: installInfo.sbr
+Extension: .sbr
+Size: 161 bytes
+Last modification: 2018-09-13 08:58:16

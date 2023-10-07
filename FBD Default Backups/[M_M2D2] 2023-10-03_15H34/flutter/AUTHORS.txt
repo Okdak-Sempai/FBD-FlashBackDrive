@@ -1,4 +1,0 @@
-Filename: AUTHORS
-Extension: .No Extension
-Size: 4369 bytes
-Last modification: 2023-06-02 16:53:36

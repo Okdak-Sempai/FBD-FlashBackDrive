@@ -1,0 +1,4 @@
+Filename: SetupInf.ini
+Extension: .ini
+Size: 33 bytes
+Last modification: 2018-10-01 03:30:10

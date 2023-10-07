@@ -1,4 +1,0 @@
-Filename: 04.png
-Extension: .png
-Size: 918050 bytes
-Last modification: 2018-05-20 17:41:12

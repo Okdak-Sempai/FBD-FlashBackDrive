@@ -1,9 +1,0 @@
-
-C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[M_M2D2] 2023-09-29_14H16\gpt4chan_model\CITATION.bib.txt	[Extension: .bib]	[Size: 1004 bytes]	[Last modification: 2023-05-15 12:01:04]
-C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[M_M2D2] 2023-09-29_14H16\gpt4chan_model\gpt4chan_model_meta.sqlite.txt	[Extension: .sqlite]	[Size: 20480 bytes]	[Last modification: 2023-05-15 10:45:56]
-C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[M_M2D2] 2023-09-29_14H16\gpt4chan_model\gpt4chan_model_meta.xml.txt	[Extension: .xml]	[Size: 1342 bytes]	[Last modification: 2023-05-15 11:34:13]
-C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[M_M2D2] 2023-09-29_14H16\gpt4chan_model\LICENSE.txt.txt	[Extension: .txt]	[Size: 11358 bytes]	[Last modification: 2023-05-15 10:45:56]
-C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[M_M2D2] 2023-09-29_14H16\gpt4chan_model\pytorch_model.bin.txt	[Extension: .bin]	[Size: 2732982827 bytes]	[Last modification: 2023-05-15 12:09:35]
-C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[M_M2D2] 2023-09-29_14H16\gpt4chan_model_float16\gpt4chan_model_float16_meta.sqlite.txt	[Extension: .sqlite]	[Size: 20480 bytes]	[Last modification: 2023-05-15 10:43:31]
-C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[M_M2D2] 2023-09-29_14H16\gpt4chan_model_float16\gpt4chan_model_float16_meta.xml.txt	[Extension: .xml]	[Size: 1229 bytes]	[Last modification: 2023-05-15 10:43:31]
-C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[M_M2D2] 2023-09-29_14H16\gpt4chan_model_float16\pytorch_model.bin.txt	[Extension: .bin]	[Size: 3516118511 bytes]	[Last modification: 2023-05-15 11:09:14]

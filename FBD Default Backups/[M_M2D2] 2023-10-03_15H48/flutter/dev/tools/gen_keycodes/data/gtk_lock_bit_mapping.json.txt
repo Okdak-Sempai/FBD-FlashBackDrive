@@ -1,4 +1,0 @@
-Filename: gtk_lock_bit_mapping.json
-Extension: .json
-Size: 77 bytes
-Last modification: 2023-06-02 16:53:38

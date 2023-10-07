@@ -1,4 +1,0 @@
-Filename: .cproject
-Extension: .cproject
-Size: 15354 bytes
-Last modification: 2021-10-05 07:27:48

@@ -1,4 +1,0 @@
-Filename: ddsomr2.zip
-Extension: .zip
-Size: 2157836 bytes
-Last modification: 2009-12-28 21:40:48

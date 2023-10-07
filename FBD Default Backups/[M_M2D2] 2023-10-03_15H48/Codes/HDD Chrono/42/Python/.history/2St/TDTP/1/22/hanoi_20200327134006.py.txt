@@ -1,4 +1,0 @@
-Filename: hanoi_20200327134006.py
-Extension: .py
-Size: 440 bytes
-Last modification: 2021-10-12 07:20:07

@@ -1,4 +1,0 @@
-Filename: dynwara.zip
-Extension: .zip
-Size: 2267883 bytes
-Last modification: 2017-07-06 23:09:04

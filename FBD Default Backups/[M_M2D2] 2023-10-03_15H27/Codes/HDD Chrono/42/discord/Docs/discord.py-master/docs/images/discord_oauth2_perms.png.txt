@@ -1,4 +1,0 @@
-Filename: discord_oauth2_perms.png
-Extension: .png
-Size: 52706 bytes
-Last modification: 2020-04-17 03:30:59

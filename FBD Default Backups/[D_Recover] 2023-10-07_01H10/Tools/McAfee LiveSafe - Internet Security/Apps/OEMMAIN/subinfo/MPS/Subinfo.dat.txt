@@ -1,0 +1,4 @@
+Filename: Subinfo.dat
+Extension: .dat
+Size: 1525 bytes
+Last modification: 2021-07-19 14:39:44

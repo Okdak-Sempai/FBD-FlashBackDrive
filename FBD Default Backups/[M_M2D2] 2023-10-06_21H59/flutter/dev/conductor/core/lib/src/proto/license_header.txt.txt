@@ -1,0 +1,4 @@
+Filename: license_header.txt
+Extension: .txt
+Size: 167 bytes
+Last modification: 2023-06-02 16:53:37

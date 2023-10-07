@@ -1,0 +1,4 @@
+Filename: steam_appid.txt
+Extension: .txt
+Size: 6 bytes
+Last modification: 2020-12-02 06:59:26

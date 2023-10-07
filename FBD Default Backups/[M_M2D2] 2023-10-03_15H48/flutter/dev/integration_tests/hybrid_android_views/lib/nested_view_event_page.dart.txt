@@ -1,4 +1,0 @@
-Filename: nested_view_event_page.dart
-Extension: .dart
-Size: 6335 bytes
-Last modification: 2023-06-02 16:53:37

@@ -1,0 +1,4 @@
+Filename: Details.yfx
+Extension: .yfx
+Size: 4077 bytes
+Last modification: 2021-04-06 00:57:35

@@ -1,0 +1,4 @@
+Filename: AMDPPMSettings.exe
+Extension: .exe
+Size: 238816 bytes
+Last modification: 2020-11-19 03:40:02

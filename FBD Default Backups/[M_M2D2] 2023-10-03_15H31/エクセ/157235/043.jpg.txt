@@ -1,4 +1,0 @@
-Filename: 043.jpg
-Extension: .jpg
-Size: 90898 bytes
-Last modification: 2021-10-28 11:14:52

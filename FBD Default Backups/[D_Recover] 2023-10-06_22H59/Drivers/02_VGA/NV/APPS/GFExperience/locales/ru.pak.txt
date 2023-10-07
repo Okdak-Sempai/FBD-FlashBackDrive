@@ -1,0 +1,4 @@
+Filename: ru.pak
+Extension: .pak
+Size: 342198 bytes
+Last modification: 2021-01-27 17:46:31

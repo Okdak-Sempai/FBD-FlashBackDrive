@@ -1,4 +1,0 @@
-Filename: 13.jpg
-Extension: .jpg
-Size: 363090 bytes
-Last modification: 2021-02-11 02:04:12

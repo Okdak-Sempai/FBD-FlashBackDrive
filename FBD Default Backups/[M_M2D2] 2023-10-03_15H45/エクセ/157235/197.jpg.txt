@@ -1,4 +1,0 @@
-Filename: 197.jpg
-Extension: .jpg
-Size: 76359 bytes
-Last modification: 2021-10-28 11:17:26

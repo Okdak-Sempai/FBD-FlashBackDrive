@@ -1,4 +1,0 @@
-Filename: MiniHub_20220302103800.py
-Extension: .py
-Size: 9043 bytes
-Last modification: 2022-03-02 09:38:00

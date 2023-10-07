@@ -1,4 +1,0 @@
-Filename: progress_indicator_linear.json
-Extension: .json
-Size: 852 bytes
-Last modification: 2023-06-02 16:53:38

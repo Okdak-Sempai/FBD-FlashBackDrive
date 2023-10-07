@@ -1,0 +1,4 @@
+Filename: RtkBtManServ.exe
+Extension: .exe
+Size: 758504 bytes
+Last modification: 2020-07-02 10:19:18

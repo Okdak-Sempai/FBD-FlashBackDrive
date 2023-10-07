@@ -1,4 +1,0 @@
-Filename: money_asset_manifest.json
-Extension: .json
-Size: 119175 bytes
-Last modification: 2023-06-02 16:53:37

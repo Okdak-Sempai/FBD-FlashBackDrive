@@ -1,0 +1,4 @@
+Filename: nvhdap32.dll
+Extension: .dll
+Size: 35224 bytes
+Last modification: 2020-10-26 07:34:06

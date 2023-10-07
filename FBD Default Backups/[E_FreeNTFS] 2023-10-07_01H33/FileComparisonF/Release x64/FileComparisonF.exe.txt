@@ -1,0 +1,4 @@
+Filename: FileComparisonF.exe
+Extension: .exe
+Size: 21504 bytes
+Last modification: 2023-10-02 16:36:40

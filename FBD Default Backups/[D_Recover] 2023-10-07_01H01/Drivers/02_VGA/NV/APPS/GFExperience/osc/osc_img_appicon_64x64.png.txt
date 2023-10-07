@@ -1,0 +1,4 @@
+Filename: osc_img_appicon_64x64.png
+Extension: .png
+Size: 2138 bytes
+Last modification: 2021-01-27 17:54:06

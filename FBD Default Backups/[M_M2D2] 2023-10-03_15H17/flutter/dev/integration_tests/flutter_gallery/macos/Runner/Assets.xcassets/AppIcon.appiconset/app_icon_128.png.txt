@@ -1,4 +1,0 @@
-Filename: app_icon_128.png
-Extension: .png
-Size: 3276 bytes
-Last modification: 2023-06-02 16:53:37

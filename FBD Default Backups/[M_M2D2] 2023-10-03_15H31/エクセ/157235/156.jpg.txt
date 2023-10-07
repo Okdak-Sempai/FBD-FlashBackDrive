@@ -1,4 +1,0 @@
-Filename: 156.jpg
-Extension: .jpg
-Size: 87441 bytes
-Last modification: 2021-10-28 11:16:44

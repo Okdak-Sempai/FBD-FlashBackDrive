@@ -1,4 +1,0 @@
-Filename: org.eclipse.core.resources.prefs
-Extension: .prefs
-Size: 40 bytes
-Last modification: 2021-10-05 06:16:52

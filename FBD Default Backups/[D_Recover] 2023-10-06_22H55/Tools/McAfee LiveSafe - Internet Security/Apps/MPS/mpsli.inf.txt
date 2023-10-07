@@ -1,0 +1,4 @@
+Filename: mpsli.inf
+Extension: .inf
+Size: 6136 bytes
+Last modification: 2020-03-30 07:17:04

@@ -1,0 +1,4 @@
+Filename: it-IT.json
+Extension: .json
+Size: 142 bytes
+Last modification: 2021-01-27 17:56:13

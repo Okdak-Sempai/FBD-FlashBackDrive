@@ -1,0 +1,4 @@
+Filename: Esp.wim
+Extension: .wim
+Size: 12744185 bytes
+Last modification: 2018-09-13 08:58:35

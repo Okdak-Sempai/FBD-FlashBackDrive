@@ -1,0 +1,4 @@
+Filename: APEX_FieldSamplerCHECKED_x86.dll
+Extension: .dll
+Size: 451048 bytes
+Last modification: 2020-02-21 12:25:40

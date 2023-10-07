@@ -1,4 +1,0 @@
-Filename: 05.gif
-Extension: .gif
-Size: 458608 bytes
-Last modification: 2019-10-27 08:01:04

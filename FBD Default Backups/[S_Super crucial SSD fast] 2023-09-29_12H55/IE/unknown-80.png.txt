@@ -1,4 +1,0 @@
-Filename: unknown-80.png
-Extension: .png
-Size: 81402 bytes
-Last modification: 2022-08-2

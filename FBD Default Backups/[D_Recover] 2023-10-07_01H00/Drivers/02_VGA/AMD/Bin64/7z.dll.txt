@@ -1,0 +1,4 @@
+Filename: 7z.dll
+Extension: .dll
+Size: 1679360 bytes
+Last modification: 2019-09-04 11:53:17

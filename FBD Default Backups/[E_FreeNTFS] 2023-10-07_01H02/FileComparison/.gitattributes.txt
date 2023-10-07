@@ -1,0 +1,4 @@
+Filename: .gitattributes
+Extension: .gitattributes
+Size: 2581 bytes
+Last modification: 2023-07-31 07:38:35

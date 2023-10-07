@@ -1,0 +1,4 @@
+Filename: qsvg.dll
+Extension: .dll
+Size: 33432 bytes
+Last modification: 2022-07-11 17:03:52

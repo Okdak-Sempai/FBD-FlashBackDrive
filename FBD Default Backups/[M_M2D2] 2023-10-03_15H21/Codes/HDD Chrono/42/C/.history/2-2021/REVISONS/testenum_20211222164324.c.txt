@@ -1,4 +1,0 @@
-Filename: testenum_20211222164324.c
-Extension: .c
-Size: 0 bytes
-Last modification: 2021-12-22 15:44:59

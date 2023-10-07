@@ -1,4 +1,0 @@
-Filename: 01.jpg
-Extension: .jpg
-Size: 246185 bytes
-Last modification: 2021-02-11 02:04:10

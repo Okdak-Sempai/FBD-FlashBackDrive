@@ -1,0 +1,4 @@
+Filename: INext_ko_KR.qm
+Extension: .qm
+Size: 21605 bytes
+Last modification: 2021-02-17 05:41:29

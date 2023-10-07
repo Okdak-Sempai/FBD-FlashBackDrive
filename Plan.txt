@@ -1,3 +1,5 @@
+Make seettings 
+
 - lancement on startup du pc
 - lancement on close du pc
 - lancement on plug
@@ -15,3 +17,4 @@ systeme de report(via mail?)
 
 Results
 - environs 200 fichiers par seconde
+

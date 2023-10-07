@@ -1,4 +1,0 @@
-Filename: 29.jpg
-Extension: .jpg
-Size: 755229 bytes
-Last modification: 2017-11-03 09:12:34

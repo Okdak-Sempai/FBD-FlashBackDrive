@@ -1,4 +1,0 @@
-Filename: plaform_view.xml
-Extension: .xml
-Size: 303 bytes
-Last modification: 2023-06-02 16:53:40

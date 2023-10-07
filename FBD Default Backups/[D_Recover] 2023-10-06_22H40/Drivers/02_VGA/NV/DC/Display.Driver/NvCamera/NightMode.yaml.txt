@@ -1,0 +1,4 @@
+Filename: NightMode.yaml
+Extension: .yaml
+Size: 1738 bytes
+Last modification: 2021-04-06 00:57:35

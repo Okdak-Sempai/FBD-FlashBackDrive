@@ -1,0 +1,4 @@
+Filename: airplanemodehid.cat
+Extension: .cat
+Size: 10131 bytes
+Last modification: 2020-07-13 07:39:50

@@ -1,4 +1,0 @@
-Filename: 148.jpg
-Extension: .jpg
-Size: 208549 bytes
-Last modification: 2017-11-03 09:11:18

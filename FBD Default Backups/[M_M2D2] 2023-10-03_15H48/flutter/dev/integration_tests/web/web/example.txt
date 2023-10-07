@@ -1,4 +1,0 @@
-Filename: example
-Extension: .No Extension
-Size: 18 bytes
-Last modification: 2023-06-02 16:53:38

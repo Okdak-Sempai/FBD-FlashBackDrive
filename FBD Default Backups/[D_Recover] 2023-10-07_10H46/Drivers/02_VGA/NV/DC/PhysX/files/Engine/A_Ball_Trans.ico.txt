@@ -1,0 +1,4 @@
+Filename: A_Ball_Trans.ico
+Extension: .ico
+Size: 147940 bytes
+Last modification: 2020-02-21 12:25:42

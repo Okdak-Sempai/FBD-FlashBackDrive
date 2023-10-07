@@ -1,4 +1,0 @@
-Filename: FileComparisonF.vcxproj
-Extension: .vcxproj
-Size: 6925 bytes
-Last modification: 2023-10-02 11:53:25

@@ -1,0 +1,4 @@
+Filename: Setup.exe
+Extension: .exe
+Size: 1123592 bytes
+Last modification: 2021-02-17 05:58:16

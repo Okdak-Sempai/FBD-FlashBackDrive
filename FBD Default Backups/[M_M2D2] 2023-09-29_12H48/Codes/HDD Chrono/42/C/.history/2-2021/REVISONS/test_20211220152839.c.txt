@@ -1,3 +1,0 @@
-Extension: .c
-Size: 211 bytes
-Last modification: 2021-12-20 14:28:39

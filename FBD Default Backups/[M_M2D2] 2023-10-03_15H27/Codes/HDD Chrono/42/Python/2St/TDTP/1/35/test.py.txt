@@ -1,4 +1,0 @@
-Filename: test.py
-Extension: .py
-Size: 56 bytes
-Last modification: 2020-04-15 10:47:26

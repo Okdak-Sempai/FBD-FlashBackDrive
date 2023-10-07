@@ -1,0 +1,4 @@
+Filename: NvTelemetryExt.dll
+Extension: .dll
+Size: 900592 bytes
+Last modification: 2021-01-27 17:31:47

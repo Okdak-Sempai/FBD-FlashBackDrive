@@ -1,4 +1,0 @@
-Filename: Exercice2_20211020192126.c
-Extension: .c
-Size: 343 bytes
-Last modification: 2021-10-20 17:21:26

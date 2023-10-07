@@ -1,0 +1,4 @@
+Filename: WgcWrapper.dll
+Extension: .dll
+Size: 151016 bytes
+Last modification: 2020-12-29 22:57:50

@@ -1,4 +1,0 @@
-Filename: 07.jpg
-Extension: .jpg
-Size: 328795 bytes
-Last modification: 2018-06-20 17:42:12

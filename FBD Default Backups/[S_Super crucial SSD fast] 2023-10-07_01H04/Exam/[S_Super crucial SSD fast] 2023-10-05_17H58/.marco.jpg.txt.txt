@@ -1,0 +1,4 @@
+Filename: .marco.jpg.txt
+Extension: .txt
+Size: 94 bytes
+Last modification: 2023-10-05 15:58:20

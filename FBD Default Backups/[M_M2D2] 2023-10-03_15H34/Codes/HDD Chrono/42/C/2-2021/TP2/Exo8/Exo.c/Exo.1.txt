@@ -1,4 +1,0 @@
-Filename: Exo.1
-Extension: .1
-Size: 8448 bytes
-Last modification: 2021-09-27 11:15:13

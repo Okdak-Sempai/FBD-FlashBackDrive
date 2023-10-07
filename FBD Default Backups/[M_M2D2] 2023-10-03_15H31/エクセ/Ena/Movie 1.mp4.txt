@@ -1,4 +1,0 @@
-Filename: Movie 1.mp4
-Extension: .mp4
-Size: 18042358 bytes
-Last modification: 2020-07-31 09:46:44

@@ -1,3 +1,0 @@
-Extension: .plist
-Size: 1768 bytes
-Last modification: 2023-06-02 16:53:37

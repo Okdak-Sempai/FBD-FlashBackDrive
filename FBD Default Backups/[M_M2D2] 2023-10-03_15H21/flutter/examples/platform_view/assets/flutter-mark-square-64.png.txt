@@ -1,4 +1,0 @@
-Filename: flutter-mark-square-64.png
-Extension: .png
-Size: 482 bytes
-Last modification: 2023-06-02 16:53:39

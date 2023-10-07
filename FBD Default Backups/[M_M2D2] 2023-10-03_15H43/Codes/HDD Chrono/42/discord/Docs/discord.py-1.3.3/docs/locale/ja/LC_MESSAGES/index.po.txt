@@ -1,4 +1,0 @@
-Filename: index.po
-Extension: .po
-Size: 2372 bytes
-Last modification: 2020-04-04 05:50:13

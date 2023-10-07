@@ -1,0 +1,4 @@
+Filename: SpeakerEQClevo_2.0.0.18.exe
+Extension: .exe
+Size: 1870712 bytes
+Last modification: 2021-05-10 08:40:05

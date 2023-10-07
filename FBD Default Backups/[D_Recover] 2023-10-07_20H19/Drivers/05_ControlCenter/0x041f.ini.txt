@@ -1,0 +1,4 @@
+Filename: 0x041f.ini
+Extension: .ini
+Size: 23022 bytes
+Last modification: 2016-08-12 06:17:12

@@ -1,0 +1,4 @@
+Filename: mcinsspt.exe
+Extension: .exe
+Size: 732864 bytes
+Last modification: 2021-04-22 17:44:44

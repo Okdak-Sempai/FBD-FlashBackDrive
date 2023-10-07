@@ -1,4 +1,0 @@
-Filename: image0-48.png
-Extension: .png
-Size: 3357162 bytes
-Last modification: 2020-06-29 22:09:10

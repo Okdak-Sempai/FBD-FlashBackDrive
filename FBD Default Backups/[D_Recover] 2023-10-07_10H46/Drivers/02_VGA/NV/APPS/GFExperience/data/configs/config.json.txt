@@ -1,0 +1,4 @@
+Filename: config.json
+Extension: .json
+Size: 174 bytes
+Last modification: 2021-01-27 17:43:22

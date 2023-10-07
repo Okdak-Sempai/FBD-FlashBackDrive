@@ -1,4 +1,0 @@
-Filename: 121.jpg
-Extension: .jpg
-Size: 189719 bytes
-Last modification: 2017-11-03 09:11:08

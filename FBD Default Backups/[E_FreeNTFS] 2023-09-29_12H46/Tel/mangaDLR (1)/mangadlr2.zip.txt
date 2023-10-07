@@ -1,3 +1,0 @@
-Extension: .zip
-Size: 27646309 bytes
-Last modification: 2020-08-25 13:18:44

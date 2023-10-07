@@ -1,0 +1,4 @@
+Filename: NVIDIA.SteamLauncher.exe
+Extension: .exe
+Size: 637240 bytes
+Last modification: 2020-12-29 22:56:57

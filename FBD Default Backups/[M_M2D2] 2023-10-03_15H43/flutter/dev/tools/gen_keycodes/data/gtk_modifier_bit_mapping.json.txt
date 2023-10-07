@@ -1,4 +1,0 @@
-Filename: gtk_modifier_bit_mapping.json
-Extension: .json
-Size: 218 bytes
-Last modification: 2023-06-02 16:53:38

@@ -1,4 +1,0 @@
-Filename: 30.jpg
-Extension: .jpg
-Size: 379354 bytes
-Last modification: 2018-05-20 17:38:56

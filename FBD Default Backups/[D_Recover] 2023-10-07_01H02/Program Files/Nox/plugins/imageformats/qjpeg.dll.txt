@@ -1,0 +1,4 @@
+Filename: qjpeg.dll
+Extension: .dll
+Size: 253592 bytes
+Last modification: 2022-07-11 17:03:52

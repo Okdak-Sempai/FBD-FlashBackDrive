@@ -1,4 +1,0 @@
-Filename: illegal_path.svg
-Extension: .svg
-Size: 147 bytes
-Last modification: 2023-06-02 16:53:38

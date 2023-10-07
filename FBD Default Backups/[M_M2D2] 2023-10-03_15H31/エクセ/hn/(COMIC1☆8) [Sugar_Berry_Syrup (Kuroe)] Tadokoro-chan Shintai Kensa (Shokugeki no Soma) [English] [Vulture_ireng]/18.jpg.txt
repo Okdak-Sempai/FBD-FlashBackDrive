@@ -1,4 +1,0 @@
-Filename: 18.jpg
-Extension: .jpg
-Size: 604176 bytes
-Last modification: 2018-05-20 17:44:24

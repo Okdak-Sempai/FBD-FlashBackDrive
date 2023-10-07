@@ -1,4 +1,0 @@
-Filename: Lotto.jpg
-Extension: .jpg
-Size: 229428 bytes
-Last modification: 2023-05-13 00:23:22

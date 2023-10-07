@@ -1,4 +1,0 @@
-Filename: Exercice35.txt
-Extension: .txt
-Size: 657 bytes
-Last modification: 2021-04-06 10:08:52

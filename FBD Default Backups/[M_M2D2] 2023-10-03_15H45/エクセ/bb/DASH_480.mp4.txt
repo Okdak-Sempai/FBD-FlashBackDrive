@@ -1,4 +1,0 @@
-Filename: DASH_480.mp4
-Extension: .mp4
-Size: 2192269 bytes
-Last modification: 2022-02-10 19:46:52

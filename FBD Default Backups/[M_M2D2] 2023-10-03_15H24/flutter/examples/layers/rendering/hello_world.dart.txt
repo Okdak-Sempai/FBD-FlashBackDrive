@@ -1,4 +1,0 @@
-Filename: hello_world.dart
-Extension: .dart
-Size: 1140 bytes
-Last modification: 2023-06-02 16:53:39

@@ -1,4 +1,0 @@
-Filename: 05.jpg
-Extension: .jpg
-Size: 364808 bytes
-Last modification: 2018-07-20 17:43:28

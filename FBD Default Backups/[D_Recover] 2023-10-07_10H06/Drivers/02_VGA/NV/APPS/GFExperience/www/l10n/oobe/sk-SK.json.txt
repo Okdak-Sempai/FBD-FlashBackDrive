@@ -1,0 +1,4 @@
+Filename: sk-SK.json
+Extension: .json
+Size: 8508 bytes
+Last modification: 2021-01-27 17:56:13

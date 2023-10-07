@@ -1,4 +1,0 @@
-Filename: cc2021
-Extension: .No Extension
-Size: 8384 bytes
-Last modification: 2021-12-30 15:56:38

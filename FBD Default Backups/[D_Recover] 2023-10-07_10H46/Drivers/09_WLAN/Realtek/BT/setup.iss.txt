@@ -1,0 +1,4 @@
+Filename: setup.iss
+Extension: .iss
+Size: 550 bytes
+Last modification: 2019-06-26 22:33:58

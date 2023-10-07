@@ -1,4 +1,0 @@
-Filename: 28.png
-Extension: .png
-Size: 696833 bytes
-Last modification: 2018-05-20 17:42:12

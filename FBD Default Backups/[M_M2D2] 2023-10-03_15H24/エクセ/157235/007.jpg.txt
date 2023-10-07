@@ -1,4 +1,0 @@
-Filename: 007.jpg
-Extension: .jpg
-Size: 82075 bytes
-Last modification: 2021-10-28 11:14:14

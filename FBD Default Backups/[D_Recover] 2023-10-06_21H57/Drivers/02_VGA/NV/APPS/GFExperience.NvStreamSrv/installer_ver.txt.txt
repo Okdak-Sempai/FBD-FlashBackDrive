@@ -1,0 +1,4 @@
+Filename: installer_ver.txt
+Extension: .txt
+Size: 37 bytes
+Last modification: 2020-12-29 22:57:53

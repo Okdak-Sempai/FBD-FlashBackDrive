@@ -1,7 +1,0 @@
-
-currentPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive
-defaultLogStatus: -1
-logsAdress: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Logs
-LogsAdressStatus: 0
-LogsName: FBD Logs 2023-10-04_15H07
-currentDate: 2023-10-04

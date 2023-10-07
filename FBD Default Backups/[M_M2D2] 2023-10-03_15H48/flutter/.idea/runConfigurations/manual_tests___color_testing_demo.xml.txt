@@ -1,4 +1,0 @@
-Filename: manual_tests___color_testing_demo.xml
-Extension: .xml
-Size: 331 bytes
-Last modification: 2023-06-02 16:53:40

@@ -1,4 +1,0 @@
-Filename: 075.jpg
-Extension: .jpg
-Size: 79401 bytes
-Last modification: 2021-10-28 11:15:22

@@ -1,0 +1,4 @@
+Filename: aws-cpp-sdk-core.dll
+Extension: .dll
+Size: 961536 bytes
+Last modification: 2019-09-04 11:52:21

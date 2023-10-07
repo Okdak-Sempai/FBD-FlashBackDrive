@@ -1,0 +1,4 @@
+Filename: 20.jpg
+Extension: .jpg
+Size: 122196 bytes
+Last modification: 2010-06-03 08:25:40

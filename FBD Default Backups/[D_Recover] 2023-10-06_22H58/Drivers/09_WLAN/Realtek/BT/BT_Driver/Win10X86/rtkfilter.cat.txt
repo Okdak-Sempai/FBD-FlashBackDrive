@@ -1,0 +1,4 @@
+Filename: rtkfilter.cat
+Extension: .cat
+Size: 20969 bytes
+Last modification: 2020-07-02 09:45:12

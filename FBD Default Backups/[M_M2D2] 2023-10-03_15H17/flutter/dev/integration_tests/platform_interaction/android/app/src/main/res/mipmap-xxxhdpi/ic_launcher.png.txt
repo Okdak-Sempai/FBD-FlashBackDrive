@@ -1,4 +1,0 @@
-Filename: ic_launcher.png
-Extension: .png
-Size: 1443 bytes
-Last modification: 2023-06-02 16:53:38

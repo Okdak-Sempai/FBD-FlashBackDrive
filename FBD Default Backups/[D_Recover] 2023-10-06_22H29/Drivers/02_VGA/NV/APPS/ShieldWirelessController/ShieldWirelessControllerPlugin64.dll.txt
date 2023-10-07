@@ -1,0 +1,4 @@
+Filename: ShieldWirelessControllerPlugin64.dll
+Extension: .dll
+Size: 730088 bytes
+Last modification: 2020-12-29 23:06:08

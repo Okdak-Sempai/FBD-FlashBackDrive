@@ -1,0 +1,4 @@
+Filename: ws640x86.inf
+Extension: .inf
+Size: 205916 bytes
+Last modification: 2020-11-19 10:54:50

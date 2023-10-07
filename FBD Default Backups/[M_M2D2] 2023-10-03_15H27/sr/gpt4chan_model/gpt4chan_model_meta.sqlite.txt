@@ -1,4 +1,0 @@
-Filename: gpt4chan_model_meta.sqlite
-Extension: .sqlite
-Size: 20480 bytes
-Last modification: 2023-05-15 10:45:56

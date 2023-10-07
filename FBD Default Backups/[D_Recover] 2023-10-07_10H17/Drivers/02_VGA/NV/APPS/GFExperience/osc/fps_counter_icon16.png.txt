@@ -1,0 +1,4 @@
+Filename: fps_counter_icon16.png
+Extension: .png
+Size: 514 bytes
+Last modification: 2021-01-27 17:54:06

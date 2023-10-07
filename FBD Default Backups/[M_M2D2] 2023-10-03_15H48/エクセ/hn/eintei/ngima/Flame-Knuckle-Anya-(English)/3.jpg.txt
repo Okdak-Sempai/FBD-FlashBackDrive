@@ -1,4 +1,0 @@
-Filename: 3.jpg
-Extension: .jpg
-Size: 169648 bytes
-Last modification: 2011-04-24 20:47:16

@@ -1,0 +1,4 @@
+Filename: Change_installer_language.txt
+Extension: .txt
+Size: 72 bytes
+Last modification: 2018-06-15 07:33:08

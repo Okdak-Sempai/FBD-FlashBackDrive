@@ -1,4 +1,0 @@
-Filename: 02.jpg
-Extension: .jpg
-Size: 336093 bytes
-Last modification: 2018-06-20 17:41:56

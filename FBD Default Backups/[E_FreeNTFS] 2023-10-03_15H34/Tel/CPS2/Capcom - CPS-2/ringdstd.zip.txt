@@ -1,4 +1,0 @@
-Filename: ringdstd.zip
-Extension: .zip
-Size: 471305 bytes
-Last modification: 2009-12-28 13:42:06

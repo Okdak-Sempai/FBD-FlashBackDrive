@@ -1,4 +1,0 @@
-Filename: test3_20211221132218.c
-Extension: .c
-Size: 376 bytes
-Last modification: 2021-12-21 12:22:18

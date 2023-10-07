@@ -1,4 +1,0 @@
-Filename: Exo1b
-Extension: .No Extension
-Size: 8304 bytes
-Last modification: 2021-09-20 18:37:17

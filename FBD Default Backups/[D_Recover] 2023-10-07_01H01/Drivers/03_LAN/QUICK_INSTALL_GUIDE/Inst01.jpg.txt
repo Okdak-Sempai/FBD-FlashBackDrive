@@ -1,0 +1,4 @@
+Filename: Inst01.jpg
+Extension: .jpg
+Size: 78989 bytes
+Last modification: 2018-06-15 07:33:08

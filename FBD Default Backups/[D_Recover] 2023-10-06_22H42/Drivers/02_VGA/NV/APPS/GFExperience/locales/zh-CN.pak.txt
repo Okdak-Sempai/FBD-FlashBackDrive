@@ -1,0 +1,4 @@
+Filename: zh-CN.pak
+Extension: .pak
+Size: 184050 bytes
+Last modification: 2021-01-27 17:46:32

@@ -1,4 +1,0 @@
-Filename: video0-4.mov
-Extension: .mov
-Size: 5073433 bytes
-Last modification: 2020-06-29 22:08:38

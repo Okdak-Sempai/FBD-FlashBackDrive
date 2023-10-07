@@ -1,0 +1,4 @@
+Filename: vscore.cab
+Extension: .cab
+Size: 5604252 bytes
+Last modification: 2021-04-21 22:32:48

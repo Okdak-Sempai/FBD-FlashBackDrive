@@ -1,0 +1,4 @@
+Filename: HDX_WhiteExt_CT_RTK.inf
+Extension: .inf
+Size: 18208 bytes
+Last modification: 2021-05-27 13:06:33

@@ -1,4 +1,0 @@
-Filename: Exo8.html
-Extension: .html
-Size: 141 bytes
-Last modification: 2021-02-03 18:51:59

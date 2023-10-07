@@ -1,0 +1,4 @@
+Filename: nvvad.inf
+Extension: .inf
+Size: 8913 bytes
+Last modification: 2020-03-06 09:55:02

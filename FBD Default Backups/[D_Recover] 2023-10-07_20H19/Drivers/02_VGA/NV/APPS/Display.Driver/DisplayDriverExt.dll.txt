@@ -1,0 +1,4 @@
+Filename: DisplayDriverExt.dll
+Extension: .dll
+Size: 1704816 bytes
+Last modification: 2021-04-06 00:57:35

@@ -1,4 +1,0 @@
-Filename: global-build.log
-Extension: .log
-Size: 3616 bytes
-Last modification: 2021-10-12 06:25:06

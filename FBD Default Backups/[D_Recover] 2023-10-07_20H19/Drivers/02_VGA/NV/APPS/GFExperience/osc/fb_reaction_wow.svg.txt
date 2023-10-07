@@ -1,0 +1,4 @@
+Filename: fb_reaction_wow.svg
+Extension: .svg
+Size: 16259 bytes
+Last modification: 2021-01-27 17:54:06

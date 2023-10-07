@@ -1,3 +1,0 @@
-Extension: .py
-Size: 16399 bytes
-Last modification: 2022-03-20 12:32:33

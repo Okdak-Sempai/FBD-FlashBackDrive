@@ -1,0 +1,4 @@
+Filename: PairAggregatorPlugin.dll
+Extension: .dll
+Size: 385512 bytes
+Last modification: 2020-12-29 22:57:48

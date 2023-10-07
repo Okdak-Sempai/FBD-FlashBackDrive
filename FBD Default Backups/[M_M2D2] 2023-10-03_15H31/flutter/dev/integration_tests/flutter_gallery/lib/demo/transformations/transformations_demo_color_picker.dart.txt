@@ -1,4 +1,0 @@
-Filename: transformations_demo_color_picker.dart
-Extension: .dart
-Size: 1727 bytes
-Last modification: 2023-06-02 16:53:37

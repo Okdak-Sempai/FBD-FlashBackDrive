@@ -1,4 +1,0 @@
-Filename: Icon-58.png
-Extension: .png
-Size: 1018 bytes
-Last modification: 2023-06-02 16:53:37

@@ -1,0 +1,4 @@
+Filename: qtaudio_windows.dll
+Extension: .dll
+Size: 89240 bytes
+Last modification: 2022-07-11 17:03:52

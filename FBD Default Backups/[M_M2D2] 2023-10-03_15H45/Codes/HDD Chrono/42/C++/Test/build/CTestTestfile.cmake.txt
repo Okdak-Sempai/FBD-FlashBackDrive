@@ -1,4 +1,0 @@
-Filename: CTestTestfile.cmake
-Extension: .cmake
-Size: 285 bytes
-Last modification: 2021-03-21 17:00:49

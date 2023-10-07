@@ -1,0 +1,4 @@
+Filename: Jun2010_d3dx10_43_x86.cab
+Extension: .cab
+Size: 197283 bytes
+Last modification: 2021-01-24 04:44:23

@@ -1,0 +1,4 @@
+Filename: 1050.mst
+Extension: .mst
+Size: 53248 bytes
+Last modification: 2019-05-22 09:16:20

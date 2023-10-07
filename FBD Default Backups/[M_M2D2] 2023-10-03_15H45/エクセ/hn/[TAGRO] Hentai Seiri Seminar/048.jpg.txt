@@ -1,4 +1,0 @@
-Filename: 048.jpg
-Extension: .jpg
-Size: 209201 bytes
-Last modification: 2017-11-03 09:11:04

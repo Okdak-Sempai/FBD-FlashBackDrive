@@ -1,0 +1,4 @@
+Filename: rtl8822b_mp_chip_bt40_fw_asic_rom_patch_new.dat
+Extension: .dat
+Size: 50472 bytes
+Last modification: 2020-07-02 09:35:54

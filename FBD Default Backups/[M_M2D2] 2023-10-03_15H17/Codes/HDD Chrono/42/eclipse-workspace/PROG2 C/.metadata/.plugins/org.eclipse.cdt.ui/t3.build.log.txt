@@ -1,4 +1,0 @@
-Filename: t3.build.log
-Extension: .log
-Size: 185 bytes
-Last modification: 2021-10-12 06:25:06

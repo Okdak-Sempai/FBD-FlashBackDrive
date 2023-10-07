@@ -1,0 +1,4 @@
+Filename: info.png
+Extension: .png
+Size: 2191 bytes
+Last modification: 2021-04-06 00:57:35

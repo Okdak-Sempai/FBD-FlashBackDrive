@@ -1,3 +1,0 @@
-Extension: .png
-Size: 1799899 bytes
-Last modification: 2022-04-12 21:14:14

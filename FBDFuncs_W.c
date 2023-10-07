@@ -45,7 +45,25 @@ int writeLineRegister(FILE* file, const WCHAR* content)
     return 0; // Sucess
 }
 
-int writeToLog(WCHAR* logsAdress, WCHAR* variableName, WCHAR* variableValue)
+void writeToLog(WCHAR* logsAdress, WCHAR* variableName, WCHAR* variableValue)
+/*
+* Includes:
+*   stdlib.h [FILE; malloc(); _wfopen_s(); fclose(); free()]
+*   wchar.h [wcslen()]
+*   windows.h [swprintf()]
+* 
+*   FBDFuncs_W.h/.c {writeLineRegister()}
+* Params:
+*   WCHAR* logsAdress = The path of the logs
+*   WCHAR* variableName = The name of the variable
+*   WCHAR* variableValue = The value of the variable
+* Return:
+*   None
+* Description:
+*   This function writes to the log using the variable name and it's value
+* Notes:
+*   Tha value HAS to be a WCHAR, so be careful and convert, recommended usage of intToWCHAR() from Tools_W.h/.c
+*/
 {
     WCHAR* result = NULL;
     size_t bufferSize = NULL;
@@ -380,7 +398,8 @@ WCHAR* settingsPath(char* settingsfilename)
 *       [C:\Users\Steve\source\repos\Safe file\FBD Default Backups]
 * Notes:
 *   None
-*/{
+*/
+{
     FILE* file = NULL;
     int err = fopen_s(&file, settingsfilename, "r");
     // Existing check
@@ -392,6 +411,37 @@ WCHAR* settingsPath(char* settingsfilename)
     }
     WCHAR* firstLine = readLineNumber(file, 1);
     wprintf(L"\nThe current default Path is :\n[%ls]\n", firstLine);
+    fclose(file);
+    return firstLine;
+}
+
+WCHAR* getSettingsPath(char* settingsfilename)
+/*
+* Includes:
+*   stdio.h [FILE; fopen_s();fclose()]
+*   wchar.h [WCHAR; wprintf()]
+*
+*   FilesFuncs_W.h/.c {readLineNumber()}
+* Params:
+*   char* settingsfilename = The name of the settings file
+* Return:
+*   WCHAR* => The path stored in the first line of the Settings file
+* Description:
+*   This function returns the current default path
+* Notes:
+*   This function prints nothing if no errors
+*/
+{
+    FILE* file = NULL;
+    int err = fopen_s(&file, settingsfilename, "r");
+    // Existing check
+    if (err != 0 || file == NULL)
+    {
+        // File coulden't be opened
+        wprintf(L"Failed to open the file: %s\n", settingsfilename);
+        return NULL;
+    }
+    WCHAR* firstLine = readLineNumber(file, 1);
     fclose(file);
     return firstLine;
 }
@@ -648,12 +698,12 @@ void createBackupFile(int Params, const WCHAR* filePath, const WCHAR* folderOutp
     }
 }
 
-void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_filepathDEST, WCHAR* filepathDEST, DWORD rootsize, DWORD pathsize, WCHAR* usedPATH, const WCHAR* registerAdress)
+void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_filepathDEST, WCHAR* filepathDEST, DWORD rootsize, DWORD pathsize, WCHAR* usedPATH, const WCHAR* registerAdress, WCHAR* extraExcludePath)
 /*
 * Includes:
 *   stdlib.h [free()]
 *   windows.h [WIN32_FIND_DATA; HANDLE; FILE_ATTRIBUTE_DIRECTORY; swprintf(); FindNextFile]
-*   wchar.h [WCHAR; size_t; wcscmp(); wcslen(); malloc()]
+*   wchar.h [WCHAR; size_t; wcscmp(); wcslen(); malloc();wcsstr()]
 *
 *   FoldersFuncs_W.h/.c {countFilesInFolder(); createFolder(); finalPathFileExplorer()}
 *   FilesFuncs_W.h/.c {getFilename()}
@@ -667,6 +717,7 @@ void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_fil
 *   DWORD pathsize = Number of folders in filepathDEST
 *   WCHAR* usedPATH = The path of the root of the folder destination(Used for the Progression bar
 *   const WCHAR* registerAdress = The adress of the register(The path)
+*   WCHAR* extraExcludePath = The Second path to exclude
 * Return:
 *   None
 * Description:
@@ -674,8 +725,11 @@ void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_fil
 *   There is a recursion so to function can act by going as deep as possible in the folders while creating the files and proceed to create the copy of the files
 * Notes:
 *   Be carefull of the arguments so the recursion goes well
+*   This will ignore all path that has "FBD FlashBackDrive"
 */
 {
+    WCHAR* pathToIgnore = NULL;
+    pathToIgnore = L"FBD FlashBackDrive";
     WIN32_FIND_DATA FileData;
     HANDLE hFind = FindFirstFile(filepathInit, &FileData);
     int line = 0;
@@ -688,7 +742,7 @@ void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_fil
                 WCHAR fullPath[MAX_PATH];
                 swprintf(fullPath, MAX_PATH, L"%s\\%s", Real_filepathInit, FileData.cFileName);
 
-                pathsize = countFilesInFolder(usedPATH);
+                pathsize = countFilesInFolder(usedPATH)-1; //Do not count the register
                 wprintf(L"\rProgression: %d%%", (int)(((float)pathsize / rootsize) * 100));
 
 
@@ -701,30 +755,31 @@ void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_fil
                 {
                     WCHAR fullPath[MAX_PATH];
                     swprintf(fullPath, MAX_PATH, L"%s\\%s", Real_filepathInit, FileData.cFileName);
+                    if ((wcsstr(fullPath, pathToIgnore) == NULL) && (wcscmp(extraExcludePath, fullPath)!=0)) //Ignore paths
+                    {
+                        WCHAR* newfileNAME = NULL;
+                        newfileNAME = getFilename(fullPath);
+                        createFolder(newfileNAME, Real_filepathDEST);
 
+                        // Create the complete path of the new folder in newDEST
+                        size_t newDESTLength = wcslen(Real_filepathDEST) + wcslen(newfileNAME) + 2; // +2 for the backslash and the null character
+                        WCHAR* newDEST = (WCHAR*)malloc(newDESTLength * sizeof(WCHAR));
+                        swprintf(newDEST, newDESTLength, L"%s\\%s", Real_filepathDEST, newfileNAME);
+                        // Create the complete path of the new folder in initDEST
+                        size_t initDESTLength = wcslen(Real_filepathInit) + wcslen(newfileNAME) + 2; // +2 for the backslash and the null character
+                        WCHAR* initDEST = (WCHAR*)malloc(initDESTLength * sizeof(WCHAR));
+                        swprintf(initDEST, initDESTLength, L"%s\\%s", Real_filepathInit, newfileNAME);
 
-                    WCHAR* newfileNAME = NULL;
-                    newfileNAME = getFilename(fullPath);
-                    createFolder(newfileNAME, Real_filepathDEST);
+                        WCHAR* star_initDEST = finalPathFileExplorer(initDEST);
+                        WCHAR* star_newDEST = finalPathFileExplorer(newDEST);
 
-                    // Create the complete path of the new folder in newDEST
-                    size_t newDESTLength = wcslen(Real_filepathDEST) + wcslen(newfileNAME) + 2; // +2 for the backslash and the null character
-                    WCHAR* newDEST = (WCHAR*)malloc(newDESTLength * sizeof(WCHAR));
-                    swprintf(newDEST, newDESTLength, L"%s\\%s", Real_filepathDEST, newfileNAME);
-                    // Create the complete path of the new folder in initDEST
-                    size_t initDESTLength = wcslen(Real_filepathInit) + wcslen(newfileNAME) + 2; // +2 for the backslash and the null character
-                    WCHAR* initDEST = (WCHAR*)malloc(initDESTLength * sizeof(WCHAR));
-                    swprintf(initDEST, initDESTLength, L"%s\\%s", Real_filepathInit, newfileNAME);
+                        fileExplorer(initDEST, star_initDEST, newDEST, star_newDEST, rootsize, pathsize, usedPATH, registerAdress, extraExcludePath);
+                        free(initDEST);
+                        free(star_initDEST);
+                        free(newDEST);
+                        free(star_newDEST);
 
-                    WCHAR* star_initDEST = finalPathFileExplorer(initDEST);
-                    WCHAR* star_newDEST = finalPathFileExplorer(newDEST);
-
-                    fileExplorer(initDEST, star_initDEST, newDEST, star_newDEST, rootsize, pathsize, usedPATH, registerAdress);
-                    free(initDEST);
-                    free(star_initDEST);
-                    free(newDEST);
-                    free(star_newDEST);
-
+                    }
                 }
             }
 
@@ -733,4 +788,5 @@ void fileExplorer(WCHAR* Real_filepathInit, WCHAR* filepathInit, WCHAR* Real_fil
     }
     return;
 }
+
 

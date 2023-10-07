@@ -1,3 +1,0 @@
-Extension: .bat
-Size: 6989 bytes
-Last modification: 2020-04-04 05:50:13

@@ -1,0 +1,4 @@
+Filename: ISLangUni.ini
+Extension: .ini
+Size: 139556 bytes
+Last modification: 2019-06-26 22:33:40

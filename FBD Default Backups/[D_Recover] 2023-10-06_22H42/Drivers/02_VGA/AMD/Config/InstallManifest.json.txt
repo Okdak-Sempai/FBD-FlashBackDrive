@@ -1,0 +1,4 @@
+Filename: InstallManifest.json
+Extension: .json
+Size: 10356 bytes
+Last modification: 2021-03-03 11:37:58

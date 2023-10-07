@@ -1,4 +1,0 @@
-Filename: 18.png
-Extension: .png
-Size: 145220 bytes
-Last modification: 2020-10-01 10:26:30

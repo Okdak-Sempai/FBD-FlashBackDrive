@@ -1,0 +1,4 @@
+Filename: PhysXCore.dll
+Extension: .dll
+Size: 9910256 bytes
+Last modification: 2020-02-21 12:25:40

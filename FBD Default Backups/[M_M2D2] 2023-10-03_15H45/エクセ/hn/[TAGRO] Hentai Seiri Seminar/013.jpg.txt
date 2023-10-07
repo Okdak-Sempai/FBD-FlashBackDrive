@@ -1,4 +1,0 @@
-Filename: 013.jpg
-Extension: .jpg
-Size: 172319 bytes
-Last modification: 2017-12-03 09:11:14

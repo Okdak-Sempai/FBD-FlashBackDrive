@@ -1,4 +1,0 @@
-Filename: Exo2_20210928094942.c
-Extension: .c
-Size: 184 bytes
-Last modification: 2021-09-28 07:49:42

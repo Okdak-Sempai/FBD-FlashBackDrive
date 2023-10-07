@@ -1,4 +1,0 @@
-Filename: VideoCapture_20210916-011110.jpg
-Extension: .jpg
-Size: 56736 bytes
-Last modification: 2022-02-18 08:49:32

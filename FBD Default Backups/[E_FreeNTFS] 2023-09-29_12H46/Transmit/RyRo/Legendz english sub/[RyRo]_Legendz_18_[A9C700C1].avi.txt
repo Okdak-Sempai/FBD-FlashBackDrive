@@ -1,3 +1,0 @@
-Extension: .avi
-Size: 183656560 bytes
-Last modification: 2019-02-17 10:11:00

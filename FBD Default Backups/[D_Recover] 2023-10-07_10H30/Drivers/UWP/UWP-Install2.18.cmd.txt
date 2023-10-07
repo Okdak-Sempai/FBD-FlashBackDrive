@@ -1,0 +1,4 @@
+Filename: UWP-Install2.18.cmd
+Extension: .cmd
+Size: 5898 bytes
+Last modification: 2020-09-28 11:27:46

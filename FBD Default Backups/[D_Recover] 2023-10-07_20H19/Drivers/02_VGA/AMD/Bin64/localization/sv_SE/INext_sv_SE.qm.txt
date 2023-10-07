@@ -1,0 +1,4 @@
+Filename: INext_sv_SE.qm
+Extension: .qm
+Size: 27510 bytes
+Last modification: 2021-02-17 05:41:29

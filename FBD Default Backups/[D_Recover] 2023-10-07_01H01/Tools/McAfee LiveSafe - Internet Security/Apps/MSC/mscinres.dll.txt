@@ -1,0 +1,4 @@
+Filename: mscinres.dll
+Extension: .dll
+Size: 342024 bytes
+Last modification: 2021-04-27 23:06:02

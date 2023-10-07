@@ -1,4 +1,0 @@
-Filename: errors.py
-Extension: .py
-Size: 5622 bytes
-Last modification: 2020-04-04 05:50:13

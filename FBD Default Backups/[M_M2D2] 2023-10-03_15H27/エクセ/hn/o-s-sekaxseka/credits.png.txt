@@ -1,4 +1,0 @@
-Filename: credits.png
-Extension: .png
-Size: 71301 bytes
-Last modification: 2016-10-16 23:38:30

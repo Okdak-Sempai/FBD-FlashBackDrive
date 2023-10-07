@@ -1,4 +1,0 @@
-Filename: img_document02.jpg
-Extension: .jpg
-Size: 323114 bytes
-Last modification: 2018-04-02 08:31:34

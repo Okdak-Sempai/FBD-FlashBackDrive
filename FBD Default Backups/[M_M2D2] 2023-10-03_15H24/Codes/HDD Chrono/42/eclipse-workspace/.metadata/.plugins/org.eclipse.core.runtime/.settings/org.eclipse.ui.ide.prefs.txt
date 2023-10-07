@@ -1,4 +1,0 @@
-Filename: org.eclipse.ui.ide.prefs
-Extension: .prefs
-Size: 124 bytes
-Last modification: 2021-10-18 16:47:51

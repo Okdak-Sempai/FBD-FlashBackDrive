@@ -1,4 +1,0 @@
-Filename: 103.jpg
-Extension: .jpg
-Size: 101212 bytes
-Last modification: 2021-10-28 11:15:52

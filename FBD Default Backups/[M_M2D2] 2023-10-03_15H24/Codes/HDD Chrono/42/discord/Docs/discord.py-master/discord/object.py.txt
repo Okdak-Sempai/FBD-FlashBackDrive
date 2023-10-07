@@ -1,4 +1,0 @@
-Filename: object.py
-Extension: .py
-Size: 2469 bytes
-Last modification: 2020-04-17 03:30:59

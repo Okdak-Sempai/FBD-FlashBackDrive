@@ -1,4 +1,0 @@
-Filename: 16.jpg
-Extension: .jpg
-Size: 525392 bytes
-Last modification: 2021-02-11 02:08:38

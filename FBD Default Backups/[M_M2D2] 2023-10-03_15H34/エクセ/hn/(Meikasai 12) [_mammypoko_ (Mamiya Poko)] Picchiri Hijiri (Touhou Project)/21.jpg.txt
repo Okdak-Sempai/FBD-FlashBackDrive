@@ -1,4 +1,0 @@
-Filename: 21.jpg
-Extension: .jpg
-Size: 343808 bytes
-Last modification: 2018-05-20 17:41:38

@@ -1,0 +1,4 @@
+Filename: .gitignore
+Extension: .gitignore
+Size: 6585 bytes
+Last modification: 2023-07-31 07:38:35

@@ -1,0 +1,4 @@
+Filename: .log
+Extension: .log
+Size: 40183 bytes
+Last modification: 2021-10-12 07:58:22

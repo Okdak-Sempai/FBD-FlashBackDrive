@@ -1,0 +1,4 @@
+Filename: AMD.Power.Processor.ppkg
+Extension: .ppkg
+Size: 9394 bytes
+Last modification: 2020-11-12 23:20:02

@@ -1,0 +1,4 @@
+Filename: nvapo64v.dll
+Extension: .dll
+Size: 85400 bytes
+Last modification: 2020-10-26 07:34:04

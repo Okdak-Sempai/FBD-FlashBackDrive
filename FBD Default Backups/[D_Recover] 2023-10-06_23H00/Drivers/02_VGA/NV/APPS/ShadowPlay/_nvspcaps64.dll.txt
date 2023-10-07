@@ -1,0 +1,4 @@
+Filename: _nvspcaps64.dll
+Extension: .dll
+Size: 3588848 bytes
+Last modification: 2021-01-27 11:17:19

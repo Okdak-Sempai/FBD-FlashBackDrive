@@ -1,0 +1,4 @@
+Filename: window-title-bar-fill.png
+Extension: .png
+Size: 297 bytes
+Last modification: 2021-01-27 17:56:13

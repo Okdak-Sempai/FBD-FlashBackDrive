@@ -1,0 +1,4 @@
+Filename: nvspapi64.dll
+Extension: .dll
+Size: 2621680 bytes
+Last modification: 2021-01-27 11:17:20

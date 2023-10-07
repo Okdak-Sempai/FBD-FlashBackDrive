@@ -1,4 +1,0 @@
-Filename: 4.jpg
-Extension: .jpg
-Size: 206199 bytes
-Last modification: 2010-06-03 08:01:22

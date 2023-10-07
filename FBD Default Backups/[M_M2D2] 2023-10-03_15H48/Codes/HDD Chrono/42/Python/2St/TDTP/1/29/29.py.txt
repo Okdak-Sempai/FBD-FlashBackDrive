@@ -1,4 +1,0 @@
-Filename: 29.py
-Extension: .py
-Size: 226 bytes
-Last modification: 2020-05-25 18:15:44

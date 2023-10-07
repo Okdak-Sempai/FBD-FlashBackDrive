@@ -1,4 +1,0 @@
-Filename: Main.storyboard
-Extension: .storyboard
-Size: 3159 bytes
-Last modification: 2023-06-02 16:53:38

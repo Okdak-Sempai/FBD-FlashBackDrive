@@ -1,0 +1,4 @@
+Filename: PerfStatisticsLogger.dll
+Extension: .dll
+Size: 3220456 bytes
+Last modification: 2020-12-29 22:57:48

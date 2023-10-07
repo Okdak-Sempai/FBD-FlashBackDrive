@@ -1,4 +1,0 @@
-Filename: color_dark.json
-Extension: .json
-Size: 3152 bytes
-Last modification: 2023-06-02 16:53:38

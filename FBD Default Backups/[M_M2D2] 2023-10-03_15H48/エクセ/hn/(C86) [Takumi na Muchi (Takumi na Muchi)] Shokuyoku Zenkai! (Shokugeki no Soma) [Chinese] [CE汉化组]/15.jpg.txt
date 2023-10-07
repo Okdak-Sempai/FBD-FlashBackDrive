@@ -1,4 +1,0 @@
-Filename: 15.jpg
-Extension: .jpg
-Size: 484870 bytes
-Last modification: 2018-05-20 17:44:30

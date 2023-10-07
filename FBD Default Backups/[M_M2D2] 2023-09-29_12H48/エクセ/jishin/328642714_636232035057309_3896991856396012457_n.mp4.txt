@@ -1,3 +1,0 @@
-Extension: .mp4
-Size: 8226705 bytes
-Last modification: 2023-06-11 15:10:52

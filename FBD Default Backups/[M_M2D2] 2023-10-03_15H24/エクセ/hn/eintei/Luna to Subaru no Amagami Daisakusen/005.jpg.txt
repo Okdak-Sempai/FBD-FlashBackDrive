@@ -1,4 +1,0 @@
-Filename: 005.jpg
-Extension: .jpg
-Size: 759199 bytes
-Last modification: 2010-02-24 23:00:00

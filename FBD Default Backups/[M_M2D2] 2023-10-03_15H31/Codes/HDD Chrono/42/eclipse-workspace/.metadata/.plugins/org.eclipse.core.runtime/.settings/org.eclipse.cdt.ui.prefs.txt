@@ -1,4 +1,0 @@
-Filename: org.eclipse.cdt.ui.prefs
-Extension: .prefs
-Size: 117 bytes
-Last modification: 2021-09-30 09:17:10

@@ -1,0 +1,4 @@
+Filename: scan_complete.svg
+Extension: .svg
+Size: 341 bytes
+Last modification: 2021-01-27 17:54:06

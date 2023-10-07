@@ -1,4 +1,0 @@
-Filename: project-app.lockfile
-Extension: .lockfile
-Size: 25528 bytes
-Last modification: 2023-06-02 16:53:39

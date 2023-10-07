@@ -1,0 +1,4 @@
+Filename: 0415.ui.strings
+Extension: .strings
+Size: 10351 bytes
+Last modification: 2021-04-06 00:57:35

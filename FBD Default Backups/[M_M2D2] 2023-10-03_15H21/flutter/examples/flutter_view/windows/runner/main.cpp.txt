@@ -1,4 +1,0 @@
-Filename: main.cpp
-Extension: .cpp
-Size: 1477 bytes
-Last modification: 2023-06-02 16:53:39

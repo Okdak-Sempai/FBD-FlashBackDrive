@@ -1,4 +1,0 @@
-Filename: Icon-App-20x20@3x.png
-Extension: .png
-Size: 1588 bytes
-Last modification: 2023-06-02 16:53:39

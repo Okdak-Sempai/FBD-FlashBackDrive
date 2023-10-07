@@ -1,4 +1,0 @@
-Filename: VideoCapture_20220222-092653.jpg
-Extension: .jpg
-Size: 20843 bytes
-Last modification: 2022-02-23 11:39:24

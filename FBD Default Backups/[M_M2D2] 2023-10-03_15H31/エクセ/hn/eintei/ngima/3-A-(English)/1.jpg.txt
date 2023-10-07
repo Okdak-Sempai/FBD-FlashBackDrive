@@ -1,4 +1,0 @@
-Filename: 1.jpg
-Extension: .jpg
-Size: 220471 bytes
-Last modification: 2010-06-03 08:01:18

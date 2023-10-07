@@ -1,4 +1,0 @@
-Filename: 10.jpg
-Extension: .jpg
-Size: 465584 bytes
-Last modification: 2021-03-01 00:24:34

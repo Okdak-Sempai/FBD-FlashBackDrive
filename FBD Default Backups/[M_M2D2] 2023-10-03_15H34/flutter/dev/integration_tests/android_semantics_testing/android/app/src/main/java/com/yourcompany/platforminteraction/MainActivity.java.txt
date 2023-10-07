@@ -1,4 +1,0 @@
-Filename: MainActivity.java
-Extension: .java
-Size: 5938 bytes
-Last modification: 2023-06-02 16:53:37

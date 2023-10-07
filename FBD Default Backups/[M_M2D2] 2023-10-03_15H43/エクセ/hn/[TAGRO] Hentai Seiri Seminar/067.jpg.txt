@@ -1,4 +1,0 @@
-Filename: 067.jpg
-Extension: .jpg
-Size: 195660 bytes
-Last modification: 2017-11-03 09:11:14

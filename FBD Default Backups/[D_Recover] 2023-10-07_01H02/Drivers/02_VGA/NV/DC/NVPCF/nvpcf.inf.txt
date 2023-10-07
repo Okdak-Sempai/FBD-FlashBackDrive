@@ -1,0 +1,4 @@
+Filename: nvpcf.inf
+Extension: .inf
+Size: 1964 bytes
+Last modification: 2021-03-16 14:32:20

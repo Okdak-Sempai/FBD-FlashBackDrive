@@ -1,4 +1,0 @@
-Filename: image0-211.jpg
-Extension: .jpg
-Size: 203240 bytes
-Last modification: 2020-06-29 23:09:06

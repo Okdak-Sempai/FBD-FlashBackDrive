@@ -1,0 +1,4 @@
+Filename: opengl32sw.dll
+Extension: .dll
+Size: 20923392 bytes
+Last modification: 2021-02-17 05:41:29

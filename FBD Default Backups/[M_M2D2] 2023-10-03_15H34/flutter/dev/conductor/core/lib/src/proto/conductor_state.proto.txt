@@ -1,4 +1,0 @@
-Filename: conductor_state.proto
-Extension: .proto
-Size: 3605 bytes
-Last modification: 2023-06-02 16:53:37

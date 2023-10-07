@@ -1,4 +1,0 @@
-Filename: 08.jpg
-Extension: .jpg
-Size: 647349 bytes
-Last modification: 2018-05-20 17:43:48

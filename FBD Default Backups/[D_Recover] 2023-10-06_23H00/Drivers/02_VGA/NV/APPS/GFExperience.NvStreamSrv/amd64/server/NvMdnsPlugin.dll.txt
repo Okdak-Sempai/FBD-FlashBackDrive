@@ -1,0 +1,4 @@
+Filename: NvMdnsPlugin.dll
+Extension: .dll
+Size: 2380264 bytes
+Last modification: 2020-12-29 22:57:47

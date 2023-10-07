@@ -1,0 +1,4 @@
+Filename: msgsdk64.cab
+Extension: .cab
+Size: 3068369 bytes
+Last modification: 2021-04-28 11:55:24

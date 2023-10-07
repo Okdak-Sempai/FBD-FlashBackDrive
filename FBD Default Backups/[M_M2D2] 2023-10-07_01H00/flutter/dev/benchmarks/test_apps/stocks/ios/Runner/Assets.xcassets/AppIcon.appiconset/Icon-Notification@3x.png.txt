@@ -1,0 +1,4 @@
+Filename: Icon-Notification@3x.png
+Extension: .png
+Size: 2297 bytes
+Last modification: 2023-06-02 16:53:37

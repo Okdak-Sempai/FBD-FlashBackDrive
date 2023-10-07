@@ -1,0 +1,4 @@
+Filename: mccore.cab
+Extension: .cab
+Size: 357786 bytes
+Last modification: 2021-04-21 21:21:26

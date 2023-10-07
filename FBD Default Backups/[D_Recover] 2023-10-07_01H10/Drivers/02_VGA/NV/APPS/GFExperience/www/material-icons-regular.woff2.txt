@@ -1,0 +1,4 @@
+Filename: material-icons-regular.woff2
+Extension: .woff2
+Size: 37028 bytes
+Last modification: 2021-01-27 17:56:13

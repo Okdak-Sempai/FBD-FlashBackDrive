@@ -1,0 +1,4 @@
+Filename: IsConfig.ini
+Extension: .ini
+Size: 2092 bytes
+Last modification: 2020-09-30 23:56:14

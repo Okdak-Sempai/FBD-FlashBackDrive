@@ -1,0 +1,4 @@
+Filename: default.pam
+Extension: .pam
+Size: 971760 bytes
+Last modification: 2021-04-27 13:08:20

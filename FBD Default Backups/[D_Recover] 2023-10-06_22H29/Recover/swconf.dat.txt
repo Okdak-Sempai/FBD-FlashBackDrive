@@ -1,0 +1,4 @@
+Filename: swconf.dat
+Extension: .dat
+Size: 8422 bytes
+Last modification: 2021-08-11 10:13:34

@@ -1,4 +1,0 @@
-Filename: Icon-App-83.5x83.5@2x.png
-Extension: .png
-Size: 3612 bytes
-Last modification: 2023-06-02 16:53:39

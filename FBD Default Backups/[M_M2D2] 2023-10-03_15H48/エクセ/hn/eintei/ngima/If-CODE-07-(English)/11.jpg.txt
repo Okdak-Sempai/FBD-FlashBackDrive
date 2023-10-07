@@ -1,4 +1,0 @@
-Filename: 11.jpg
-Extension: .jpg
-Size: 155606 bytes
-Last modification: 2010-06-03 08:24:38

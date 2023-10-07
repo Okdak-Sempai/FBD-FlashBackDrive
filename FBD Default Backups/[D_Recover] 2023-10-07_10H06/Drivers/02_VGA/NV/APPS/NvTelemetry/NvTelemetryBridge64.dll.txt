@@ -1,0 +1,4 @@
+Filename: NvTelemetryBridge64.dll
+Extension: .dll
+Size: 542184 bytes
+Last modification: 2021-01-27 17:31:47

@@ -1,4 +1,0 @@
-Filename: build.gradle
-Extension: .gradle
-Size: 2199 bytes
-Last modification: 2023-06-02 16:53:38

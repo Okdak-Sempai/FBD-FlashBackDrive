@@ -1,0 +1,4 @@
+Filename: raptr-logo.png
+Extension: .png
+Size: 1778 bytes
+Last modification: 2021-01-27 17:56:13

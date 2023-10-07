@@ -1,4 +1,0 @@
-Filename: test4.c
-Extension: .c
-Size: 292 bytes
-Last modification: 2021-12-21 12:53:49

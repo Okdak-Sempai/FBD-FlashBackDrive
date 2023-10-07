@@ -1,4 +1,0 @@
-Filename: 05. Voice Message 1.mp3
-Extension: .mp3
-Size: 2957312 bytes
-Last modification: 2019-02-17 10:53:32

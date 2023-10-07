@@ -1,0 +1,4 @@
+Filename: cudnn_infer64_7.dl_
+Extension: .dl_
+Size: 13884956 bytes
+Last modification: 2021-04-27 05:01:46

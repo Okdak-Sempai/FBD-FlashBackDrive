@@ -1,4 +1,0 @@
-Filename: windows_logical_to_window_vk.json
-Extension: .json
-Size: 5546 bytes
-Last modification: 2023-06-02 16:53:38

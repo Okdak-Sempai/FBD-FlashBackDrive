@@ -1,0 +1,4 @@
+Filename: AMDPCIDev.sys
+Extension: .sys
+Size: 34528 bytes
+Last modification: 2021-01-20 06:35:28

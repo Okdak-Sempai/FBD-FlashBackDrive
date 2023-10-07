@@ -1,4 +1,0 @@
-Filename: 18.jpg
-Extension: .jpg
-Size: 535202 bytes
-Last modification: 2021-02-11 02:08:38

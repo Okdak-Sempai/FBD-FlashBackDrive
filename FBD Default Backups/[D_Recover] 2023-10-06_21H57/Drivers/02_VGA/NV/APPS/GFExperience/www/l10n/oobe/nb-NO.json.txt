@@ -1,0 +1,4 @@
+Filename: nb-NO.json
+Extension: .json
+Size: 7709 bytes
+Last modification: 2021-01-27 17:56:13

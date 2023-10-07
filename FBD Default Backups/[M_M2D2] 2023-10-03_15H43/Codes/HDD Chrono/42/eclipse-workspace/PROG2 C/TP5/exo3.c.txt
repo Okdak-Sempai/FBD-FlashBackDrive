@@ -1,4 +1,0 @@
-Filename: exo3.c
-Extension: .c
-Size: 51 bytes
-Last modification: 2021-10-12 08:58:30

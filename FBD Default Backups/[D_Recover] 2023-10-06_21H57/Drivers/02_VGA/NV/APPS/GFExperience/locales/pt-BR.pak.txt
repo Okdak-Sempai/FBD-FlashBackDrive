@@ -1,0 +1,4 @@
+Filename: pt-BR.pak
+Extension: .pak
+Size: 213275 bytes
+Last modification: 2021-01-27 17:46:29

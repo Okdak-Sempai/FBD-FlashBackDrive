@@ -1,4 +1,0 @@
-Filename: cooldowns.py
-Extension: .py
-Size: 8990 bytes
-Last modification: 2020-04-04 05:50:13

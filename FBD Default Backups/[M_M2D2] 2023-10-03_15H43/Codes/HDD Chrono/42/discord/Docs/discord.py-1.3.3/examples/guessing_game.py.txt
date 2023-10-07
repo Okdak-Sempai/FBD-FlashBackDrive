@@ -1,4 +1,0 @@
-Filename: guessing_game.py
-Extension: .py
-Size: 1154 bytes
-Last modification: 2020-04-04 05:50:13

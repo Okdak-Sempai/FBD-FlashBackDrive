@@ -1,0 +1,4 @@
+Filename: fb_reaction_like.svg
+Extension: .svg
+Size: 11039 bytes
+Last modification: 2021-01-27 17:54:06

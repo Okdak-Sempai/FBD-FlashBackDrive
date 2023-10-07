@@ -1,0 +1,4 @@
+Filename: a.out
+Extension: .out
+Size: 25992 bytes
+Last modification: 2021-03-24 23:08:53

@@ -1,0 +1,4 @@
+Filename: 020.jpg
+Extension: .jpg
+Size: 362641 bytes
+Last modification: 2008-08-22 23:00:00

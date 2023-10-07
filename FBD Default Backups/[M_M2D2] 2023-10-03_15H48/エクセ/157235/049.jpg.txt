@@ -1,4 +1,0 @@
-Filename: 049.jpg
-Extension: .jpg
-Size: 85639 bytes
-Last modification: 2021-10-28 11:14:58

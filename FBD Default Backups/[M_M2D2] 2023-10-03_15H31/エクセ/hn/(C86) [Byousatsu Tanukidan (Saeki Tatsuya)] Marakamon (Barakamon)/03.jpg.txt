@@ -1,4 +1,0 @@
-Filename: 03.jpg
-Extension: .jpg
-Size: 394020 bytes
-Last modification: 2021-02-11 02:04:12

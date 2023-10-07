@@ -1,0 +1,4 @@
+Filename: nvfp64.dll
+Extension: .dll
+Size: 1274096 bytes
+Last modification: 2021-01-27 11:17:20

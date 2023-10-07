@@ -1,4 +1,0 @@
-Filename: 19.jpg
-Extension: .jpg
-Size: 3034642 bytes
-Last modification: 2017-11-03 09:12:26

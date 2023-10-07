@@ -1,4 +1,0 @@
-Filename: 009.jpg
-Extension: .jpg
-Size: 102900 bytes
-Last modification: 2008-08-22 23:00:00

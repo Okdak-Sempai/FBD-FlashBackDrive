@@ -1,4 +1,0 @@
-Filename: 154.jpg
-Extension: .jpg
-Size: 84140 bytes
-Last modification: 2021-10-28 11:16:44

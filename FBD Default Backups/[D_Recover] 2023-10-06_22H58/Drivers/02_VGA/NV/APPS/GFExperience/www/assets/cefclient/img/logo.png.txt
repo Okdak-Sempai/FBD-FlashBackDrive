@@ -1,0 +1,4 @@
+Filename: logo.png
+Extension: .png
+Size: 4593 bytes
+Last modification: 2021-01-27 17:56:13

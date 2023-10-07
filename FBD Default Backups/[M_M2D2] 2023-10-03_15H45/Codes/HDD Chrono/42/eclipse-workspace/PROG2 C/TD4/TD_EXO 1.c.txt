@@ -1,4 +1,0 @@
-Filename: TD_EXO 1.c
-Extension: .c
-Size: 563 bytes
-Last modification: 2021-10-05 07:35:58

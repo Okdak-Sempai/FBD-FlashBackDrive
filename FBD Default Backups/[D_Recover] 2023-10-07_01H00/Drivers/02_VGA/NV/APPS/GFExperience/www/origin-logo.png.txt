@@ -1,0 +1,4 @@
+Filename: origin-logo.png
+Extension: .png
+Size: 1822 bytes
+Last modification: 2021-01-27 17:56:13

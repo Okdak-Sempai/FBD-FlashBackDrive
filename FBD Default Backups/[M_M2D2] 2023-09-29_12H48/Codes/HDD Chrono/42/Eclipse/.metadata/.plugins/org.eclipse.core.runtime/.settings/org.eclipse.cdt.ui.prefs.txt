@@ -1,3 +1,0 @@
-Extension: .prefs
-Size: 117 bytes
-Last modification: 2021-10-18 16:45:09

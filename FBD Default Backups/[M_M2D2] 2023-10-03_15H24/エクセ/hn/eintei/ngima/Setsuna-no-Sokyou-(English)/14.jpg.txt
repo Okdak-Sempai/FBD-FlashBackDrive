@@ -1,4 +1,0 @@
-Filename: 14.jpg
-Extension: .jpg
-Size: 153046 bytes
-Last modification: 2010-06-03 09:15:40

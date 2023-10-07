@@ -1,4 +1,0 @@
-Filename: 24.png
-Extension: .png
-Size: 1039896 bytes
-Last modification: 2018-05-20 17:41:48

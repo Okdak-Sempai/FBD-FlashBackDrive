@@ -1,0 +1,4 @@
+Filename: nvifropengl32.dl_
+Extension: .dl_
+Size: 296918 bytes
+Last modification: 2021-04-27 05:04:32

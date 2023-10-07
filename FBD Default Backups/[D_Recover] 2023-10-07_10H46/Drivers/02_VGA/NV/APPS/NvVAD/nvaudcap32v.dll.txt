@@ -1,0 +1,4 @@
+Filename: nvaudcap32v.dll
+Extension: .dll
+Size: 145208 bytes
+Last modification: 2020-12-02 06:48:53

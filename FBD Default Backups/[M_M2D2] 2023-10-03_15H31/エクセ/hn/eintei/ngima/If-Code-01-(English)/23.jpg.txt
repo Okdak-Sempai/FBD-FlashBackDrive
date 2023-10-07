@@ -1,4 +1,0 @@
-Filename: 23.jpg
-Extension: .jpg
-Size: 23691 bytes
-Last modification: 2010-06-03 08:25:50

@@ -1,4 +1,0 @@
-Filename: bench_simple_lazy_text_scroll.dart
-Extension: .dart
-Size: 3080 bytes
-Last modification: 2023-06-02 16:53:37

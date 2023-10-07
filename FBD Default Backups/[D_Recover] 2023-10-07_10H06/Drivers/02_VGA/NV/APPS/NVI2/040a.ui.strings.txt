@@ -1,0 +1,4 @@
+Filename: 040a.ui.strings
+Extension: .strings
+Size: 10352 bytes
+Last modification: 2021-04-06 00:57:35

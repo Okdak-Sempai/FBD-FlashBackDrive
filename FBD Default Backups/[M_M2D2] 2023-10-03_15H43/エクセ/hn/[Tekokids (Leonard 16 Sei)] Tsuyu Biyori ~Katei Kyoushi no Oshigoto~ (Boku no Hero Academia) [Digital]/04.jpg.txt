@@ -1,4 +1,0 @@
-Filename: 04.jpg
-Extension: .jpg
-Size: 229904 bytes
-Last modification: 2021-01-30 17:05:10

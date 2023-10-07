@@ -1,4 +1,0 @@
-Filename: 016.jpg
-Extension: .jpg
-Size: 230271 bytes
-Last modification: 2017-12-03 09:11:18

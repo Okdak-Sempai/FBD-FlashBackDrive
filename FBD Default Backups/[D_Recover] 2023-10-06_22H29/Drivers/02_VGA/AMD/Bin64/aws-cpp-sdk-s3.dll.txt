@@ -1,0 +1,4 @@
+Filename: aws-cpp-sdk-s3.dll
+Extension: .dll
+Size: 3336192 bytes
+Last modification: 2019-09-04 11:52:21

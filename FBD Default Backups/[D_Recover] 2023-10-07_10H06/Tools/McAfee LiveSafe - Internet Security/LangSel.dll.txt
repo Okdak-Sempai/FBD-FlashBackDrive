@@ -1,0 +1,4 @@
+Filename: LangSel.dll
+Extension: .dll
+Size: 333176 bytes
+Last modification: 2021-04-21 21:47:14

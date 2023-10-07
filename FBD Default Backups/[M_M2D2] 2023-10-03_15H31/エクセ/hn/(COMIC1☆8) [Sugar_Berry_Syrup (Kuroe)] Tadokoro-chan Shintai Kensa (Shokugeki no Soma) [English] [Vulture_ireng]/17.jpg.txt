@@ -1,4 +1,0 @@
-Filename: 17.jpg
-Extension: .jpg
-Size: 933206 bytes
-Last modification: 2018-05-20 17:44:24

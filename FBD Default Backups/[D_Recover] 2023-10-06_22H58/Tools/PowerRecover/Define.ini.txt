@@ -1,0 +1,4 @@
+Filename: Define.ini
+Extension: .ini
+Size: 39 bytes
+Last modification: 2019-05-22 09:15:27

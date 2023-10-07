@@ -1,0 +1,4 @@
+Filename: TP4 EXO1.language.settings.xml
+Extension: .xml
+Size: 386498 bytes
+Last modification: 2021-10-05 07:27:50

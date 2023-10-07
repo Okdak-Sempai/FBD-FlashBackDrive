@@ -1,4 +1,0 @@
-Filename: 09.jpg
-Extension: .jpg
-Size: 463728 bytes
-Last modification: 2018-06-20 17:44:24

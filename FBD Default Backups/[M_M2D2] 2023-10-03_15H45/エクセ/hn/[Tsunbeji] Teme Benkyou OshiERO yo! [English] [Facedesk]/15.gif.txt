@@ -1,4 +1,0 @@
-Filename: 15.gif
-Extension: .gif
-Size: 418366 bytes
-Last modification: 2019-10-27 08:00:44

@@ -1,0 +1,4 @@
+Filename: MSC_x86_6_2_2070_PF.cab
+Extension: .cab
+Size: 19197 bytes
+Last modification: 2021-04-28 22:09:00

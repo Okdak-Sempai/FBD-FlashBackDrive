@@ -1,0 +1,4 @@
+Filename: 0x0c1a.ini
+Extension: .ini
+Size: 24040 bytes
+Last modification: 2019-06-26 22:29:58

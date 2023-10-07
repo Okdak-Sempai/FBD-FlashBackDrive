@@ -1,0 +1,4 @@
+Filename: display_graphic.png
+Extension: .png
+Size: 26806 bytes
+Last modification: 2021-01-27 17:54:06

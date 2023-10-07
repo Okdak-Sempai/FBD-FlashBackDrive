@@ -1,0 +1,4 @@
+Filename: modulecore_main.inf
+Extension: .inf
+Size: 477 bytes
+Last modification: 2021-04-23 09:03:20

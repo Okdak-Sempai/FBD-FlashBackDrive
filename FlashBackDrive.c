@@ -10,12 +10,23 @@
 #include "Tools_W.h"
 #include "DrivesFuncs_W.h"
 #include "FBDFuncs_W.h"
+#include "FBD_AllDrivesFuncs_W.h"
 
 int main()
 {
     /*int exitStatus = executeDisableLongPathCode();*/
     unsigned int methodChoice = 2;
-    while (methodChoice > 0 && methodChoice < 4)
+    unsigned int alldrivesFLAG = 0;
+    unsigned int alldrivesCount = 0;
+    WCHAR alldrives[] = { L'a', L'b', L'c', L'd', L'e', L'f', L'g', L'h', L'i', L'j', L'k', L'l', L'm', L'n', L'o', L'p', L'q', L'r', L's', L't', L'u', L'v', L'w', L'x', L'y', L'z', L'\0' };
+    //WCHAR alldrives[] = { L'a', L'b', L'.', L'd', L'.', L'f', L'g', L'h', L'i', L'j', L'k', L'l', L'.', L'.', L'o', L'p', L'q', L'r', L'.', L't', L'u', L'v', L'w', L'x', L'y', L'z', L'\0' };
+    //WCHAR alldrives[] = { L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'.', L'\0' };
+
+
+
+    WCHAR* pathToExclude = NULL;
+
+    while (methodChoice > 0 && methodChoice < 5)
     {
         methodChoice = 4;
         WCHAR* currentPath = currentDirectory();
@@ -27,7 +38,7 @@ int main()
         logsAdress = (WCHAR*)CoTaskMemAlloc((wcslen(currentPath) + 1) * sizeof(WCHAR));
         wcscpy_s(logsAdress, wcslen(currentPath) + 1, currentPath);
         int LogsAdressStatus = moveToFolder(&logsAdress, L"FBD Logs");
-        if(LogsAdressStatus == -1)
+        if (LogsAdressStatus == -1)
         {
             wprintf(L"Critical Allocation error");
             free(currentPath);
@@ -71,7 +82,13 @@ int main()
         writeToLog(currentLogsFile, L"LogsName", LogsName);
         writeToLog(currentLogsFile, L"currentDate", currentDate);
         writeToLog(currentLogsFile, L"currentTime", currentTime);
-
+        writeToLog(currentLogsFile, L"alldrivesFLAG", intToWCHAR(alldrivesFLAG));
+        writeToLog(currentLogsFile, L"alldrivesCount", intToWCHAR(alldrivesCount));
+        for (int i = 0; i < 26; i++)
+        {
+            WCHAR letter = alldrives[i];
+            writeToLog(currentLogsFile, L"alldrives", &letter);
+        }
 
         //Setting DefaultBackups file
         int defaultbackupStatus = defaultBackupSetter(); writeToLog(currentLogsFile, L"defaultbackupStatus", intToWCHAR(defaultbackupStatus));
@@ -84,61 +101,112 @@ int main()
         const int maxDrives = 26; writeToLog(currentLogsFile, L"maxDrives", intToWCHAR(maxDrives));
         WCHAR* userChoice = NULL; writeToLog(currentLogsFile, L"userChoice", userChoice);
         WCHAR* drivePaths[26] = { NULL }; // maxDrives which is 20
-        //Logs
+        WCHAR* rootPath = NULL;  writeToLog(currentLogsFile, L"rootPath", rootPath);
+        WCHAR* star_rootPath = NULL; writeToLog(currentLogsFile, L"star_rootPath", star_rootPath);
 
-        wprintf(L"==========================================\n");
-        getDriveNames(drivePaths, maxDrives);
-        //printDrives(drivePaths, maxDrives);
-        for (int n = 0; n < 26; n++)
+        if (alldrivesFLAG == 0)
         {
-            writeToLog(currentLogsFile, L"drivePaths", drivePaths[n]);
+            wprintf(L"==========================================\n");
+            getDriveNames(drivePaths, maxDrives);
+            //printDrives(drivePaths, maxDrives);
+            for (int n = 0; n < 26; n++)
+            {
+                writeToLog(currentLogsFile, L"drivePaths", drivePaths[n]);
+
+            }
+
+            wprintf(L"\n");
+            writeToLog(currentLogsFile, L"settingsPath('FBDsettings:')", settingsPath("FBDsettings")); //Print settings
+            wprintf(L"\n");
+
+            //Choice of method
+            int scanfResult;
+            methodChoice = 0; writeToLog(currentLogsFile, L"methodChoice", intToWCHAR(methodChoice));
+            wprintf(L"\nPress 1 for All the drives[Following DrivesSettings]\nPress 2 for Drive select\nPress 3 for folder selection\nPress 4 for the Settings\nPress 5 to end the Software\nChoice: ");
+            do
+            {
+                scanfResult = scanf_s("%d%*c", &methodChoice);
+                if (scanfResult != 1 || (methodChoice < 1 || methodChoice > 5))
+                {
+                    wprintf(L"Only 1 or 2 or 3 or 4.\tChoice: ");
+                    while (getchar() != '\n');
+                }
+            } while (methodChoice < 1 || methodChoice > 5);
+            writeToLog(currentLogsFile, L"methodChoice", intToWCHAR(methodChoice));
+            wprintf(L"\n");
+
+        }
+        else //drivesFLOG == 1
+        {
+            allGetDriveNames(drivePaths, maxDrives);
+            for (int n = 0; n < 26; n++)
+            {
+                writeToLog(currentLogsFile, L"drivePaths", drivePaths[n]);
+            }
+            methodChoice = 1; writeToLog(currentLogsFile, L"methodChoice", intToWCHAR(methodChoice));
 
         }
 
-        wprintf(L"\n");
-        writeToLog(currentLogsFile, L"settingsPath('FBDsettings:')", settingsPath("FBDsettings")); //Print settings
-        wprintf(L"\n");
-
-        //Choice of method
-        int scanfResult;
-        methodChoice = 0; writeToLog(currentLogsFile, L"methodChoice", intToWCHAR(methodChoice));
-        wprintf(L"\nPress 1 for Drive select\nPress 2 for folder selection\nPress 3 for the Settings\nPress 4 to end the Software\nChoice: ");
-        do
-        {
-            scanfResult = scanf_s("%d%*c", &methodChoice);
-            if (scanfResult != 1 || (methodChoice < 1 || methodChoice > 4))
-            {
-                wprintf(L"Only 1 or 2 or 3 or 4.\tChoice: ");
-                while (getchar() != '\n');
-            }
-        } while (methodChoice < 1 || methodChoice > 4);
-        writeToLog(currentLogsFile, L"methodChoice", intToWCHAR(methodChoice));
-        wprintf(L"\n");
-
-        WCHAR* rootPath = NULL;  writeToLog(currentLogsFile, L"rootPath", rootPath);
-        WCHAR* star_rootPath = NULL; 
-        
         switch (methodChoice)
         {
 
-        case 1://Drives select
+        case 1:
         {
-            driveSelect(drivePaths, maxDrives, &userChoice); 
+            if (alldrivesFLAG == 0)
+            {
+                wprintf(L"Press any button to confirm.\n");
+                getchar();
+            }
+            alldrivesFLAG = 1; writeToLog(currentLogsFile, L"alldrivesFLAG", intToWCHAR(alldrivesFLAG));
+            allDriveSelect(drivePaths, maxDrives, alldrives, &alldrivesCount, &userChoice); writeToLog(currentLogsFile, L"alldrivesCount", intToWCHAR(alldrivesCount));
+            //Loop break
+            if (alldrivesCount > 25)
+            {
+                alldrivesFLAG = 0; writeToLog(currentLogsFile, L"alldrivesFLAG", intToWCHAR(alldrivesFLAG));
+                methodChoice = 4; writeToLog(currentLogsFile, L"methodChoice", intToWCHAR(methodChoice));
+                alldrivesCount = 0; writeToLog(currentLogsFile, L"alldrivesCount", intToWCHAR(alldrivesCount));
+                //All the free
+                for (int i = 0; i < maxDrives; i++)
+                {
+                    free(drivePaths[i]); drivePaths[i] = NULL;
+                }
+                free(userChoice); userChoice = NULL;
+                CoTaskMemFree(rootPath); rootPath = NULL;
+                free(star_rootPath); star_rootPath = NULL;
+                free(currentPath);
+                CoTaskMemFree(logsAdress); logsAdress = NULL;
+                free(currentDate); currentDate = NULL;
+                free(currentTime); currentTime = NULL;
+                free(LogsName); LogsName = NULL;
+
+                break;
+            }
+
+            //UserChoice get the adress of the drive
+            rootPath = userChoice; writeToLog(currentLogsFile, L"userChoice", userChoice); writeToLog(currentLogsFile, L"rootPath", rootPath);
+            star_rootPath = finalPathFileExplorer(rootPath); writeToLog(currentLogsFile, L"star_rootPath", star_rootPath);
+
+            break;
+        }
+
+        case 2://Drives select
+        {
+            driveSelect(drivePaths, maxDrives, &userChoice);
             rootPath = userChoice; writeToLog(currentLogsFile, L"userChoice", userChoice); writeToLog(currentLogsFile, L"rootPath", rootPath);
             star_rootPath = finalPathFileExplorer(rootPath); writeToLog(currentLogsFile, L"star_rootPath", star_rootPath);
             break;
         }
 
-        case 2://Custom path select
+        case 3://Custom path select
         {
             rootPath = selectPathFolder(L"Backup path"); writeToLog(currentLogsFile, L"rootPath", rootPath);
             star_rootPath = finalPathFileExplorer(rootPath); writeToLog(currentLogsFile, L"star_rootPath", star_rootPath);
             break;
         }
 
-        case 3://FlashBackDrive Settings
+        case 4://FlashBackDrive Settings
         {
-            
+
             int settingsReturn = settingsSetterDefaultFinal("FBDsettings");
             writeToLog(currentLogsFile, L"settingsReturn", intToWCHAR(settingsReturn));
             //All the free
@@ -159,7 +227,7 @@ int main()
             break;
         }
 
-        case 4://End the Software
+        case 5://End the Software
         {
 
             //All the free
@@ -178,9 +246,10 @@ int main()
 
             break;
         }
+
         }
 
-        if (methodChoice == 1 || methodChoice == 2)
+        if (methodChoice == 2 || methodChoice == 3)
         {
 
             WCHAR* targetPath = NULL; writeToLog(currentLogsFile, L"targetPath", targetPath);
@@ -191,7 +260,7 @@ int main()
             }
             else
             {
-                WCHAR* settingsResult = settingsPath("FBDsettings"); writeToLog(currentLogsFile, L"settingsResult",settingsResult);
+                WCHAR* settingsResult = settingsPath("FBDsettings"); writeToLog(currentLogsFile, L"settingsResult", settingsResult);
                 if (settingsResult != NULL)
                 {
                     targetPath = (WCHAR*)CoTaskMemAlloc((wcslen(settingsResult) + 1) * sizeof(WCHAR));
@@ -203,6 +272,23 @@ int main()
                 writeToLog(currentLogsFile, L"targetPath", targetPath);
             }
             WCHAR* star_targetPath = finalPathFileExplorer(targetPath); writeToLog(currentLogsFile, L"star_targetPath", star_targetPath);
+            WCHAR* pathToExclude = (WCHAR*)malloc((wcslen(targetPath) + 1) * sizeof(WCHAR)); // +1 for the null-terminator
+            if (pathToExclude != NULL)
+            {
+                wcscpy_s(pathToExclude, wcslen(targetPath) + 1, targetPath); writeToLog(currentLogsFile, L"pathToExclude", pathToExclude);
+            }
+            else
+            {
+                wprintf(L"Critical Allocation error");
+                for (int i = 0; i < maxDrives; i++)
+                {
+                    free(drivePaths[i]);
+                }
+                free(userChoice);
+                CoTaskMemFree(targetPath);
+                writeToLog(currentLogsFile, L"Return Error", L"-421");
+                return -421; //Code 421 is just a code -1 but more easier to separate from others
+            }
 
             // Execution time starts
             LARGE_INTEGER startTime, endTime, frequency;
@@ -225,7 +311,7 @@ int main()
 
             // Register creation
             FILE* fp;
-            WCHAR* registerAdress = createFileInDirectory(targetPath, L"FBDRegister"); 
+            WCHAR* registerAdress = createFileInDirectory(targetPath, L"FBDRegister");
             if (_wfopen_s(&fp, registerAdress, L"w") == 0)
             {
                 fclose(fp);
@@ -236,10 +322,10 @@ int main()
             }
 
             int rootsize = countFilesInFolder(rootPath);
-            int pathsize = countFilesInFolder(targetPath); 
+            int pathsize = countFilesInFolder(targetPath);//idk why
 
             //Code usage
-            fileExplorer(rootPath, star_rootPath, targetPath, star_targetPath, rootsize, pathsize, targetPath, registerAdress);
+            fileExplorer(rootPath, star_rootPath, targetPath, star_targetPath, rootsize, pathsize, targetPath, registerAdress, pathToExclude);
             writeToLog(currentLogsFile, L"rootPath", rootPath);
             writeToLog(currentLogsFile, L"star_rootPath", star_rootPath);
             writeToLog(currentLogsFile, L"targetPath", targetPath);
@@ -248,7 +334,7 @@ int main()
             writeToLog(currentLogsFile, L"rootsize", intToWCHAR(rootsize));
             writeToLog(currentLogsFile, L"pathsize", intToWCHAR(pathsize));
 
-            pathsize = countFilesInFolder(targetPath); writeToLog(currentLogsFile, L"pathsize", intToWCHAR(pathsize));
+            pathsize = countFilesInFolder(targetPath)-1; writeToLog(currentLogsFile, L"pathsize", intToWCHAR(pathsize)); //Do not count the register
             wprintf(L"\rProgression: %d%%", (int)(((float)pathsize / rootsize) * 100));
             wprintf(L"\n");
 
@@ -282,8 +368,122 @@ int main()
             CoTaskMemFree(logsAdress); logsAdress = NULL;
             free(currentPath); currentPath = NULL;
             free(currentDate); currentDate = NULL;
-            free(currentTime); currentTime = NULL;  
+            free(currentTime); currentTime = NULL;
             free(LogsName); LogsName = NULL;
+            free(pathToExclude); pathToExclude = NULL;
+        }
+
+        if (methodChoice == 1) // All drives methods
+
+        {
+
+            WCHAR* targetPath = NULL; writeToLog(currentLogsFile, L"targetPath", targetPath);
+            writeToLog(currentLogsFile, L"settingsPath('FBDsettings:')", settingsPath("FBDsettings"));// Print the default
+            WCHAR* settingsResult = settingsPath("FBDsettings"); writeToLog(currentLogsFile, L"settingsResult", settingsResult);
+            if (settingsResult != NULL)
+            {
+                targetPath = (WCHAR*)CoTaskMemAlloc((wcslen(settingsResult) + 1) * sizeof(WCHAR));
+                if (targetPath != NULL)
+                {
+                    wcscpy_s(targetPath, wcslen(settingsResult) + 1, settingsResult);
+                }
+            }
+            writeToLog(currentLogsFile, L"targetPath", targetPath);
+
+            WCHAR* star_targetPath = finalPathFileExplorer(targetPath); writeToLog(currentLogsFile, L"star_targetPath", star_targetPath);
+            WCHAR* pathToExclude = (WCHAR*)malloc((wcslen(targetPath) + 1) * sizeof(WCHAR)); // +1 for the null-terminator
+            if (pathToExclude != NULL)
+            {
+                wcscpy_s(pathToExclude, wcslen(targetPath) + 1, targetPath); writeToLog(currentLogsFile, L"pathToExclude", pathToExclude);
+            }
+            else
+            {
+                wprintf(L"Critical Allocation error");
+                for (int i = 0; i < maxDrives; i++)
+                {
+                    free(drivePaths[i]);
+                }
+                free(userChoice);
+                CoTaskMemFree(targetPath);
+                writeToLog(currentLogsFile, L"Return Error", L"-421");
+                return -421; //Code 421 is just a code -1 but more easier to separate from others
+            }
+            // Execution time starts
+            LARGE_INTEGER startTime, endTime, frequency;
+            QueryPerformanceFrequency(&frequency);
+            QueryPerformanceCounter(&startTime);
+
+            //Move to custom folder
+            if (moveToFolder(&targetPath, newBackupFolderName(drivePaths, maxDrives, rootPath)) == -1)
+            {
+                wprintf(L"Critical Allocation error");
+                for (int i = 0; i < maxDrives; i++)
+                {
+                    free(drivePaths[i]);
+                }
+                free(userChoice);
+                CoTaskMemFree(targetPath);
+                writeToLog(currentLogsFile, L"Return Error", L"-421");
+                return -421; //Code 421 is just a code -1 but more easier to separate from others
+            }
+
+            // Register creation
+            FILE* fp;
+            WCHAR* registerAdress = createFileInDirectory(targetPath, L"FBDRegister");
+            if (_wfopen_s(&fp, registerAdress, L"w") == 0)
+            {
+                fclose(fp);
+            }
+            else
+            {
+                wprintf(L"Failed to create the register: %ls\n", registerAdress);
+            }
+
+            int rootsize = countFilesInFolder(rootPath);
+            int pathsize = countFilesInFolder(targetPath);
+
+            //Code usage
+            fileExplorer(rootPath, star_rootPath, targetPath, star_targetPath, rootsize, pathsize, targetPath, registerAdress, pathToExclude);
+            writeToLog(currentLogsFile, L"rootPath", rootPath);
+            writeToLog(currentLogsFile, L"star_rootPath", star_rootPath);
+            writeToLog(currentLogsFile, L"targetPath", targetPath);
+            writeToLog(currentLogsFile, L"star_targetPath", star_targetPath);
+            writeToLog(currentLogsFile, L"registerAdress", registerAdress);
+            writeToLog(currentLogsFile, L"rootsize", intToWCHAR(rootsize));
+            writeToLog(currentLogsFile, L"pathsize", intToWCHAR(pathsize));
+
+            pathsize = countFilesInFolder(targetPath)-1; writeToLog(currentLogsFile, L"pathsize", intToWCHAR(pathsize)); //Do not count the register
+            wprintf(L"\rProgression: %d%%", (int)(((float)pathsize / rootsize) * 100));
+            wprintf(L"\n");
+
+            //Result
+            wprintf(L"Work done.");
+            // Execution time ends
+            QueryPerformanceCounter(&endTime);
+            double elapsedTime = (endTime.QuadPart - startTime.QuadPart) * 1000.0 / frequency.QuadPart; writeToLog(currentLogsFile, L"elapsedTime", intToWCHAR((int)elapsedTime));
+            int totalSeconds = (int)(elapsedTime / 1000); writeToLog(currentLogsFile, L"totalSeconds", intToWCHAR(totalSeconds));
+            int hours = totalSeconds / 3600; writeToLog(currentLogsFile, L"hours", intToWCHAR(hours));
+            int minutes = (totalSeconds % 3600) / 60; writeToLog(currentLogsFile, L"minutes", intToWCHAR(minutes));
+            int seconds = totalSeconds % 60; writeToLog(currentLogsFile, L"seconds", intToWCHAR(seconds));
+            wprintf(L"\nExecution time: %.2f millisecondes\t%02dH %02dM %02dS\n\a\n", elapsedTime, hours, minutes, seconds);
+
+            //All the free
+            for (int i = 0; i < maxDrives; i++)
+            {
+                free(drivePaths[i]); drivePaths[i] = NULL;
+            }
+            free(userChoice); userChoice = NULL;
+            free(registerAdress); registerAdress = NULL;
+            CoTaskMemFree(targetPath); targetPath = NULL;
+            free(star_rootPath); star_rootPath = NULL;
+            free(star_targetPath); star_targetPath = NULL;
+            //CoTaskMemFree(rootPath); rootPath = NULL;
+            CoTaskMemFree(logsAdress); logsAdress = NULL;
+            free(currentPath); currentPath = NULL;
+            free(currentDate); currentDate = NULL;
+            free(currentTime); currentTime = NULL;
+            free(LogsName); LogsName = NULL;
+            free(pathToExclude); pathToExclude = NULL;
         }
     }
     return 0;

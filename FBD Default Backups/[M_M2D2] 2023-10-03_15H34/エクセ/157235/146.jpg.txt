@@ -1,4 +1,0 @@
-Filename: 146.jpg
-Extension: .jpg
-Size: 86236 bytes
-Last modification: 2021-10-28 11:16:36

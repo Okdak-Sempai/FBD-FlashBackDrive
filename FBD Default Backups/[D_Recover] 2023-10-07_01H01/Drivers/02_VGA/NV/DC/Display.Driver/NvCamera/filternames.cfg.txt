@@ -1,0 +1,4 @@
+Filename: filternames.cfg
+Extension: .cfg
+Size: 14012 bytes
+Last modification: 2021-04-06 00:57:35

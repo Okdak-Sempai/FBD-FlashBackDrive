@@ -1,4 +1,0 @@
-Filename: cogs.po
-Extension: .po
-Size: 9793 bytes
-Last modification: 2020-04-04 05:50:13

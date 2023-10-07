@@ -1,4 +1,0 @@
-Filename: 4.py
-Extension: .py
-Size: 132 bytes
-Last modification: 2021-03-16 12:18:34

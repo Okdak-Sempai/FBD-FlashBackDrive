@@ -1,4 +1,0 @@
-Filename: app_bar_template.dart
-Extension: .dart
-Size: 4626 bytes
-Last modification: 2023-06-02 16:53:38

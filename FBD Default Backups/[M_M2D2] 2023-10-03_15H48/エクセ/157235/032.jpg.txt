@@ -1,4 +1,0 @@
-Filename: 032.jpg
-Extension: .jpg
-Size: 102616 bytes
-Last modification: 2021-10-28 11:14:42

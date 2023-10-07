@@ -1,4 +1,0 @@
-Filename: test_20220317143503.py
-Extension: .py
-Size: 1594 bytes
-Last modification: 2022-03-17 13:35:03

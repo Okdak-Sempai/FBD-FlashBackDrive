@@ -1,4 +1,0 @@
-Filename: 06.jpg
-Extension: .jpg
-Size: 378297 bytes
-Last modification: 2018-07-20 17:38:16

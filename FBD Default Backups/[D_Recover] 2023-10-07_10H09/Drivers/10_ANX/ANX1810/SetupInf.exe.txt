@@ -1,0 +1,4 @@
+Filename: SetupInf.exe
+Extension: .exe
+Size: 18912 bytes
+Last modification: 2020-05-19 09:31:08

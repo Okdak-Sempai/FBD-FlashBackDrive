@@ -1,4 +1,0 @@
-Filename: Exo_20210927120715.c
-Extension: .c
-Size: 0 bytes
-Last modification: 2021-09-27 10:08:49

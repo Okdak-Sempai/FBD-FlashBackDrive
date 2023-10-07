@@ -1,0 +1,4 @@
+Filename: mskuc.cab
+Extension: .cab
+Size: 576 bytes
+Last modification: 2021-04-28 23:00:30

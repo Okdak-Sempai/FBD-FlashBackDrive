@@ -1,0 +1,4 @@
+Filename: box_unchecked_disabled.png
+Extension: .png
+Size: 180 bytes
+Last modification: 2021-04-06 00:57:35

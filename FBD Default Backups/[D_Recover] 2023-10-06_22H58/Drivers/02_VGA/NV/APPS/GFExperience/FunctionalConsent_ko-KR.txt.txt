@@ -1,0 +1,4 @@
+Filename: FunctionalConsent_ko-KR.txt
+Extension: .txt
+Size: 857 bytes
+Last modification: 2021-01-03 14:54:18

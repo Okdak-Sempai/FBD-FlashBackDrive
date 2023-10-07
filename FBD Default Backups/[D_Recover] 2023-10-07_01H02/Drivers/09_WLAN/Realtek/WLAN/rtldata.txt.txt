@@ -1,0 +1,4 @@
+Filename: rtldata.txt
+Extension: .txt
+Size: 307397 bytes
+Last modification: 2020-08-06 04:18:32

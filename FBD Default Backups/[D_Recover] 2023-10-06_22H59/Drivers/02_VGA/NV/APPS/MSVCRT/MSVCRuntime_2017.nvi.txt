@@ -1,0 +1,4 @@
+Filename: MSVCRuntime_2017.nvi
+Extension: .nvi
+Size: 22893 bytes
+Last modification: 2021-01-28 01:48:08

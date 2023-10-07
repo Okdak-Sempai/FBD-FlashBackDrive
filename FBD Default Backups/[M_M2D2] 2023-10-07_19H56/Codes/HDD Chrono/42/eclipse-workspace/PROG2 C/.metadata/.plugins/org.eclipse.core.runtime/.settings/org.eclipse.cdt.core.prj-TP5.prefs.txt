@@ -1,0 +1,4 @@
+Filename: org.eclipse.cdt.core.prj-TP5.prefs
+Extension: .prefs
+Size: 56 bytes
+Last modification: 2021-10-12 07:58:22

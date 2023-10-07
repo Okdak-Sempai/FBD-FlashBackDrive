@@ -1,0 +1,93 @@
+
+currentPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive
+defaultLogStatus: -1
+logsAdress: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Logs
+LogsAdressStatus: 0
+LogsName: FBD Logs 2023-10-07_20H19
+currentDate: 2023-10-07
+currentTime: 20H19
+alldrivesFLAG: 0
+alldrivesCount: 0
+alldrives: a
+alldrives: b
+alldrives: c
+alldrives: d
+alldrives: e
+alldrives: f
+alldrives: g
+alldrives: h
+alldrives: i
+alldrives: j
+alldrives: k
+alldrives: l
+alldrives: m
+alldrives: n
+alldrives: o
+alldrives: p
+alldrives: q
+alldrives: r
+alldrives: s
+alldrives: t
+alldrives: u
+alldrives: v
+alldrives: w
+alldrives: x
+alldrives: y
+alldrives: z
+defaultbackupStatus: -1
+settingStatus: 1
+maxDrives: 26
+userChoice: NULL
+rootPath: NULL
+star_rootPath: NULL
+drivePaths: C:\
+drivePaths: D:\
+drivePaths: E:\
+drivePaths: M:\
+drivePaths: S:\
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+drivePaths: NULL
+settingsPath('FBDsettings:'): C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+methodChoice: 0
+methodChoice: 2
+userChoice: D:\
+rootPath: D:\
+star_rootPath: D:\\*
+targetPath: NULL
+settingsPath('FBDsettings:'): C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+settingsResult: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+targetPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+star_targetPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\*
+pathToExclude: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups
+rootPath: D:\
+star_rootPath: D:\\*
+targetPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[D_Recover] 2023-10-07_20H19
+star_targetPath: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\*
+registerAdress: C:\Users\Okdak\source\repos\FBD FlashBackDrive\FBD Default Backups\[D_Recover] 2023-10-07_20H19\FBDRegister.txt
+rootsize: 7
+pathsize: 1
+pathsize: 7
+elapsedTime: 87385
+totalSeconds: 87
+hours: 0
+minutes: 1
+seconds: 27

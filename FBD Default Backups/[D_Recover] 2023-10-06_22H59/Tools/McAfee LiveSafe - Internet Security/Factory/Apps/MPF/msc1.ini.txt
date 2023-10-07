@@ -1,0 +1,4 @@
+Filename: msc1.ini
+Extension: .ini
+Size: 408 bytes
+Last modification: 2021-04-22 13:12:02

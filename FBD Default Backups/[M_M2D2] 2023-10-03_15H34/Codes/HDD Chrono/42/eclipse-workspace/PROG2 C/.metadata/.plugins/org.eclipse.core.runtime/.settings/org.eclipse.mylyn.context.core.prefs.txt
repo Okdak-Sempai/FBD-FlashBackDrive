@@ -1,4 +1,0 @@
-Filename: org.eclipse.mylyn.context.core.prefs
-Extension: .prefs
-Size: 60 bytes
-Last modification: 2021-10-05 06:11:30

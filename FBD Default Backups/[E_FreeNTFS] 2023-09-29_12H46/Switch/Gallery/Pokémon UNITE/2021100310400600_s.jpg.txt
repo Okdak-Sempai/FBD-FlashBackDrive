@@ -1,3 +1,0 @@
-Extension: .jpg
-Size: 144056 bytes
-Last modification: 2021-10-03 08:40:06

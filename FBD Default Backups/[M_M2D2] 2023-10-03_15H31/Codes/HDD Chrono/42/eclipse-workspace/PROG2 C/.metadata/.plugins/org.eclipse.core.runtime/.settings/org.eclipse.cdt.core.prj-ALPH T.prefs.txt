@@ -1,4 +1,0 @@
-Filename: org.eclipse.cdt.core.prj-ALPH T.prefs
-Extension: .prefs
-Size: 56 bytes
-Last modification: 2021-10-05 06:16:54

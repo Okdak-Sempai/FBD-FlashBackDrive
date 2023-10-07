@@ -1,4 +1,0 @@
-Filename: image0-63.jpg
-Extension: .jpg
-Size: 508739 bytes
-Last modification: 2020-06-29 22:09:00

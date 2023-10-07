@@ -1,4 +1,0 @@
-Filename: FileComparison.c
-Extension: .c
-Size: 6732 bytes
-Last modification: 2023-07-31 19:10:58

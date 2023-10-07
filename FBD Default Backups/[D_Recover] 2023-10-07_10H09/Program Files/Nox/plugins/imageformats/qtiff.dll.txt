@@ -1,0 +1,4 @@
+Filename: qtiff.dll
+Extension: .dll
+Size: 523928 bytes
+Last modification: 2022-07-11 17:03:52

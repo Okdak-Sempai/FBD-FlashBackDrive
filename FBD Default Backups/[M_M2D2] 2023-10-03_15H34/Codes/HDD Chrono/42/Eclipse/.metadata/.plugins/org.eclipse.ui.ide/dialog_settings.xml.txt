@@ -1,4 +1,0 @@
-Filename: dialog_settings.xml
-Extension: .xml
-Size: 317 bytes
-Last modification: 2021-10-18 16:45:09

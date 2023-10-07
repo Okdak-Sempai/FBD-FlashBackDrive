@@ -1,0 +1,4 @@
+Filename: delegate.exe
+Extension: .exe
+Size: 914720 bytes
+Last modification: 2021-04-24 04:50:22

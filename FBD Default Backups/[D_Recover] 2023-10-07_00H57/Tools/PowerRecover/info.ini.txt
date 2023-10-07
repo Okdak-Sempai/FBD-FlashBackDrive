@@ -1,0 +1,4 @@
+Filename: info.ini
+Extension: .ini
+Size: 393 bytes
+Last modification: 2019-05-22 09:17:01

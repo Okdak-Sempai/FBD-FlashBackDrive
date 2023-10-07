@@ -1,4 +1,0 @@
-Filename: details.py
-Extension: .py
-Size: 1701 bytes
-Last modification: 2020-04-17 03:30:59

@@ -1,4 +1,0 @@
-Filename: 151.jpg
-Extension: .jpg
-Size: 81900 bytes
-Last modification: 2021-10-28 11:16:40

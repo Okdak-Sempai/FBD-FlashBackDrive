@@ -1,4 +1,0 @@
-Filename: 124.jpg
-Extension: .jpg
-Size: 80988 bytes
-Last modification: 2021-10-28 11:16:06

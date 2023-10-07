@@ -1,0 +1,4 @@
+Filename: MonitorTelemetry.dll
+Extension: .dll
+Size: 2078696 bytes
+Last modification: 2020-12-29 22:57:47

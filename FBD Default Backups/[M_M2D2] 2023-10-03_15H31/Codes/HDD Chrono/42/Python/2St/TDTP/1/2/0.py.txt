@@ -1,4 +1,0 @@
-Filename: 0.py
-Extension: .py
-Size: 114 bytes
-Last modification: 2020-03-27 12:40:07

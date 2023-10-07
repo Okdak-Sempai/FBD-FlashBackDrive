@@ -1,3 +1,0 @@
-Extension: .bin
-Size: 12312 bytes
-Last modification: 2021-03-21 17:00:48

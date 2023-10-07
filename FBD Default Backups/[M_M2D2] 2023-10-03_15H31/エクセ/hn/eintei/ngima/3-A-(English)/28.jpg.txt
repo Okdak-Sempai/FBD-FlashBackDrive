@@ -1,4 +1,0 @@
-Filename: 28.jpg
-Extension: .jpg
-Size: 179163 bytes
-Last modification: 2010-06-03 08:04:44

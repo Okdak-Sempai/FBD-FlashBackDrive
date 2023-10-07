@@ -1,4 +1,0 @@
-Filename: 020.jpg
-Extension: .jpg
-Size: 185309 bytes
-Last modification: 2017-12-03 09:10:54

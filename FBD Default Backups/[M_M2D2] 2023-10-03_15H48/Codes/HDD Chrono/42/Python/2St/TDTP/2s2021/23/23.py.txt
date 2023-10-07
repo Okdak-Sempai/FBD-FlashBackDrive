@@ -1,4 +1,0 @@
-Filename: 23.py
-Extension: .py
-Size: 552 bytes
-Last modification: 2021-03-09 13:59:04

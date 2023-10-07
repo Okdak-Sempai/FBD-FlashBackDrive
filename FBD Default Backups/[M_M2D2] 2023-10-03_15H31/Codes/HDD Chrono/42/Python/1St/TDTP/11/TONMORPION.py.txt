@@ -1,4 +1,0 @@
-Filename: TONMORPION.py
-Extension: .py
-Size: 5166 bytes
-Last modification: 2021-10-18 15:27:22

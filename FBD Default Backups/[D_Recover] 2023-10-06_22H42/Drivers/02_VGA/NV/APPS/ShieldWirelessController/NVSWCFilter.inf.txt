@@ -1,0 +1,4 @@
+Filename: NVSWCFilter.inf
+Extension: .inf
+Size: 3273 bytes
+Last modification: 2020-12-29 23:05:05

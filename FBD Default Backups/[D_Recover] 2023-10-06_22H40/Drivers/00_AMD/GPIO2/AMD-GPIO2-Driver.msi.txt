@@ -1,0 +1,4 @@
+Filename: AMD-GPIO2-Driver.msi
+Extension: .msi
+Size: 1590272 bytes
+Last modification: 2021-03-03 21:05:00

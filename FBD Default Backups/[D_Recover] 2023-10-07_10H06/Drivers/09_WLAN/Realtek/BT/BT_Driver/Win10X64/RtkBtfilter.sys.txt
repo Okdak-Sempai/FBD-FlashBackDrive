@@ -1,0 +1,4 @@
+Filename: RtkBtfilter.sys
+Extension: .sys
+Size: 792200 bytes
+Last modification: 2020-07-02 10:19:18

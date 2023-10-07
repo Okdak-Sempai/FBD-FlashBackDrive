@@ -1,4 +1,0 @@
-Filename: cc2021_20211230154346.c
-Extension: .c
-Size: 282 bytes
-Last modification: 2021-12-30 14:43:46

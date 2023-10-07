@@ -1,0 +1,4 @@
+Filename: _nvspserviceplugin64.dll
+Extension: .dll
+Size: 1934576 bytes
+Last modification: 2021-01-27 11:17:19

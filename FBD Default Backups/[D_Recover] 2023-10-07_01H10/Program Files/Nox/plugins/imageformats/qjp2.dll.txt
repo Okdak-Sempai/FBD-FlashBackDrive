@@ -1,0 +1,4 @@
+Filename: qjp2.dll
+Extension: .dll
+Size: 517120 bytes
+Last modification: 2022-07-11 17:03:52

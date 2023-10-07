@@ -1,0 +1,4 @@
+Filename: UnInstall.bat
+Extension: .bat
+Size: 98 bytes
+Last modification: 2019-06-26 22:34:00

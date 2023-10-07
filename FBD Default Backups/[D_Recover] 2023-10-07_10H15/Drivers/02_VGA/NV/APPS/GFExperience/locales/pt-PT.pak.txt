@@ -1,0 +1,4 @@
+Filename: pt-PT.pak
+Extension: .pak
+Size: 215681 bytes
+Last modification: 2021-01-27 17:46:31

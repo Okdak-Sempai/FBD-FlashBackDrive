@@ -1,0 +1,4 @@
+Filename: HDXWHITE.inf
+Extension: .inf
+Size: 104807 bytes
+Last modification: 2021-05-27 13:06:33

@@ -1,0 +1,4 @@
+Filename: EULA.txt
+Extension: .txt
+Size: 14342 bytes
+Last modification: 2021-01-03 14:54:18

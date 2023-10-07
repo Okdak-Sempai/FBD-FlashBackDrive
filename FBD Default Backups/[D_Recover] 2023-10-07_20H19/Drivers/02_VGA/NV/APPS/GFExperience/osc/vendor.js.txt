@@ -1,0 +1,4 @@
+Filename: vendor.js
+Extension: .js
+Size: 1430148 bytes
+Last modification: 2021-01-27 17:53:20

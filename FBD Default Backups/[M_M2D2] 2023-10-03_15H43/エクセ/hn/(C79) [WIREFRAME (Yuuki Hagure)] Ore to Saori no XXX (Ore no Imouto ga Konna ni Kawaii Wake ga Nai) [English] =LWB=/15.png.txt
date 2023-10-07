@@ -1,4 +1,0 @@
-Filename: 15.png
-Extension: .png
-Size: 742814 bytes
-Last modification: 2021-02-22 01:24:36

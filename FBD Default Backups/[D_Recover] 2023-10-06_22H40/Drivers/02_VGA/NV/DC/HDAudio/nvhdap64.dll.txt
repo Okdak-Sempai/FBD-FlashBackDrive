@@ -1,0 +1,4 @@
+Filename: nvhdap64.dll
+Extension: .dll
+Size: 38640 bytes
+Last modification: 2020-10-26 07:34:08

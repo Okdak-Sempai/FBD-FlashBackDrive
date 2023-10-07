@@ -1,0 +1,4 @@
+Filename: FvSDK_x86.lib
+Extension: .lib
+Size: 230090 bytes
+Last modification: 2021-01-25 03:38:28

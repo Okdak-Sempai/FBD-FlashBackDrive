@@ -1,0 +1,4 @@
+Filename: synaBscAdapter.dll
+Extension: .dll
+Size: 368520 bytes
+Last modification: 2020-08-24 19:33:32

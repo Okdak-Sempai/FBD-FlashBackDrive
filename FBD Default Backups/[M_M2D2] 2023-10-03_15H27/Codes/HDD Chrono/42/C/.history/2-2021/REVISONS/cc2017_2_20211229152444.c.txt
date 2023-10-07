@@ -1,4 +1,0 @@
-Filename: cc2017_2_20211229152444.c
-Extension: .c
-Size: 780 bytes
-Last modification: 2021-12-29 14:24:44

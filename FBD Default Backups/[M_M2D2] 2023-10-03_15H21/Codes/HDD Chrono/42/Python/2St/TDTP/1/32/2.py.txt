@@ -1,4 +1,0 @@
-Filename: 2.py
-Extension: .py
-Size: 0 bytes
-Last modification: 2020-04-08 12:41:21
