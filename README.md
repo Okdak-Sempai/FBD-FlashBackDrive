@@ -62,3 +62,8 @@ The Software files will be in the subfolder D_O-S/FBD FlashBackDrive
 # Notes
 This only works for windows x64, but feel free to try and compile it for x86 or make a linux version.(I'm done.)
 You will have a log folder to keep track of the execution of a FBD.
+
+# License
+
+A quick note on this, I just don't want my code or part of it to be used and commercialized withou my consent.<br/>
+Forks and usages of it are allowed as part of open source code. Sound fair to me.
