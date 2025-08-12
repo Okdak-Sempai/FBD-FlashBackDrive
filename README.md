@@ -65,5 +65,5 @@ You will have a log folder to keep track of the execution of a FBD.
 
 # License
 
-A quick note on this, I just don't want my code or part of it to be used and commercialized withou my consent.<br/>
+A quick note on this, I just don't want my code or part of it to be used and commercialized without my consent.<br/>
 Forks and usages of it are allowed as part of open source code. Sound fair to me.
